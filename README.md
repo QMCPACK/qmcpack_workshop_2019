@@ -15,7 +15,7 @@ Each presenter please create a folder day1/2_name_topic
 1. Packages pre-installed on AWS.
 2. Examples tested on AWS.
 
-** 1 day before **
+**1 day before**
 1. Slides uploaded to github repo
 2. Make github repo public
 
