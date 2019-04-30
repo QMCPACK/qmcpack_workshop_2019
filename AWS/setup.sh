@@ -85,13 +85,26 @@ echo --- Building QMCPACK `date`
 rm -r -f build
 mkdir build
 cd build
-cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DQMC_MPI=1  -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
+cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1 -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
 make -j 16 >&make.out
 ctest -R deterministic >& ctest.out
 cat ctest.out
 cd ..
 fi
-# XXX build_complex needed
+
+if [ ! -e build_complex/bin/qmcpack ]; then
+echo --- Building QMCPACK Complex `date`
+rm -r -f build_complex
+mkdir build_complex
+cd build_complex
+cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DQMC_COMPLEX=1 -DBUILD_AFQMC=1 -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1  -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
+make -j 16 >&make.out
+ctest -R deterministic >& ctest.out
+cat ctest.out
+cd ../build/bin
+ln -s ../build_complex/bin/qmcpack qmcpack_complex
+cd ..
+fi
 
 # QE
 if [ ! -e $HOME/apps/qe-6.4/bin/pw.x ]; then
@@ -107,6 +120,12 @@ echo --- Building QE `date`
     cd $HOME/apps
 fi
 
+# PySCF
+# XXX Not yet
+
+# QP
+# XXX Not yet
+
 cd $HOME
 echo --- Shell setup `date`
 # Shell setup
@@ -117,12 +136,13 @@ echo --- Shell setup `date`
 echo --- Workshop files `date`
 # Workshop files
 cd $HOME
-if [ ! -e qmcpack_workshop_2019 ]; then
-    git clone https://github.com/QMCPACK/qmcpack_workshop_2019.git
-else
-    cd qmcpack_workshop_2019
-    git pull
-    cd ..
-fi
+# XXX not yet published
+#if [ ! -e qmcpack_workshop_2019 ]; then
+#    git clone https://github.com/QMCPACK/qmcpack_workshop_2019.git
+#else
+#    cd qmcpack_workshop_2019
+#    git pull
+#    cd ..
+#fi
 echo -- END `date`
 
