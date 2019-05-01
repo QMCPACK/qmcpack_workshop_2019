@@ -14,11 +14,14 @@ Each presenter please create a folder day1/2_name_topic
 **1 week before**
 1. Packages pre-installed on AWS.
 2. Examples tested on AWS.
+3. Repo public
 
-**1 day before**
-1. Slides uploaded to github repo
-2. Make github repo public
+**Thursday before**
+1. AWS machine image created
+2. Initial slides uploaded
 
+**Sunday before**
+1. Final slides uploaded to github repo
 
 
 ## Schedule:
