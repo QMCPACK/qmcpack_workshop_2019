@@ -54,7 +54,7 @@ full explanation of the various options available for `pyscf_to_qmcpack.py` you 
 
 .. code-block:: bash
 
-    pyscf_to_qmcpack.py -h
+    pyscf_to_afqmc.py -h
 
 In the above example, `-i` designates the input pyscf checkpoint file, `-o` speficies the
 output filename to write the qmcpack hamiltonian/wavefunction to, `-t` specifies the
