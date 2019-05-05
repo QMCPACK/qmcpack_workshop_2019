@@ -1,4 +1,4 @@
-Example 8: 2x2x2 Diamond supercell
+Example 6: 2x2x2 Diamond supercell
 ==================================
 
 In this example we will show how to generate the AFQMC input from a pbc pyscf calculation
