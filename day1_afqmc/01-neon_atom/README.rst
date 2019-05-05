@@ -92,6 +92,7 @@ orbitals in the basis set (`NMO`) and the number of alpha (`NAEA`) and beta (`NA
 electrons respectively.
 
 Next we specify the Hamiltonian and wavefunction to use:
+
 .. code-block:: xml
 
         <Hamiltonian name="ham0" type="Factorized" info="info0">
@@ -182,7 +183,8 @@ Assuming everything worked correctly we need to analyse the afqmc output using:
 
 which should yield
 
-::
+.. code-block:: bash
+
     qmc  series 0  EnergyEstim__nume_real=  -128.712107 +/- 0.001321
 
 See the options for qmca for further information. Essentially we discarded the first 100

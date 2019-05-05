@@ -17,7 +17,7 @@ Note we are working in the MO basis and we removed the `-q` option as the afqmc 
 `afqmc.xml` is already contained in this directory. Comparing the input file to previous
 examples you should that now there is a new Estimator xml block:
 
-.. code-block:: bash
+.. code-block:: xml
 
       <Estimator name="back_propagation">
           <parameter name="block_size">5</parameter>
@@ -44,8 +44,8 @@ reduced density matrix (1RDM), given as
 
     P^{\sigma}_{ij} = \langle c_{\sigma i}^{\dagger} c_{\sigma j} \rangle
 
-Before we analyse the output we should question why we chose a back propagation time of 1.
-The back propagation time represents yet another parameter which must be carefully
+Before we analyse the output we should question why we chose a back propagation time of 2
+au.  The back propagation time represents yet another parameter which must be carefully
 converged.
 
 In this example we will show how this is done.  In this directory you will find a script
@@ -86,7 +86,7 @@ propagation time?
 Finally, we should mention that the path restoration algorithm introduced in M&Z is also
 implemented and can be turned on by modifying the estimator block as follows:
 
-.. code-block:: bash
+.. code-block:: xml
 
       <Estimator name="back_propagation">
           <parameter name="block_size">5</parameter>
