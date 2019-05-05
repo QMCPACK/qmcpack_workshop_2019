@@ -50,7 +50,7 @@ this we do (assuming afqmctools is in your PYTHONPATH):
 
 which will peform the necessary AO to MO transformation of the one and two electron
 integrals and perform a modified cholesky transormation of the two electron integrals. A
-full explanation of the various options available for `pyscf_to_qmcpack.py` you can do
+full explanation of the various options available for `pyscf_to_afqmc.py` you can do
 
 .. code-block:: bash
 
