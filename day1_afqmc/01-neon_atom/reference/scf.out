@@ -1,0 +1,110 @@
+#INFO: **** input file is /p/lustre2/malone14/qmcpack_workshop_2019/day1_afqmc/01-neon_atom/scf.py ****
+#!/usr/bin/env python
+
+from pyscf import gto, scf, cc
+from pyscf.cc import ccsd_t
+import h5py
+
+mol = gto.Mole()
+mol.basis = 'aug-cc-pvdz'
+mol.atom = (('Ne', 0,0,0),)
+mol.verbose = 4
+mol.build()
+
+mf = scf.RHF(mol)
+mf.chkfile = 'scf.chk'
+ehf = mf.kernel()
+
+ccsd = cc.CCSD(mf)
+eccsd = ccsd.kernel()[0]
+ecorr_ccsdt = ccsd_t.kernel(ccsd, ccsd.ao2mo())
+print("E(CCSD(T)) = {}".format(ehf+eccsd+ecorr_ccsdt))
+#INFO: ******************** input file end ********************
+
+
+System: ('Linux', 'quartz1922', '3.10.0-957.5.1.3chaos.ch6.x86_64', '#1 SMP Tue Feb 26 14:19:40 PST 2019', 'x86_64', 'x86_64')  Threads 72
+Python 2.7.14 (default, Jan 17 2018, 10:04:29) 
+[GCC 4.9.3]
+numpy 1.13.3  scipy 1.0.0
+Date: Sun May  5 12:59:20 2019
+PySCF version 1.6.1
+PySCF path  /g/g90/malone14/projects/pyscf/pyscf
+GIT ORIG_HEAD b9c7026dea665ddc2f3c0ac57ca8c5c630ee17bc
+GIT HEAD      ref: refs/heads/master
+GIT master branch  b9c7026dea665ddc2f3c0ac57ca8c5c630ee17bc
+
+[CONFIG] conf_file None
+[INPUT] verbose = 4
+[INPUT] num. atoms = 1
+[INPUT] num. electrons = 10
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = angstrom
+[INPUT]  1 Ne     0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr
+
+nuclear repulsion = 5e-199
+number of shells = 8
+number of NR pGTOs = 35
+number of NR cGTOs = 23
+basis = aug-cc-pvdz
+ecp = {}
+CPU time:         0.70
+
+
+******** <class 'pyscf.scf.hf.RHF'> ********
+method = RHF
+initial guess = minao
+damping factor = 0
+level shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+DIIS start cycle = 1
+DIIS space = 8
+SCF tol = 1e-09
+SCF gradient tol = None
+max. SCF cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = scf.chk
+max_memory 4000 MB (current use 48 MB)
+Set gradient conv threshold to 3.16228e-05
+init E= -128.471755092967
+  HOMO = -0.766473464623238  LUMO = 0.295200551087955
+cycle= 1 E= -128.491208472442  delta_E= -0.0195  |g|= 0.205  |ddm|= 0.248
+  HOMO = -0.897656584255415  LUMO = 0.28245470039664
+cycle= 2 E= -128.495088632612  delta_E= -0.00388  |g|= 0.102  |ddm|= 0.121
+  HOMO = -0.853016710981706  LUMO = 0.28727908192136
+cycle= 3 E= -128.496349702362  delta_E= -0.00126  |g|= 0.000255  |ddm|= 0.0406
+  HOMO = -0.853063706899861  LUMO = 0.287354228831583
+cycle= 4 E= -128.496349730365  delta_E= -2.8e-08  |g|= 2.54e-05  |ddm|= 0.00034
+  HOMO = -0.853040478923106  LUMO = 0.287355106167966
+cycle= 5 E= -128.49634973054  delta_E= -1.75e-10  |g|= 1.95e-06  |ddm|= 2.92e-05
+  HOMO = -0.853040030522833  LUMO = 0.287355180217811
+Extra cycle  E= -128.496349730541  delta_E= -4.55e-13  |g|= 3.61e-07  |ddm|= 1.06e-06
+converged SCF energy = -128.496349730541
+
+******** <class 'pyscf.cc.ccsd.CCSD'> ********
+CC2 = 0
+CCSD nocc = 5, nmo = 23
+max_cycle = 50
+direct = 0
+conv_tol = 1e-07
+conv_tol_normt = 1e-05
+diis_space = 6
+diis_start_cycle = 0
+diis_start_energy_diff = 1e+09
+max_memory 4000 MB (current use 56 MB)
+Init t2, MP2 energy = -0.209059868481634
+Init E(CCSD) = -0.209059868481656
+cycle = 1  E(CCSD) = -0.209193496906863  dE = -0.000133628425  norm(t1,t2) = 0.026138
+cycle = 2  E(CCSD) = -0.211916643852139  dE = -0.00272314695  norm(t1,t2) = 0.00571115
+cycle = 3  E(CCSD) = -0.211896157294466  dE = 2.04865577e-05  norm(t1,t2) = 0.00290488
+cycle = 4  E(CCSD) = -0.212153827410512  dE = -0.000257670116  norm(t1,t2) = 0.000954162
+cycle = 5  E(CCSD) = -0.212142653874183  dE = 1.11735363e-05  norm(t1,t2) = 6.81712e-05
+cycle = 6  E(CCSD) = -0.212138313226565  dE = 4.34064762e-06  norm(t1,t2) = 1.89995e-05
+cycle = 7  E(CCSD) = -0.212138088693274  dE = 2.24533291e-07  norm(t1,t2) = 2.93821e-06
+cycle = 8  E(CCSD) = -0.212138110193798  dE = -2.15005242e-08  norm(t1,t2) = 5.64478e-07
+CCSD converged
+E(CCSD) = -128.7084878407345  E_corr = -0.2121381101937984
+CCSD(T) correction = -0.00280631580870474
+E(CCSD(T)) = -128.711294157
