@@ -21,7 +21,7 @@
     </Wavefunction>
 
     <WalkerSet name="wset0" type="shared">
-      <parameter name="walker_type">COLLINEAR</parameter>
+      <parameter name="walker_type">CLOSED</parameter>
     </WalkerSet>
 
     <Propagator name="prop0" info="info0">
