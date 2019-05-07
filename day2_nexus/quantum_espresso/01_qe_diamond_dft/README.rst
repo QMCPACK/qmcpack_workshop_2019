@@ -157,3 +157,38 @@ all simulation runs will also be complete.
 
 Running the Example
 -------------------
+
+First run the Nexus script with the ``status_only`` flag set.  This will show 
+the queue of jobs that Nexus is managing, including their current status.
+
+.. code-block:: bash
+
+>./diamond_lda.py --status_only
+
+  ...
+  
+  cascade status 
+    setup, sent_files, submitted, finished, got_output, analyzed, failed 
+    000000  0  ------    scf     ./runs/diamond/scf  
+    setup, sent_files, submitted, finished, got_output, analyzed, failed 
+
+The QE SCF run will be performed in ``./runs/diamond/scf`` and the input and 
+output files will be prefixed with ``scf`` (scf.in and scf.out).  The status
+flags, represented as ``0`` or ``1`` are described below.
+
+**0**\ 00000  0  ------  setup
+
+0\ **0**\ 0000  0  ------  sent_files
+
+00\ **0**\ 000  0  ------  submitted
+
+000\ **0**\ 00  0  ------  finished
+
+0000\ **0**\ 0  0  ------  got_output
+
+00000\ **0**  0  ------  analyzed
+
+000000  **0**  ------  failed
+
+000000  0  **------**  job_id
+
