@@ -192,6 +192,8 @@ export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/nexus/lib:\$PYTHONPATH
 export PATH=\$HOME/apps/qe-6.4/bin:\$PATH
 # PySCF
 export PYTHONPATH=\$HOME/apps/pyscf-1.6.1:\$PYTHONPATH
+# Temp fix for MKL with PySCF
+export LD_PRELOAD=\$MKLROOT/lib/intel64/libmkl_avx.so:\$MKLROOT/lib/intel64/libmkl_core.so
 # QP
 source \$HOME/apps/qp2/quantum_package.rc
 # END-QMCPACK-RELATED
@@ -212,6 +214,7 @@ export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/nexus/lib:$PYTHONPATH
 export PATH=$HOME/apps/qe-6.4/bin:$PATH
 # PySCF
 export PYTHONPATH=$HOME/apps/pyscf-1.6.1:$PYTHONPATH
+export LD_PRELOAD=$MKLROOT/lib/intel64/libmkl_avx.so:$MKLROOT/lib/intel64/libmkl_core.so
 # QP
 source $HOME/apps/qp2/quantum_package.rc
 
