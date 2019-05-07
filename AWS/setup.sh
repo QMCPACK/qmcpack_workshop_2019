@@ -13,11 +13,6 @@ sudo apt-get -y install cmake g++ gfortran libboost-dev libhdf5-dev libxml2-dev
 sudo apt-get -y install python-numpy python-matplotlib #This will also install python27
 sudo apt-get -y install python-h5py
 
-# Requirements for full NEXUS demo:
-sudo apt-get -y install python-numpy python-scipy python-h5py python-matplotlib python-pydot python-pip
-pip install --user spglib
-pip install --user seekpath
-
 echo --- Intel files setup `date`
 # Setup Intel MKL and MPI
 # Instructions from https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo
@@ -43,6 +38,14 @@ sudo apt-get -y install gnuplot
 source /opt/intel/mkl/bin/mklvars.sh intel64
 # Setup Intel MPI variables, path
 source /opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
+
+
+# Requirements for full NEXUS demo:
+sudo apt-get -y install python-numpy python-scipy python-h5py python-matplotlib python-pydot python-pip
+pip install --user spglib
+pip install --user seekpath
+
+pip install --user mpi4py # Maybe for AFQMC demo?
 
 if [ ! -e $HOME/apps ]; then
     mkdir $HOME/apps
@@ -85,7 +88,7 @@ echo --- Patching and Building QE `date`
     cd $HOME/apps/qmcpack/qmcpack/external_codes/quantum_espresso/
     ./download_and_patch_qe6.4.sh
     cd qe-6.4
-    ./configure  CC=mpigcc MPIF90=mpif90 F77=mpif77 --with-scalapack=intel --with-hdf5=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi  >&configure.out
+    ./configure  CC=mpigcc MPIF90=mpif90 F77=mpif77 --with-scalapack=intel --with-hdf5=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi  >&configure.out
     make pw >&make_pw.out
     make pwall >&make_pwall.out
     if [ -e $HOME/apps/qe-6.4 ]; then
@@ -103,7 +106,7 @@ echo --- Building QMCPACK `date`
 rm -r -f build
 mkdir build
 cd build
-cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1 -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
+cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1 -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi -DQE_BIN=$HOME/apps/qe-6.4/bin -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
 make -j 16 >&make.out
 ctest -R deterministic >& ctest.out
 cat ctest.out
@@ -115,7 +118,7 @@ echo --- Building QMCPACK Complex `date`
 rm -r -f build_complex
 mkdir build_complex
 cd build_complex
-cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DQMC_COMPLEX=1 -DBUILD_AFQMC=1 -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1  -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
+cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DQMC_COMPLEX=1 -DBUILD_AFQMC=1 -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1  -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi -DQE_BIN=$HOME/apps/qe-6.4/bin -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
 make -j 16 >&make.out
 ctest -R deterministic >& ctest.out
 cat ctest.out
@@ -127,73 +130,100 @@ fi
 # PySCF
 cd $HOME/apps
 if [ ! -e pyscf-1.6.1 ]; then
-echo --- PySCF 
+echo --- Building PySCF 
     if [ ! -e v1.6.1.tar.gz ]; then    
 	wget https://github.com/pyscf/pyscf/archive/v1.6.1.tar.gz
     fi
-    tar xvf pyscf-1.6.1.tar.gz
+    tar xvf v1.6.1.tar.gz
     cd pyscf-1.6.1
     cd pyscf/lib
     if [ -e build ]; then
 	rm -r -f build
-	mkdir build
-	cd build
-	cmake -DBLA_VENDOR=Intel10_64lp_seq ..
-	make
-	cd ..
-	export PYTHONPATH=/home/ubuntu/apps/pyscf-1.6.1:$PYTHONPATH
     fi
+    mkdir build
+    cd build
+    cmake -DBLA_VENDOR=Intel10_64lp_seq ..
+    make
+    cd ..
 fi
 
 # QP
 sudo apt-get -y install ninja-build m4 unzip
 cd $HOME/apps
 if [ ! -e qp2 ]; then
-CC=gcc
-CXX=g++
-F90=gfortran
-F95=gfortran
-F77=gfortran
-git clone https://github.com/QuantumPackage/qp2.git 
-cd qp2
-./configure -i all
-sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
-./configure -c config/gfortran_mkl.cfg
-source quantum_package.rc
-ninja
-cd plugins
-git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
-cd ../
-qp_plugins install qmcpack
-sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
-ninja
+    echo --- Building QP2
+    CC=gcc
+    CXX=g++
+    F90=gfortran
+    F95=gfortran
+    F77=gfortran
+    git clone https://github.com/QuantumPackage/qp2.git 
+    cd qp2
+    ./configure -i all
+    sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
+    ./configure -c config/gfortran_mkl.cfg
+    source quantum_package.rc
+    ninja
+    cd plugins
+    git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
+    cd ../
+    qp_plugins install qmcpack
+    sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
+    ninja
 fi
-
 
 
 cd $HOME
 echo --- Shell setup `date`
-# Shell setup
-#XXX
-# MKL, MPI, OMP threads, path to executables 
-#XXX
-# QMCPACK build/bin directory
-# NEXUS python
+HAVESETUP=`grep -c START-QMCPACK-RELATED $HOME/.bashrc`
+if  [ $HAVESETUP -eq 0 ]; then
+    echo --- Modifying .bashrc to add PATHs
+cat >>$HOME/.bashrc <<EOF
+# START-QMCPACK-RELATED
+# Setup Intel MKL variables, path
+source /opt/intel/mkl/bin/mklvars.sh intel64
+# Setup Intel MPI variables, path
+source /opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
+# QMCPACK and NEXUS
+export PATH=\$HOME/apps/qmcpack/build/bin:\$PATH
+export PATH=\$HOME/apps/qmcpack/qmcpack/nexus/bin:\$PATH
+export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/nexus/lib:\$PYTHONPATH
 # QE
-# QP,  QP_ROOT=/home/ubuntu/apps/qp2
+export PATH=\$HOME/apps/qe-6.4/bin:\$PATH
 # PySCF
-#  export PYTHONPATH=/home/ubuntu/apps/pyscf-1.6.1:$PYTHONPATH
+export PYTHONPATH=\$HOME/apps/pyscf-1.6.1:\$PYTHONPATH
+# QP (put qpsh on path)
+export PATH=\$HOME/apps/qp2/bin:\$PATH
+# END-QMCPACK-RELATED
+EOF
+else
+    echo --- .bashrc already contains setup information. Not modifying.
+fi
+# Add setup info to current shell for convenience
+# Setup Intel MKL variables, path
+#source /opt/intel/mkl/bin/mklvars.sh intel64
+# Setup Intel MPI variables, path
+#source /opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
+# QMCPACK and NEXUS
+export PATH=$HOME/apps/qmcpack/build/bin:$PATH
+export PATH=$HOME/apps/qmcpack/qmcpack/nexus/bin:$PATH
+export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/nexus/lib:$PYTHONPATH
+# QE
+export PATH=$HOME/apps/qe-6.4/bin:$PATH
+# PySCF
+export PYTHONPATH=$HOME/apps/pyscf-1.6.1:$PYTHONPATH
+# QP (put qpsh on path)
+export PATH=$HOME/apps/qp2/bin:$PATH
 
 echo --- Workshop files `date`
 # Workshop files
 cd $HOME
-# XXX not yet published
-#if [ ! -e qmcpack_workshop_2019 ]; then
-#    git clone https://github.com/QMCPACK/qmcpack_workshop_2019.git
-#else
-#    cd qmcpack_workshop_2019
-#    git pull
-#    cd ..
-#fi
+if [ ! -e qmcpack_workshop_2019 ]; then
+    git clone https://github.com/QMCPACK/qmcpack_workshop_2019.git
+else
+    cd qmcpack_workshop_2019
+    git pull
+    cd ..
+fi
 echo -- END `date`
 
