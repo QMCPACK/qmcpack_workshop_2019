@@ -9,8 +9,7 @@ The calculation steps performed in this example are:
 
 1. SCF run with QE to obtain the charge density.
 2. NSCF run with QE to obtain select orbitals to form the 8 atom supercell.
-3. Orbital conversion step with pw2qmcpack to convert the NSCF orbitals into
-the HDF5 format that QMCPACK reads.
+3. Orbital conversion step with pw2qmcpack to convert the NSCF orbitals into the HDF5 format that QMCPACK reads.
 4. Jastrow optimization with QMCPACK for the 8 atom supercell via the linear method.
 5. VMC run with QMCPACK for the 8 atom supercell.
 

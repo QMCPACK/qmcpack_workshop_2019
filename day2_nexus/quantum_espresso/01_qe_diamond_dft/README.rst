@@ -18,8 +18,7 @@ Each Nexus script has five main sections:
 1. Module imports from Nexus (and/or other Python modules).
 2. Setting variables to provide information and control Nexus' behavior.
 3. Specifying the physical system (diamond in this case).
-4. Specifying information for all simulation workflows (a single SCF 
-calculation with QE here).
+4. Specifying information for all simulation workflows (a single SCF calculation with QE here).
 5. Execution of the simulation workflows.
 
 These five sections are illustrated below using the ``diamond_lda.py`` as an 
