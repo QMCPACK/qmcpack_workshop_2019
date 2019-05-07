@@ -300,3 +300,46 @@ and one B-spline parameter (knot) has been introduced for every half Bohr
        </jastrow>
     </wavefunction>
 
+Default inputs for the quartic variant of the linear optimizer have also 
+been populated:
+
+.. code-block:: xml
+
+    <loop max="6">
+       <qmc method="linear" move="pbyp" checkpoint="-1">
+          <cost name="energy"              >    0.0                </cost>
+          <cost name="unreweightedvariance">    1.0                </cost>
+          <cost name="reweightedvariance"  >    0.0                </cost>
+          <parameter name="warmupSteps"         >    300                </parameter>
+          <parameter name="blocks"              >    100                </parameter>
+          <parameter name="steps"               >    1                  </parameter>
+          <parameter name="subSteps"            >    10                 </parameter>
+          <parameter name="timestep"            >    0.3                </parameter>
+          <parameter name="useDrift"            >    no                 </parameter>
+          <parameter name="samples"             >    51200              </parameter>
+          <parameter name="MinMethod"           >    quartic            </parameter>
+          <parameter name="minwalkers"          >    0.3                </parameter>
+          <parameter name="nonlocalpp"          >    yes                </parameter>
+          <parameter name="useBuffer"           >    yes                </parameter>
+          <parameter name="alloweddifference"   >    0.0001             </parameter>
+          <parameter name="exp0"                >    -6                 </parameter>
+          <parameter name="bigchange"           >    10.0               </parameter>
+          <parameter name="stepsize"            >    0.15               </parameter>
+          <parameter name="nstabilizers"        >    1                  </parameter>
+       </qmc>
+    </loop>
+
+Check that the optimization has completed successfully by using the ``qmca`` tool:
+
+.. code-block:: bash
+
+    >qmca -q ev runs/diamond/optJ2/*scalar*
+     
+                                       LocalEnergy              Variance                ratio 
+    runs/diamond/optJ2/opt  series 0  -44.042987 +/- 0.014884   7.043654 +/- 0.077766   0.1599 
+    runs/diamond/optJ2/opt  series 1  -45.099480 +/- 0.006295   1.111803 +/- 0.026875   0.0247 
+    runs/diamond/optJ2/opt  series 2  -45.088210 +/- 0.005014   1.090274 +/- 0.012517   0.0242 
+    runs/diamond/optJ2/opt  series 3  -45.087752 +/- 0.005664   1.095030 +/- 0.021429   0.0243 
+    runs/diamond/optJ2/opt  series 4  -45.094245 +/- 0.006613   1.104652 +/- 0.018217   0.0245 
+    runs/diamond/optJ2/opt  series 5  -45.105876 +/- 0.009184   1.117030 +/- 0.022910   0.0248 
+
