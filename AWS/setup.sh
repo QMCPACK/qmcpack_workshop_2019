@@ -188,6 +188,7 @@ source /opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
 export PATH=\$HOME/apps/qmcpack/build/bin:\$PATH
 export PATH=\$HOME/apps/qmcpack/qmcpack/nexus/bin:\$PATH
 export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/nexus/lib:\$PYTHONPATH
+export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/utils/afqmctools:\$PYTHONPATH
 # QE
 export PATH=\$HOME/apps/qe-6.4/bin:\$PATH
 # PySCF
