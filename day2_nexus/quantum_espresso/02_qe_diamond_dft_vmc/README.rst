@@ -29,14 +29,14 @@ maintains a simultaneous representation of the folded primitive cell and its
 tiled supercell counterpart.  Eight k-points in the primitive cell BZ are 
 equivalent to the supercell Gamma point.  The primitive cell, and its set of 
 8 k-points, is used automatically in the NSCF calculation, while the supercell 
-(with its single k-point/twist) is automatically used in the QMC calculations.
- The use of twist averaged boundary conditions will is covered in the next 
+(with its single k-point/twist) is automatically used in the QMC calculations. 
+The use of twist averaged boundary conditions will is covered in the next 
 example.
 
 The Nexus script used in this example, ``diamond_lda_vmc.py``, is shown below. 
 Important differences from the prior example are bolded.
 
-.. code-block:: python
+.. parsed-literal:: 
 
     #! /usr/bin/env python
     
