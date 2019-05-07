@@ -163,14 +163,14 @@ the queue of jobs that Nexus is managing, including their current status.
 
 .. code-block:: bash
 
->./diamond_lda.py --status_only
-
-  ...
-  
-  cascade status 
-    setup, sent_files, submitted, finished, got_output, analyzed, failed 
-    000000  0  ------    scf     ./runs/diamond/scf  
-    setup, sent_files, submitted, finished, got_output, analyzed, failed 
+    >./diamond_lda.py --status_only
+    
+      ...
+      
+      cascade status 
+        setup, sent_files, submitted, finished, got_output, analyzed, failed 
+        000000  0  ------    scf     ./runs/diamond/scf  
+        setup, sent_files, submitted, finished, got_output, analyzed, failed 
 
 The QE SCF run will be performed in ``./runs/diamond/scf`` and the input and 
 output files will be prefixed with ``scf`` (scf.in and scf.out).  The status
