@@ -196,26 +196,29 @@ Now run the Nexus script, allowing it to submit and manage the SCF calculation:
 
 .. parsed-literal::
 
+    >./diamond_lda.py
+
     ``...``  
 
     starting runs:
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
     elapsed time 0.0 s  memory 102.13 MB 
       Entering ./runs/diamond/scf 0 
-        writing input files  0 scf 
+        **writing input files**  0 scf       **\# write input file**  
       Entering ./runs/diamond/scf 0 
-        sending required files  0 scf 
-        submitting job  0 scf 
+        **sending required files**  0 scf    **\# copy in pseudo files**
+        **submitting job**  0 scf            **\# submit the job**
       Entering ./runs/diamond/scf 0 
         Executing:  
-          export OMP_NUM_THREADS=1
-          mpirun -np 16 pw.x -input scf.in 
+          **export OMP_NUM_THREADS=1**       **\# local execution**
+          **mpirun -np 16 pw.x -input scf.in** 
   
     elapsed time 3.0 s  memory 102.23 MB 
       Entering ./runs/diamond/scf 0 
-        copying results  0 scf 
+        **copying results**  0 scf           **\# copy output files** 
       Entering ./runs/diamond/scf 0 
-        analyzing  0 scf 
+        **analyzing**  0 scf                 **\# analyze output data**
   
-    Project finished
+    **Project finished**                     **\# all simulations finished**
+
 
