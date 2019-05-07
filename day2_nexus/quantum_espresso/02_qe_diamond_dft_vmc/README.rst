@@ -229,34 +229,23 @@ take several minutes.
     >./diamond_lda_vmc.py 
     
     ...
-    
-    Project starting 
-      checking for file collisions 
-      loading cascade images 
-        cascade 0 checking in 
-      checking cascade dependencies 
-        all simulation dependencies satisfied 
       
-      starting runs:
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-      elapsed time 0.0 s  memory 102.91 MB 
-        Entering ./runs/diamond/optJ2 3 
-          writing input files  3 opt 
-        Entering ./runs/diamond/optJ2 3 
-          sending required files  3 opt 
-          submitting job  3 opt 
-        Entering ./runs/diamond/optJ2 3 
-          Executing:  
-            export OMP_NUM_THREADS=4
-            mpirun -np 4 qmcpack opt.in.xml 
-    
-      elapsed time 3.0 s  memory 360.59 MB 
+    starting runs:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    elapsed time 0.0 s  memory 102.91 MB 
       ...
-      elapsed time 601.5 s  memory 103.06 MB 
-        Entering ./runs/diamond/optJ2 3 
-          copying results  3 opt 
-        Entering ./runs/diamond/optJ2 3 
-          analyzing  3 opt 
+      Entering ./runs/diamond/optJ2 3 
+        Executing:  
+          export OMP_NUM_THREADS=4
+          mpirun -np 4 qmcpack opt.in.xml 
+  
+    elapsed time 3.0 s  memory 360.59 MB 
+    ...
+    elapsed time 601.5 s  memory 103.06 MB 
+      Entering ./runs/diamond/optJ2 3 
+        copying results  3 opt 
+      Entering ./runs/diamond/optJ2 3 
+        analyzing  3 opt 
     
     Project finished
 
@@ -329,7 +318,8 @@ been populated:
        </qmc>
     </loop>
 
-Check that the optimization has completed successfully by using the ``qmca`` tool:
+Check that the optimization has completed successfully by using the ``qmca`` 
+tool.  In this case, a variance to energy ratio of 0.025 Ha is acceptable.
 
 .. code-block:: bash
 
@@ -342,4 +332,93 @@ Check that the optimization has completed successfully by using the ``qmca`` too
     runs/diamond/optJ2/opt  series 3  -45.087752 +/- 0.005664   1.095030 +/- 0.021429   0.0243 
     runs/diamond/optJ2/opt  series 4  -45.094245 +/- 0.006613   1.104652 +/- 0.018217   0.0245 
     runs/diamond/optJ2/opt  series 5  -45.105876 +/- 0.009184   1.117030 +/- 0.022910   0.0248 
+
+With optimization completed successfully, let's proceed with VMC. Edit 
+``diamond_lda_vmc.py`` by commenting out the ``block`` input for the 
+VMC step:
+
+.. parsed-literal::
+
+    qmc = generate_qmcpack(
+        **\#block        = True,**
+        ...
+        )
+
+Now rerun the script to perform the VMC run:  
+
+.. code-block:: bash
+  
+    >./diamond_lda_vmc.py 
+    
+    ...
+    
+    starting runs:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    elapsed time 0.0 s  memory 102.59 MB 
+      ...
+      Entering ./runs/diamond/vmc 4 
+        Executing:  
+          export OMP_NUM_THREADS=4
+          mpirun -np 4 qmcpack vmc.in.xml 
+  
+    elapsed time 3.1 s  memory 363.95 MB 
+    ...
+    elapsed time 51.6 s  memory 105.23 MB 
+      Entering ./runs/diamond/vmc 4 
+        copying results  4 vmc 
+      Entering ./runs/diamond/vmc 4 
+        analyzing  4 vmc 
+  
+    Project finished
+
+In this case, Nexus will automatically select the best optimized Jastrow 
+factor (according to the target cost function) from among the six candidates 
+generated during the optimization run (see ``./runs/diamond/vmc/vmc.in.xml``):
+
+.. code-block:: xml
+    <jastrow type="One-Body" name="J1" function="bspline" source="ion0" print="yes">
+       <correlation elementType="C" size="7" rcut="3.37316115" cusp="0.0">
+          <coefficients id="eC" type="Array">                  
+            -0.2966053085 -0.238597639 -0.1863207071 -0.1314790098 -0.07964389729 -0.03769253253 -0.01051452959
+          </coefficients>
+       </correlation>
+    </jastrow>
+    <jastrow type="Two-Body" name="J2" function="bspline" print="yes">
+       <correlation speciesA="u" speciesB="u" size="7" rcut="3.37316115">
+          <coefficients id="uu" type="Array">                  
+            0.2929092277 0.2146386942 0.1438214568 0.09359039597 0.05663886553 0.02874308877 0.01356022399
+          </coefficients>
+       </correlation>
+       <correlation speciesA="u" speciesB="d" size="7" rcut="3.37316115">
+          <coefficients id="ud" type="Array">                  
+            0.4658691438 0.3166737337 0.1999575811 0.1193902802 0.06713398775 0.03323672696 0.01554003667
+          </coefficients>
+       </correlation>
+    </jastrow>
+
+
+A default VMC XML block has also been populated in the input:
+
+.. code-block:: xml
+    <qmc method="vmc" move="pbyp" checkpoint="-1">
+       <parameter name="walkers"             >    1               </parameter>
+       <parameter name="warmupSteps"         >    50              </parameter>
+       <parameter name="blocks"              >    800             </parameter>
+       <parameter name="steps"               >    10              </parameter>
+       <parameter name="subSteps"            >    3               </parameter>
+       <parameter name="timestep"            >    0.3             </parameter>
+    </qmc>
+
+Finally, let's look at the the VMC result for the total energy.  As expected, the 
+result does not differ greatly from the optimization results, but has a smaller 
+statistical error bar:
+
+.. code-block:: bash
+
+    >qmca -e 40 -q e runs/diamond/vmc/*scalar*
+    
+    runs/diamond/vmc/vmc  series 0  LocalEnergy           =  -45.093478 +/- 0.003094 
+
+In the next example, we will build on these results to show how to 
+perform twist-averaged VMC calculations with Nexus.
 
