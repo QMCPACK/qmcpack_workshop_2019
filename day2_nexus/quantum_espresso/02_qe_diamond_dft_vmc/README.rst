@@ -19,6 +19,7 @@ tiling of the cell.  The tiling matrix from the fcc primitive cell to the
 simple cubic supercell is:
 
 ::
+
    1 -1  1
    1  1 -1
   -1  1  1
