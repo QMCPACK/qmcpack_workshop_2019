@@ -22,6 +22,7 @@ example:
 
 
 .. code-block:: python
+
     # Nexus module imports
     from nexus import settings,job,run_project
     from nexus import generate_physical_system
@@ -49,11 +50,14 @@ Before running the example, we will give a little more information about the
 Nexus functions involved in sections 2-5. 
 
 **settings function**
+
 Provide basic information, such as the location of pseudopotential files 
 and details of the local machine (workstation or named supercomputer like 
 Summit).  Also provide basic information to control Nexus, such as the 
 number of seconds between polling checks on simulation run status.
+
 .. code-block:: python
+
     settings(
         pseudo_dir = '../../pseudopotentials', # directory with pseudo files
         results    = '',     # do not copy sim results into separate directory 
