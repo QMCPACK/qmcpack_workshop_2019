@@ -1,0 +1,8 @@
+Rank =    0  Free Memory = 26741 MB
+Rank =    1  Free Memory = 26741 MB
+Rank =    2  Free Memory = 26741 MB
+Rank =    3  Free Memory = 26741 MB
+WARNING ParticleSet::checkBoundBox 3.4> SimulationCellRadius=3.37316
+ Using SLOW method for the sphere update. 
+WARNING Skip Chiesa estimator due to the lack of support with SoA. Access the correction via AoS at the moment.
+ERROR ERROR ERROR ERROR ERROR ERROR 
