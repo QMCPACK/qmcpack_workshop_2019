@@ -144,3 +144,158 @@ Important differences from the prior example are bolded.
     run_project()
 
 
+As before, let's check check the status before running.  Now all five 
+simulation steps are shown in the workflow:
+
+.. code-block:: bash
+    >./diamond_lda_vmc.py --status_only
+  
+    ...  
+  
+    cascade status 
+      setup, sent_files, submitted, finished, got_output, analyzed, failed 
+      000000  0  ------    scf     ./runs/diamond/scf  
+      000000  0  ------    nscf    ./runs/diamond/nscf  
+      000000  0  ------    conv    ./runs/diamond/nscf  
+      000000  0  ------    opt     ./runs/diamond/optJ2  
+      000000  0  ------    vmc     ./runs/diamond/vmc  
+      setup, sent_files, submitted, finished, got_output, analyzed, failed 
+
+
+Next, let's run the steps needed to generate the orbitals for the 8 atom 
+cubic cell for QMCPACK.  The ``block=True`` statements in the script will 
+prevent the QMCPACK optimization and VMC steps from running. 
+
+.. code-block:: bash
+    >./diamond_lda_vmc.py 
+  
+    ...
+    
+    starting runs:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    elapsed time 0.0 s  memory 102.71 MB 
+      ...
+      Entering ./runs/diamond/scf 0 
+        Executing:  
+          export OMP_NUM_THREADS=1
+          mpirun -np 16 pw.x -input scf.in 
+    ...
+    elapsed time 6.1 s  memory 102.79 MB 
+      ...
+      Entering ./runs/diamond/nscf 1 
+        Executing:  
+          export OMP_NUM_THREADS=1
+          mpirun -np 16 pw.x -input nscf.in 
+    ...
+    elapsed time 12.1 s  memory 102.80 MB 
+      ...
+      Entering ./runs/diamond/nscf 2 
+        Executing:  
+          export OMP_NUM_THREADS=1
+          mpirun -np 16 pw2qmcpack.x<conv.in 
+    ...
+  
+    Project finished
+
+The HDF5 file containing the orbitals should now be available:
+
+.. parsed-literal::
+
+    >ls runs/diamond/nscf/pwscf_output/
+
+    nexus_sync_record  pwscf.wfc11  pwscf.wfc2  pwscf.wfc8
+    pwscf.ptcl.xml     pwscf.wfc12  pwscf.wfc3  pwscf.wfc9
+    **pwscf.pwscf.h5**     pwscf.wfc13  pwscf.wfc4  pwscf.wfs.xml
+    pwscf.save         pwscf.wfc14  pwscf.wfc5  pwscf.xml
+    pwscf.wfc1         pwscf.wfc15  pwscf.wfc6
+    pwscf.wfc10        pwscf.wfc16  pwscf.wfc7
+
+With the orbitals successfully converted, we can now proceed to optimize 
+the Jastrow factor.  Edit ``diamond_lda_vmc.py`` by commenting out the 
+``block`` input for the optimization step:
+
+.. parsed-literal::
+
+    opt = generate_qmcpack(
+        **\#block        = True,**
+        ...
+        )
+
+Now rerun the script to perform the optimization step.  This step may 
+take several minutes.
+
+.. code-block:: bash
+
+    >./diamond_lda_vmc.py 
+    
+    ...
+    
+    Project starting 
+      checking for file collisions 
+      loading cascade images 
+        cascade 0 checking in 
+      checking cascade dependencies 
+        all simulation dependencies satisfied 
+      
+      starting runs:
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+      elapsed time 0.0 s  memory 102.91 MB 
+        Entering ./runs/diamond/optJ2 3 
+          writing input files  3 opt 
+        Entering ./runs/diamond/optJ2 3 
+          sending required files  3 opt 
+          submitting job  3 opt 
+        Entering ./runs/diamond/optJ2 3 
+          Executing:  
+            export OMP_NUM_THREADS=4
+            mpirun -np 4 qmcpack opt.in.xml 
+    
+      elapsed time 3.0 s  memory 360.59 MB 
+      ...
+      elapsed time 601.5 s  memory 103.06 MB 
+        Entering ./runs/diamond/optJ2 3 
+          copying results  3 opt 
+        Entering ./runs/diamond/optJ2 3 
+          analyzing  3 opt 
+    
+    Project finished
+
+
+The generated QMCPACK input file contains an appropriately tiled orbital set 
+as well as a one- and two-body B-spline Jastrow factor.  For the Jastrow, 
+the cutoffs are set by default to match the Wigner radius of the supercell 
+and one B-spline parameter (knot) has been introduced for every half Bohr 
+(see ``./runs/diamond/optJ2/opt.in.xml``):
+
+.. code-block:: xml
+    <wavefunction name="psi0" target="e">
+       <sposet_builder type="bspline" href="../nscf/pwscf_output/pwscf.pwscf.h5" tilematrix="1 -1 1 1 1 -1 -1 1 1" twistnum="0" source="ion0" version="0.10" meshfactor="1.0" precision="float" truncate="no">
+          <sposet type="bspline" name="spo_ud" size="16" spindataset="0"/>
+       </sposet_builder>
+       <determinantset>
+          <slaterdeterminant>
+             <determinant id="updet" group="u" sposet="spo_ud" size="16"/>
+             <determinant id="downdet" group="d" sposet="spo_ud" size="16"/>
+          </slaterdeterminant>
+       </determinantset>
+       <jastrow type="One-Body" name="J1" function="bspline" source="ion0" print="yes">
+          <correlation elementType="C" size="7" rcut="3.37316115" cusp="0.0">
+             <coefficients id="eC" type="Array">                  
+0 0 0 0 0 0
+             </coefficients>
+          </correlation>
+       </jastrow>
+       <jastrow type="Two-Body" name="J2" function="bspline" print="yes">
+          <correlation speciesA="u" speciesB="u" size="7" rcut="3.37316115">
+             <coefficients id="uu" type="Array">                  
+0 0 0 0 0 0
+             </coefficients>
+          </correlation>
+          <correlation speciesA="u" speciesB="d" size="7" rcut="3.37316115">
+             <coefficients id="ud" type="Array">                  
+0 0 0 0 0 0
+             </coefficients>
+          </correlation>
+       </jastrow>
+    </wavefunction>
+
