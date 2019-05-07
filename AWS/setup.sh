@@ -65,8 +65,8 @@ echo --- Installing HDF5 `date`
     cd ..
 fi
 
-# QMCPACK
-# XXX consider using our HDF5 install
+# QMCPACK and patched QE
+echo --- QMCPACK and QE setup
 cd $HOME/apps
 if [ ! -e qmcpack ]; then
     mkdir qmcpack
@@ -79,7 +79,25 @@ else
     git pull
     cd ..
 fi
+# QE
+if [ ! -e $HOME/apps/qe-6.4/bin/pw.x ]; then
+echo --- Patching and Building QE `date`
+    cd $HOME/apps/qmcpack/qmcpack/external_codes/quantum_espresso/
+    ./download_and_patch_qe6.4.sh
+    cd qe-6.4
+    ./configure  CC=mpigcc MPIF90=mpif90 F77=mpif77 --with-scalapack=intel --with-hdf5=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi  >&configure.out
+    make pw >&make_pw.out
+    make pwall >&make_pwall.out
+    if [ -e $HOME/apps/qe-6.4 ]; then
+	rm -r -f $HOME/apps/qe-6.4
+    fi
+    cd ..
+    mv qe-6.4 $HOME/apps
+    cd $HOME/apps
+fi
 
+
+cd $HOME/apps/qmcpack
 if [ ! -e build/bin/qmcpack ]; then
 echo --- Building QMCPACK `date`
 rm -r -f build
@@ -106,25 +124,52 @@ ln -s ../build_complex/bin/qmcpack qmcpack_complex
 cd ..
 fi
 
-# QE
-if [ ! -e $HOME/apps/qe-6.4/bin/pw.x ]; then
-echo --- Building QE `date`
-    cd $HOME/apps/qmcpack/qmcpack/external_codes/quantum_espresso/
-    ./download_and_patch_qe6.4.sh
-    cd qe-6.4
-    ./configure  CC=mpigcc MPIF90=mpif90 F77=mpif77 --with-scalapack=intel --with-hdf5=/home/ubuntu/apps/hdf5-hdf5-1_10_5-gcc-impi  >&configure.out
-    make pw >&make_pw.out
-    make pwall >&make_pwall.out
-    rm -r -f $HOME/apps/qe-6.4
-    mv qe-6.4 $HOME/apps
-    cd $HOME/apps
+# PySCF
+cd $HOME/apps
+if [ ! -e pyscf-1.6.1 ]; then
+echo --- PySCF 
+    if [ ! -e v1.6.1.tar.gz ]; then    
+	wget https://github.com/pyscf/pyscf/archive/v1.6.1.tar.gz
+    fi
+    tar xvf pyscf-1.6.1.tar.gz
+    cd pyscf-1.6.1
+    cd pyscf/lib
+    if [ -e build ]; then
+	rm -r -f build
+	mkdir build
+	cd build
+	cmake -DBLA_VENDOR=Intel10_64lp_seq ..
+	make
+	cd ..
+	export PYTHONPATH=/home/ubuntu/apps/pyscf-1.6.1:$PYTHONPATH
+    fi
 fi
 
-# PySCF
-# XXX Not yet
-
 # QP
-# XXX Not yet
+sudo apt-get -y install ninja-build m4 unzip
+cd $HOME/apps
+if [ ! -e qp2 ]; then
+CC=gcc
+CXX=g++
+F90=gfortran
+F95=gfortran
+F77=gfortran
+git clone https://github.com/QuantumPackage/qp2.git 
+cd qp2
+./configure -i all
+sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
+./configure -c config/gfortran_mkl.cfg
+source quantum_package.rc
+ninja
+cd plugins
+git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
+cd ../
+qp_plugins install qmcpack
+sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
+ninja
+fi
+
+
 
 cd $HOME
 echo --- Shell setup `date`
@@ -132,6 +177,12 @@ echo --- Shell setup `date`
 #XXX
 # MKL, MPI, OMP threads, path to executables 
 #XXX
+# QMCPACK build/bin directory
+# NEXUS python
+# QE
+# QP,  QP_ROOT=/home/ubuntu/apps/qp2
+# PySCF
+#  export PYTHONPATH=/home/ubuntu/apps/pyscf-1.6.1:$PYTHONPATH
 
 echo --- Workshop files `date`
 # Workshop files
