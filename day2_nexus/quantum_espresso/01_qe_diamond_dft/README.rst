@@ -138,6 +138,7 @@ submission files are automatically created and executed.
         ),
 
 **run_project function**
+
 Execute all simulation runs.  Up to this point, the workflow information has 
 been specified (e.g. via ``generate_pwscf``) but no simulation runs have been 
 performed.  When this function is executed, all simulation dependencies are 
