@@ -174,21 +174,48 @@ the queue of jobs that Nexus is managing, including their current status.
 
 The QE SCF run will be performed in ``./runs/diamond/scf`` and the input and 
 output files will be prefixed with ``scf`` (scf.in and scf.out).  The status
-flags, represented as ``0`` or ``1`` are described below.
+flags, represented as ``0`` or ``1`` are described below:
 
-**0**\ 00000  0  ------  setup
+**0**\ 00000  0  ------  **setup**: Input files (have/have not) been written.
 
-0\ **0**\ 0000  0  ------  sent_files
+0\ **0**\ 0000  0  ------  **sent_files**: Additional files (e.g. pseudopotentials) (have/have not) been copied in locally.
 
-00\ **0**\ 000  0  ------  submitted
+00\ **0**\ 000  0  ------  **submitted**: Job (has/has not) been submitted.
 
-000\ **0**\ 00  0  ------  finished
+000\ **0**\ 00  0  ------  **finished**: Simulation (is/is not) finished.
 
-0000\ **0**\ 0  0  ------  got_output
+0000\ **0**\ 0  0  ------  **got_output**: Output data (has/has not) been copied.
 
-00000\ **0**  0  ------  analyzed
+00000\ **0**  0  ------  **analyzed**: Output data (has/has not) been analyzed.
 
-000000  **0**  ------  failed
+000000  **0**  ------  **failed**: Simulation (has/has not) failed.
 
-000000  0  **------**  job_id
+000000  0  **------**  **job_id**: Job submission and/or process id of the simulation.
+
+Now run the Nexus script, allowing it to submit and manage the SCF calculation:
+
+.. parsed-literal::
+
+    ``...``  
+
+    starting runs:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+    elapsed time 0.0 s  memory 102.13 MB 
+      Entering ./runs/diamond/scf 0 
+        writing input files  0 scf 
+      Entering ./runs/diamond/scf 0 
+        sending required files  0 scf 
+        submitting job  0 scf 
+      Entering ./runs/diamond/scf 0 
+        Executing:  
+          export OMP_NUM_THREADS=1
+          mpirun -np 16 pw.x -input scf.in 
+  
+    elapsed time 3.0 s  memory 102.23 MB 
+      Entering ./runs/diamond/scf 0 
+        copying results  0 scf 
+      Entering ./runs/diamond/scf 0 
+        analyzing  0 scf 
+  
+    Project finished
 
