@@ -282,19 +282,19 @@ and one B-spline parameter (knot) has been introduced for every half Bohr
        <jastrow type="One-Body" name="J1" function="bspline" source="ion0" print="yes">
           <correlation elementType="C" size="7" rcut="3.37316115" cusp="0.0">
              <coefficients id="eC" type="Array">                  
-0 0 0 0 0 0
+               0 0 0 0 0 0 0
              </coefficients>
           </correlation>
        </jastrow>
        <jastrow type="Two-Body" name="J2" function="bspline" print="yes">
           <correlation speciesA="u" speciesB="u" size="7" rcut="3.37316115">
              <coefficients id="uu" type="Array">                  
-0 0 0 0 0 0
+               0 0 0 0 0 0 0
              </coefficients>
           </correlation>
           <correlation speciesA="u" speciesB="d" size="7" rcut="3.37316115">
              <coefficients id="ud" type="Array">                  
-0 0 0 0 0 0
+               0 0 0 0 0 0 0
              </coefficients>
           </correlation>
        </jastrow>
