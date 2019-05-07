@@ -1,4 +1,4 @@
-# QMCPACK users workshop 2019
+# QMCPACK Users Workshop 2019
 
 (In preparation) Files for the QMCPACK Users Workshop 2019 
 
