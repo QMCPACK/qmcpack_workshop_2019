@@ -222,3 +222,70 @@ Now run the Nexus script, allowing it to submit and manage the SCF calculation:
     **Project finished**                     **\# all simulations finished**
 
 
+The QE run should have completed successfully in ``./runs/diamond/scf``:
+
+.. parsed-literal::
+
+    >ls -lrt runs/diamond/scf/
+    total 352
+    -rw-r--r-- 1 j1k users 326149 Apr 17 14:08 C.BFD.upf       **\# BFD PP copied locally**
+    -rw-r--r-- 1 j1k users     89 May  7 12:05 scf.struct.xyz  **\# atomic structure file**
+    -rw-r--r-- 1 j1k users    264 May  7 12:05 scf.struct.xsf  **\# atomic structure file**
+    -rw-r--r-- 1 j1k users    780 May  7 12:05 scf.in          **\# QE input file**
+    -rw-r--r-- 1 j1k users      0 May  7 12:05 scf.err         **\# stderr output from QE**
+    -rw-r--r-- 1 j1k users  10611 May  7 12:05 scf.out         **\# stdout output from QE**
+    drwxr-xr-x 3 j1k users   4096 May  7 12:05 pwscf_output    **\# QE outdir**
+    drwxr-xr-x 2 j1k users   4096 May  7 12:05 sim_scf         **\# Nexus sim state file**
+
+Check the generated input file:
+
+.. code-block:: bash
+
+    >cat runs/diamond/scf/scf.in 
+    
+    &CONTROL
+       calculation     = 'scf'
+       outdir          = 'pwscf_output'
+       prefix          = 'pwscf'
+       pseudo_dir      = './'
+    /
+    
+    &SYSTEM
+       celldm(1)       = 1.0
+       ecutwfc         = 200
+       ibrav           = 0
+       input_dft       = 'lda'
+       nat             = 2
+       nspin           = 1
+       ntyp            = 1
+       tot_charge      = 0
+    /
+    
+    &ELECTRONS
+       conv_thr        = 1e-08
+    /
+    
+    
+    ATOMIC_SPECIES 
+       C  12.011 C.BFD.upf
+    
+    ATOMIC_POSITIONS alat
+       C        0.00000000       0.00000000       0.00000000 
+       C        1.68658058       1.68658058       1.68658057 
+    
+    K_POINTS automatic
+       4 4 4  0 0 0 
+    
+    CELL_PARAMETERS cubic
+             3.37316115       3.37316115      -0.00000000 
+             0.00000000       3.37316115       3.37316115 
+             3.37316115       0.00000000       3.37316115 
+
+The total energy for the LDA SCF run should be similar to the following:
+
+.. code-block:: bash
+
+    >grep '!  ' runs/diamond/scf/scf.out 
+    
+    !    total energy              =     -22.75252416 Ry
+
