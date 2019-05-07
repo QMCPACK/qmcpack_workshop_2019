@@ -11,7 +11,7 @@ As before run scf.py and generate the integrals using `pyscf_to_afmqc.py`:
 
 .. code-block:: bash
 
-    /path/to/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v
+    mpirun -n 1 /path/to/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v
 
 Note we are working in the MO basis and we removed the `-q` option as the afqmc input file
 `afqmc.xml` is already contained in this directory. Comparing the input file to previous
