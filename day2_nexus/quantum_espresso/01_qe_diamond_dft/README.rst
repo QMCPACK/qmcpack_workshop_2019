@@ -213,13 +213,29 @@ Now run the Nexus script, allowing it to submit and manage the SCF calculation:
           **export OMP_NUM_THREADS=1**       **\# local execution**
           **mpirun -np 16 pw.x -input scf.in** 
   
-    elapsed time 3.0 s  memory 102.23 MB 
+    **elapsed time 3.0 s**  memory 102.23 MB     **\# single monitoring poll, short run** 
       Entering ./runs/diamond/scf 0 
         **copying results**  0 scf           **\# copy output files** 
       Entering ./runs/diamond/scf 0 
         **analyzing**  0 scf                 **\# analyze output data**
   
     **Project finished**                     **\# all simulations finished**
+
+
+Check the status of the run.  Each simulation step should have a status of 
+``1`` and ``failed`` should have a status of ``0``.  The process id should 
+also be populated.
+
+.. code-block:: bash
+
+    >./diamond_lda.py --status_only
+  
+    ...
+    
+    cascade status 
+      setup, sent_files, submitted, finished, got_output, analyzed, failed 
+      111111  0  14724     scf     ./runs/diamond/scf  
+      setup, sent_files, submitted, finished, got_output, analyzed, failed 
 
 
 The QE run should have completed successfully in ``./runs/diamond/scf``:
