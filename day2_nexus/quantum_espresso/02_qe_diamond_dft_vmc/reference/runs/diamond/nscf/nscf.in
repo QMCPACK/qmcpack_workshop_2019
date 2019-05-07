@@ -1,0 +1,44 @@
+&CONTROL
+   calculation     = 'nscf'
+   outdir          = 'pwscf_output'
+   prefix          = 'pwscf'
+   pseudo_dir      = './'
+/
+
+&SYSTEM
+   celldm(1)       = 1.0
+   ecutwfc         = 200
+   ibrav           = 0
+   input_dft       = 'lda'
+   nat             = 2
+   nosym           = .true.
+   nspin           = 1
+   ntyp            = 1
+   tot_charge      = 0
+/
+
+&ELECTRONS
+   conv_thr        = 1e-08
+/
+
+
+ATOMIC_SPECIES 
+   C  12.011 C.BFD.upf
+
+ATOMIC_POSITIONS alat
+   C        0.00000000       0.00000000       0.00000000 
+   C        1.68658058       1.68658058       1.68658057 
+
+K_POINTS crystal
+   4
+         0.00000000       0.00000000       0.00000000       0.25000000 
+         0.50000000       0.00000000       0.50000000       0.25000000 
+         0.50000000       0.50000000       0.00000000       0.25000000 
+         0.00000000       0.50000000       0.50000000       0.25000000 
+
+CELL_PARAMETERS cubic
+         3.37316115       3.37316115       0.00000000 
+         0.00000000       3.37316115       3.37316115 
+         3.37316115       0.00000000       3.37316115 
+
+

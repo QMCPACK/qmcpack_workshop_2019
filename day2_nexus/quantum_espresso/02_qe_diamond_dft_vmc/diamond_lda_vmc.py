@@ -69,6 +69,7 @@ conv = generate_pw2qmcpack(
     )
 
 opt = generate_qmcpack(
+    block        = True,
     identifier   = 'opt',
     path         = 'diamond/optJ2',
     job          = job(cores=16,threads=4,app='qmcpack'),
@@ -83,6 +84,7 @@ opt = generate_qmcpack(
     )
 
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'vmc',
     path         = 'diamond/vmc',
     job          = job(cores=16,threads=4,app='qmcpack'),
@@ -94,7 +96,5 @@ qmc = generate_qmcpack(
     dependencies = [(conv,'orbitals'),
                     (opt,'jastrow')],
     )
-
-
 
 run_project()

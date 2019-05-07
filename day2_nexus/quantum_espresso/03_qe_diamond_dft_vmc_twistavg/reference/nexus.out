@@ -1,0 +1,84 @@
+Applying user settings 
+
+  Pseudopotentials
+    reading pp:  ../../pseudopotentials/C.BFD.upf 
+    reading pp:  ../../pseudopotentials/O.BFD.upf 
+    reading pp:  ../../pseudopotentials/O.BFD.xml 
+    reading pp:  ../../pseudopotentials/H.BFD.upf 
+    reading pp:  ../../pseudopotentials/C.BFD.xml 
+    reading pp:  ../../pseudopotentials/H.BFD.xml 
+ 
+
+Project starting 
+  checking for file collisions 
+  loading cascade images 
+    cascade 0 checking in 
+  checking cascade dependencies 
+    all simulation dependencies satisfied 
+  
+  starting runs:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  elapsed time 0.0 s  memory 102.56 MB 
+    Entering ./runs/diamond/nscf_twist 1 
+      writing input files  1 nscf 
+    Entering ./runs/diamond/nscf_twist 1 
+      sending required files  1 nscf 
+      submitting job  1 nscf 
+    Entering ./runs/diamond/nscf_twist 1 
+      Executing:  
+        export OMP_NUM_THREADS=1
+        mpirun -np 16 pw.x -input nscf.in 
+
+  elapsed time 3.0 s  memory 102.77 MB 
+    Entering ./runs/diamond/nscf_twist 1 
+      copying results  1 nscf 
+    Entering ./runs/diamond/nscf_twist 1 
+      analyzing  1 nscf 
+
+  elapsed time 6.1 s  memory 102.79 MB 
+    Entering ./runs/diamond/nscf_twist 2 
+      writing input files  2 conv 
+    Entering ./runs/diamond/nscf_twist 2 
+      sending required files  2 conv 
+      submitting job  2 conv 
+    Entering ./runs/diamond/nscf_twist 2 
+      Executing:  
+        export OMP_NUM_THREADS=1
+        mpirun -np 16 pw2qmcpack.x<conv.in 
+
+  elapsed time 9.2 s  memory 102.79 MB 
+    Entering ./runs/diamond/nscf_twist 2 
+      copying results  2 conv 
+    Entering ./runs/diamond/nscf_twist 2 
+      analyzing  2 conv 
+
+  elapsed time 12.2 s  memory 102.79 MB 
+    Entering ./runs/diamond/vmc_twist 4 
+      writing input files  4 vmc 
+    Entering ./runs/diamond/vmc_twist 4 
+      sending required files  4 vmc 
+      submitting job  4 vmc 
+    Entering ./runs/diamond/vmc_twist 4 
+      Executing:  
+        export OMP_NUM_THREADS=2
+        mpirun -np 8 qmcpack vmc.in 
+
+  elapsed time 15.3 s  memory 554.23 MB 
+  elapsed time 18.3 s  memory 554.23 MB 
+  elapsed time 21.4 s  memory 554.23 MB 
+  elapsed time 24.4 s  memory 554.23 MB 
+  elapsed time 27.4 s  memory 554.23 MB 
+  elapsed time 30.5 s  memory 554.23 MB 
+  elapsed time 33.5 s  memory 554.23 MB 
+  elapsed time 36.6 s  memory 554.23 MB 
+  elapsed time 39.6 s  memory 554.23 MB 
+  elapsed time 42.7 s  memory 554.23 MB 
+  elapsed time 45.7 s  memory 554.23 MB 
+  elapsed time 48.7 s  memory 554.23 MB 
+  elapsed time 51.8 s  memory 105.50 MB 
+    Entering ./runs/diamond/vmc_twist 4 
+      copying results  4 vmc 
+    Entering ./runs/diamond/vmc_twist 4 
+      analyzing  4 vmc 
+
+Project finished

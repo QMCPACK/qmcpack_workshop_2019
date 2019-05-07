@@ -1,0 +1,236 @@
+Applying user settings 
+
+  Pseudopotentials
+    reading pp:  ../../pseudopotentials/C.BFD.upf 
+    reading pp:  ../../pseudopotentials/O.BFD.upf 
+    reading pp:  ../../pseudopotentials/O.BFD.xml 
+    reading pp:  ../../pseudopotentials/H.BFD.upf 
+    reading pp:  ../../pseudopotentials/C.BFD.xml 
+    reading pp:  ../../pseudopotentials/H.BFD.xml 
+ 
+
+Project starting 
+  checking for file collisions 
+  loading cascade images 
+    cascade 0 checking in 
+  checking cascade dependencies 
+    all simulation dependencies satisfied 
+  
+  starting runs:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  elapsed time 0.0 s  memory 102.91 MB 
+    Entering ./runs/diamond/optJ2 3 
+      writing input files  3 opt 
+    Entering ./runs/diamond/optJ2 3 
+      sending required files  3 opt 
+      submitting job  3 opt 
+    Entering ./runs/diamond/optJ2 3 
+      Executing:  
+        export OMP_NUM_THREADS=4
+        mpirun -np 4 qmcpack opt.in.xml 
+
+  elapsed time 3.0 s  memory 360.59 MB 
+  elapsed time 6.1 s  memory 453.96 MB 
+  elapsed time 9.1 s  memory 454.23 MB 
+  elapsed time 12.2 s  memory 454.23 MB 
+  elapsed time 15.2 s  memory 454.23 MB 
+  elapsed time 18.3 s  memory 454.75 MB 
+  elapsed time 21.3 s  memory 454.75 MB 
+  elapsed time 24.3 s  memory 455.00 MB 
+  elapsed time 27.4 s  memory 547.50 MB 
+  elapsed time 30.4 s  memory 547.50 MB 
+  elapsed time 33.5 s  memory 547.50 MB 
+  elapsed time 36.5 s  memory 547.50 MB 
+  elapsed time 39.6 s  memory 547.50 MB 
+  elapsed time 42.6 s  memory 547.50 MB 
+  elapsed time 45.7 s  memory 547.50 MB 
+  elapsed time 48.7 s  memory 547.50 MB 
+  elapsed time 51.8 s  memory 547.50 MB 
+  elapsed time 54.8 s  memory 547.50 MB 
+  elapsed time 57.9 s  memory 547.50 MB 
+  elapsed time 61.0 s  memory 547.50 MB 
+  elapsed time 64.0 s  memory 547.50 MB 
+  elapsed time 67.1 s  memory 547.50 MB 
+  elapsed time 70.1 s  memory 547.50 MB 
+  elapsed time 73.2 s  memory 547.50 MB 
+  elapsed time 76.3 s  memory 547.50 MB 
+  elapsed time 79.4 s  memory 547.50 MB 
+  elapsed time 82.4 s  memory 547.50 MB 
+  elapsed time 85.4 s  memory 547.50 MB 
+  elapsed time 88.5 s  memory 547.50 MB 
+  elapsed time 91.6 s  memory 547.50 MB 
+  elapsed time 94.6 s  memory 547.50 MB 
+  elapsed time 97.7 s  memory 547.93 MB 
+  elapsed time 100.7 s  memory 547.93 MB 
+  elapsed time 103.8 s  memory 547.93 MB 
+  elapsed time 106.8 s  memory 547.93 MB 
+  elapsed time 109.9 s  memory 547.93 MB 
+  elapsed time 112.9 s  memory 547.93 MB 
+  elapsed time 116.0 s  memory 548.36 MB 
+  elapsed time 119.0 s  memory 548.36 MB 
+  elapsed time 122.0 s  memory 548.36 MB 
+  elapsed time 125.1 s  memory 553.03 MB 
+  elapsed time 128.1 s  memory 553.03 MB 
+  elapsed time 131.2 s  memory 553.03 MB 
+  elapsed time 134.3 s  memory 553.03 MB 
+  elapsed time 137.3 s  memory 553.03 MB 
+  elapsed time 140.3 s  memory 553.03 MB 
+  elapsed time 143.4 s  memory 553.84 MB 
+  elapsed time 146.5 s  memory 553.84 MB 
+  elapsed time 149.5 s  memory 553.84 MB 
+  elapsed time 152.6 s  memory 553.84 MB 
+  elapsed time 155.6 s  memory 553.84 MB 
+  elapsed time 158.7 s  memory 553.84 MB 
+  elapsed time 161.7 s  memory 553.84 MB 
+  elapsed time 164.8 s  memory 553.84 MB 
+  elapsed time 167.9 s  memory 553.84 MB 
+  elapsed time 170.9 s  memory 553.84 MB 
+  elapsed time 174.0 s  memory 553.84 MB 
+  elapsed time 177.0 s  memory 553.84 MB 
+  elapsed time 180.1 s  memory 553.84 MB 
+  elapsed time 183.2 s  memory 553.84 MB 
+  elapsed time 186.2 s  memory 553.84 MB 
+  elapsed time 189.3 s  memory 553.84 MB 
+  elapsed time 192.3 s  memory 553.84 MB 
+  elapsed time 195.4 s  memory 553.84 MB 
+  elapsed time 198.5 s  memory 553.84 MB 
+  elapsed time 201.5 s  memory 553.84 MB 
+  elapsed time 204.6 s  memory 553.84 MB 
+  elapsed time 207.6 s  memory 553.84 MB 
+  elapsed time 210.7 s  memory 553.84 MB 
+  elapsed time 213.7 s  memory 553.84 MB 
+  elapsed time 216.7 s  memory 553.84 MB 
+  elapsed time 219.8 s  memory 553.84 MB 
+  elapsed time 222.8 s  memory 553.84 MB 
+  elapsed time 225.8 s  memory 556.65 MB 
+  elapsed time 228.9 s  memory 556.65 MB 
+  elapsed time 232.0 s  memory 556.65 MB 
+  elapsed time 235.1 s  memory 556.65 MB 
+  elapsed time 238.1 s  memory 556.65 MB 
+  elapsed time 241.2 s  memory 556.65 MB 
+  elapsed time 244.2 s  memory 556.65 MB 
+  elapsed time 247.3 s  memory 556.65 MB 
+  elapsed time 250.4 s  memory 556.65 MB 
+  elapsed time 253.4 s  memory 556.65 MB 
+  elapsed time 256.5 s  memory 556.65 MB 
+  elapsed time 259.5 s  memory 556.65 MB 
+  elapsed time 262.6 s  memory 556.65 MB 
+  elapsed time 265.7 s  memory 556.65 MB 
+  elapsed time 268.7 s  memory 556.65 MB 
+  elapsed time 271.8 s  memory 556.65 MB 
+  elapsed time 274.9 s  memory 556.65 MB 
+  elapsed time 277.9 s  memory 556.65 MB 
+  elapsed time 281.0 s  memory 556.65 MB 
+  elapsed time 284.1 s  memory 556.65 MB 
+  elapsed time 287.1 s  memory 556.65 MB 
+  elapsed time 290.1 s  memory 556.65 MB 
+  elapsed time 293.2 s  memory 556.65 MB 
+  elapsed time 296.3 s  memory 556.65 MB 
+  elapsed time 299.3 s  memory 556.65 MB 
+  elapsed time 302.4 s  memory 556.65 MB 
+  elapsed time 305.4 s  memory 556.65 MB 
+  elapsed time 308.5 s  memory 556.65 MB 
+  elapsed time 311.5 s  memory 556.65 MB 
+  elapsed time 314.5 s  memory 556.65 MB 
+  elapsed time 317.6 s  memory 556.65 MB 
+  elapsed time 320.6 s  memory 556.65 MB 
+  elapsed time 323.7 s  memory 556.65 MB 
+  elapsed time 326.7 s  memory 561.41 MB 
+  elapsed time 329.8 s  memory 561.41 MB 
+  elapsed time 332.9 s  memory 561.41 MB 
+  elapsed time 335.9 s  memory 561.41 MB 
+  elapsed time 339.0 s  memory 561.41 MB 
+  elapsed time 342.0 s  memory 561.41 MB 
+  elapsed time 345.1 s  memory 561.67 MB 
+  elapsed time 348.2 s  memory 561.67 MB 
+  elapsed time 351.2 s  memory 561.67 MB 
+  elapsed time 354.3 s  memory 561.67 MB 
+  elapsed time 357.3 s  memory 561.67 MB 
+  elapsed time 360.3 s  memory 561.67 MB 
+  elapsed time 363.4 s  memory 561.67 MB 
+  elapsed time 366.5 s  memory 561.67 MB 
+  elapsed time 369.5 s  memory 561.67 MB 
+  elapsed time 372.6 s  memory 561.67 MB 
+  elapsed time 375.7 s  memory 561.67 MB 
+  elapsed time 378.7 s  memory 561.67 MB 
+  elapsed time 381.8 s  memory 561.67 MB 
+  elapsed time 384.9 s  memory 561.67 MB 
+  elapsed time 387.9 s  memory 561.67 MB 
+  elapsed time 391.0 s  memory 561.67 MB 
+  elapsed time 394.0 s  memory 561.67 MB 
+  elapsed time 397.1 s  memory 561.67 MB 
+  elapsed time 400.1 s  memory 561.67 MB 
+  elapsed time 403.2 s  memory 561.67 MB 
+  elapsed time 406.3 s  memory 561.67 MB 
+  elapsed time 409.3 s  memory 561.67 MB 
+  elapsed time 412.3 s  memory 561.67 MB 
+  elapsed time 415.4 s  memory 561.67 MB 
+  elapsed time 418.4 s  memory 561.67 MB 
+  elapsed time 421.4 s  memory 561.67 MB 
+  elapsed time 424.5 s  memory 561.67 MB 
+  elapsed time 427.5 s  memory 563.72 MB 
+  elapsed time 430.6 s  memory 563.72 MB 
+  elapsed time 433.6 s  memory 563.72 MB 
+  elapsed time 436.7 s  memory 563.72 MB 
+  elapsed time 439.7 s  memory 563.72 MB 
+  elapsed time 442.8 s  memory 563.72 MB 
+  elapsed time 445.8 s  memory 564.00 MB 
+  elapsed time 448.9 s  memory 564.00 MB 
+  elapsed time 452.0 s  memory 564.00 MB 
+  elapsed time 455.0 s  memory 564.00 MB 
+  elapsed time 458.1 s  memory 564.00 MB 
+  elapsed time 461.1 s  memory 564.00 MB 
+  elapsed time 464.2 s  memory 564.00 MB 
+  elapsed time 467.2 s  memory 564.00 MB 
+  elapsed time 470.3 s  memory 564.00 MB 
+  elapsed time 473.3 s  memory 564.00 MB 
+  elapsed time 476.4 s  memory 564.00 MB 
+  elapsed time 479.4 s  memory 564.00 MB 
+  elapsed time 482.5 s  memory 564.00 MB 
+  elapsed time 485.5 s  memory 564.00 MB 
+  elapsed time 488.6 s  memory 564.00 MB 
+  elapsed time 491.6 s  memory 564.00 MB 
+  elapsed time 494.7 s  memory 564.00 MB 
+  elapsed time 497.8 s  memory 564.00 MB 
+  elapsed time 500.8 s  memory 564.00 MB 
+  elapsed time 503.9 s  memory 564.00 MB 
+  elapsed time 506.9 s  memory 564.00 MB 
+  elapsed time 509.9 s  memory 564.00 MB 
+  elapsed time 513.0 s  memory 564.00 MB 
+  elapsed time 516.0 s  memory 564.00 MB 
+  elapsed time 519.0 s  memory 564.00 MB 
+  elapsed time 522.1 s  memory 564.00 MB 
+  elapsed time 525.1 s  memory 564.00 MB 
+  elapsed time 528.2 s  memory 565.55 MB 
+  elapsed time 531.2 s  memory 565.55 MB 
+  elapsed time 534.3 s  memory 565.55 MB 
+  elapsed time 537.3 s  memory 565.55 MB 
+  elapsed time 540.4 s  memory 565.55 MB 
+  elapsed time 543.4 s  memory 565.55 MB 
+  elapsed time 546.5 s  memory 565.76 MB 
+  elapsed time 549.5 s  memory 565.76 MB 
+  elapsed time 552.6 s  memory 565.76 MB 
+  elapsed time 555.7 s  memory 565.76 MB 
+  elapsed time 558.7 s  memory 565.76 MB 
+  elapsed time 561.8 s  memory 565.76 MB 
+  elapsed time 564.8 s  memory 565.76 MB 
+  elapsed time 567.9 s  memory 565.76 MB 
+  elapsed time 570.9 s  memory 565.76 MB 
+  elapsed time 574.0 s  memory 565.76 MB 
+  elapsed time 577.1 s  memory 565.76 MB 
+  elapsed time 580.1 s  memory 565.76 MB 
+  elapsed time 583.2 s  memory 565.76 MB 
+  elapsed time 586.2 s  memory 565.76 MB 
+  elapsed time 589.3 s  memory 565.76 MB 
+  elapsed time 592.4 s  memory 565.76 MB 
+  elapsed time 595.4 s  memory 565.76 MB 
+  elapsed time 598.5 s  memory 565.76 MB 
+  elapsed time 601.5 s  memory 103.06 MB 
+    Entering ./runs/diamond/optJ2 3 
+      copying results  3 opt 
+    Entering ./runs/diamond/optJ2 3 
+      analyzing  3 opt 
+
+Project finished
+ 
+

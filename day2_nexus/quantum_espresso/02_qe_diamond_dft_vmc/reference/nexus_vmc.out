@@ -1,0 +1,54 @@
+Applying user settings 
+
+  Pseudopotentials
+    reading pp:  ../../pseudopotentials/C.BFD.upf 
+    reading pp:  ../../pseudopotentials/O.BFD.upf 
+    reading pp:  ../../pseudopotentials/O.BFD.xml 
+    reading pp:  ../../pseudopotentials/H.BFD.upf 
+    reading pp:  ../../pseudopotentials/C.BFD.xml 
+    reading pp:  ../../pseudopotentials/H.BFD.xml 
+ 
+
+Project starting 
+  checking for file collisions 
+  loading cascade images 
+    cascade 0 checking in 
+  checking cascade dependencies 
+    all simulation dependencies satisfied 
+  
+  starting runs:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  elapsed time 0.0 s  memory 102.59 MB 
+    Entering ./runs/diamond/vmc 4 
+      writing input files  4 vmc 
+    Entering ./runs/diamond/vmc 4 
+      sending required files  4 vmc 
+      submitting job  4 vmc 
+    Entering ./runs/diamond/vmc 4 
+      Executing:  
+        export OMP_NUM_THREADS=4
+        mpirun -np 4 qmcpack vmc.in.xml 
+
+  elapsed time 3.1 s  memory 363.95 MB 
+  elapsed time 6.1 s  memory 363.95 MB 
+  elapsed time 9.1 s  memory 363.95 MB 
+  elapsed time 12.2 s  memory 363.95 MB 
+  elapsed time 15.2 s  memory 363.95 MB 
+  elapsed time 18.2 s  memory 363.95 MB 
+  elapsed time 21.3 s  memory 363.95 MB 
+  elapsed time 24.3 s  memory 363.95 MB 
+  elapsed time 27.3 s  memory 363.95 MB 
+  elapsed time 30.3 s  memory 363.95 MB 
+  elapsed time 33.4 s  memory 363.95 MB 
+  elapsed time 36.4 s  memory 363.95 MB 
+  elapsed time 39.4 s  memory 363.95 MB 
+  elapsed time 42.4 s  memory 363.95 MB 
+  elapsed time 45.5 s  memory 363.95 MB 
+  elapsed time 48.5 s  memory 363.95 MB 
+  elapsed time 51.6 s  memory 105.23 MB 
+    Entering ./runs/diamond/vmc 4 
+      copying results  4 vmc 
+    Entering ./runs/diamond/vmc 4 
+      analyzing  4 vmc 
+
+Project finished
