@@ -75,6 +75,7 @@ opt = generate_qmcpack(
     input_type   = 'basic',
     system       = system,
     pseudos      = ['C.BFD.xml'],
+    twistnum     = 0,
     J2           = True,
     qmc          = 'opt',
     cycles       = 6,
