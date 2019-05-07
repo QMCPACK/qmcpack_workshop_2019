@@ -43,8 +43,8 @@ Important differences from the prior example are bolded.
     from nexus import settings,job,run_project
     from nexus import generate_physical_system
     from nexus import generate_pwscf
-    from nexus import generate_pw2qmcpack
-    from nexus import generate_qmcpack
+    from nexus import **generate_pw2qmcpack**  **\# used for pw2qmcpack** 
+    from nexus import **generate_qmcpack**     **\# used for qmcpack**
     
     settings(
         pseudo_dir = '../../pseudopotentials',
@@ -62,14 +62,15 @@ Important differences from the prior example are bolded.
                    C  0.0000  0.0000  0.0000
                    C  0.8925  0.8925  0.8925
                    ''',
-        tiling   = [[ 1, -1,  1],
+        **tiling   = [[ 1, -1,  1],       \# tiling matrix
                     [ 1,  1, -1],
                     [-1,  1,  1]],
-        kgrid    = (1,1,1),
-        kshift   = (0,0,0),
+        kgrid    = (1,1,1),             \# supercell k-point grid
+        kshift   = (0,0,0),**
         C        = 4,
         )
     
+    **\# SCF run with QE to get charge density**
     scf = generate_pwscf(
         identifier   = 'scf',
         path         = 'diamond/scf',
@@ -85,46 +86,50 @@ Important differences from the prior example are bolded.
         kshift       = (0,0,0),
         )
     
+    **\# NSCF run with QE to get orbitals**
     nscf = generate_pwscf(
         identifier   = 'nscf',
-        path         = 'diamond/nscf',
+        **path         = 'diamond/nscf',  \# nscf directory**
         job          = job(cores=16,app='pw.x'),
         input_type   = 'generic',
-        calculation  = 'nscf',
+        **calculation  = 'nscf',          \# nscf calculation**
         input_dft    = 'lda', 
         ecutwfc      = 200,   
         conv_thr     = 1e-8, 
         system       = system,
         pseudos      = ['C.BFD.upf'],
-        nosym        = True,
-        dependencies = (scf,'charge_density'),
+        **nosym        = True,            \# no symmetry for k-points
+        dependencies = (scf,'charge_density'), \# depends on scf**
         )
     
+    **\# Orbital conversion with pw2qmcpack**
     conv = generate_pw2qmcpack(
         identifier   = 'conv',
-        path         = 'diamond/nscf',
+        **path         = 'diamond/nscf',  \# run in nscf directory**
         job          = job(cores=16,app='pw2qmcpack.x'),
         write_psir   = False,
-        dependencies = (nscf,'orbitals'),
+        **dependencies = (nscf,'orbitals'), \# depends on nscf**
         )
     
+    **\# Jastrow optimization with QMCPACK**
     opt = generate_qmcpack(
-        block        = True,
+        **block        = True,            \# don't run for now**
         identifier   = 'opt',
         path         = 'diamond/optJ2',
         job          = job(cores=16,threads=4,app='qmcpack'),
         input_type   = 'basic',
         system       = system,
         pseudos      = ['C.BFD.xml'],
-        J2           = True,
-        qmc          = 'opt',
-        cycles       = 6,
-        samples      = 51200,
-        dependencies = (conv,'orbitals'),
+        **J2           = True,            \# use two-body B-spline Jastrow
+        qmc          = 'opt',           \# optimization run, variance opt
+        cycles       = 6,               \# loop max=6
+        samples      = 51200,           \# VMC samples used in each cycle
+        dependencies = (conv,'orbitals'), \# depends on conversion**
         )
     
+    **\# VMC with QMCPACK**
     qmc = generate_qmcpack(
-        block        = True,
+        **block        = True,            \# don't run for now**
         identifier   = 'vmc',
         path         = 'diamond/vmc',
         job          = job(cores=16,threads=4,app='qmcpack'),
@@ -132,9 +137,9 @@ Important differences from the prior example are bolded.
         system       = system,
         pseudos      = ['C.BFD.xml'],
         J2           = True,
-        qmc          = 'vmc',
-        dependencies = [(conv,'orbitals'),
-                        (opt,'jastrow')],
+        **qmc          = 'vmc',           \# vmc run, default inputs
+        dependencies = [(conv,'orbitals'), \# depends on conversion
+                        (opt,'jastrow')],  \# and on optimization**
         )
     
     run_project()

@@ -96,6 +96,7 @@ this information can also be loaded directly from an appropriate ``xyz``,
                    C  0.0000  0.0000  0.0000
                    C  0.8925  0.8925  0.8925
                    ''',
+        # pseudopotential for C has Zeff=4
         C        = 4,
         )
 
