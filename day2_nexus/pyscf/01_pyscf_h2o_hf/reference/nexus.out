@@ -1,0 +1,30 @@
+Applying user settings 
+
+Project starting 
+  checking for file collisions 
+  loading cascade images 
+    cascade 0 checking in 
+  checking cascade dependencies 
+    all simulation dependencies satisfied 
+  
+  starting runs:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  elapsed time 0.0 s  memory 101.58 MB 
+    Entering ./runs/h2o_ae_hf 0 
+      writing input files  0 scf 
+    Entering ./runs/h2o_ae_hf 0 
+      sending required files  0 scf 
+      submitting job  0 scf 
+    Entering ./runs/h2o_ae_hf 0 
+      Executing:  
+        export OMP_NUM_THREADS=1
+        python scf.py 
+
+  elapsed time 3.0 s  memory 101.64 MB 
+    Entering ./runs/h2o_ae_hf 0 
+      copying results  0 scf 
+    Entering ./runs/h2o_ae_hf 0 
+      analyzing  0 scf 
+
+Project finished
+ 
