@@ -10,8 +10,6 @@
 echo -- START `date`
 sudo apt-get -y update
 sudo apt-get -y install cmake g++ gfortran libboost-dev libhdf5-dev libxml2-dev 
-sudo apt-get -y install python-numpy python-matplotlib #This will also install python27
-sudo apt-get -y install python-h5py
 
 echo --- Intel files setup `date`
 # Setup Intel MKL and MPI
@@ -40,13 +38,6 @@ source /opt/intel/mkl/bin/mklvars.sh intel64
 source /opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
 
 
-# Requirements for full NEXUS demo:
-sudo apt-get -y install python-numpy python-scipy python-h5py python-matplotlib python-pydot python-pip
-pip install --user spglib
-pip install --user seekpath
-
-pip install --user mpi4py # Maybe for AFQMC demo?
-
 if [ ! -e $HOME/apps ]; then
     mkdir $HOME/apps
 fi
@@ -62,11 +53,21 @@ echo --- Installing HDF5 `date`
     cd hdf5-hdf5-1_10_5-gcc-impi/
     INSTALLDIR=`pwd`
     echo INSTALLDIR=$INSTALLDIR
-    CC=mpigcc FC=mpif90 ../hdf5-hdf5-1_10_5/configure --enable-parallel --enable-fortran  --prefix=$INSTALLDIR >&configure.out
+    CC=mpigcc FC=mpif90 ../hdf5-hdf5-1_10_5/configure --enable-shared --enable-parallel --enable-fortran  --prefix=$INSTALLDIR >&configure.out
     make >&make.out
     make install 
     cd ..
 fi
+
+sudo apt-get -y install python-pip
+CC="mpigcc" HDF5_MPI="ON" HDF5_DIR=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi pip install --no-binary=h5py h5py
+
+# Requirements for full NEXUS demo:
+sudo apt-get -y install python-numpy python-scipy python-matplotlib python-pydot python-pip
+pip install --user spglib
+pip install --user seekpath
+
+pip install --user mpi4py # Maybe for AFQMC demo?
 
 # QMCPACK and patched QE
 echo --- QMCPACK and QE setup
@@ -82,6 +83,7 @@ else
     git pull
     cd ..
 fi
+
 # QE
 if [ ! -e $HOME/apps/qe-6.4/bin/pw.x ]; then
 echo --- Patching and Building QE `date`
@@ -127,6 +129,9 @@ ln -s ../build_complex/bin/qmcpack qmcpack_complex
 cd ..
 fi
 
+# Get slow/unoptimized BLAS and LAPACK for expedient linking with QP and PySCF
+sudo apt-get install libblas-dev liblapack-dev
+
 # PySCF
 cd $HOME/apps
 if [ ! -e pyscf-1.6.1 ]; then
@@ -142,7 +147,9 @@ echo --- Building PySCF
     fi
     mkdir build
     cd build
-    cmake -DBLA_VENDOR=Intel10_64lp_seq ..
+# Configure with slow system BLAS. MKL is problematic (LD_PRELOAD issues, https://sunqm.github.io/pyscf/install.html#using-optimized-blas)
+    cmake ..
+#    cmake -DBLA_VENDOR=Intel10_64lp_seq ..
     make
     cd ..
 fi
@@ -160,8 +167,10 @@ if [ ! -e qp2 ]; then
     git clone https://github.com/QuantumPackage/qp2.git 
     cd qp2
     ./configure -i all
-    sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
-    ./configure -c config/gfortran_mkl.cfg
+# Failed attempt to use MKL. Is unreliable.    
+#    sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
+#    ./configure -c config/gfortran_mkl.cfg
+    ./configure -c config/gfortran.cfg
     source quantum_package.rc
     ninja
     cd plugins
@@ -193,8 +202,7 @@ export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/utils/afqmctools:\$PYTHONPATH
 export PATH=\$HOME/apps/qe-6.4/bin:\$PATH
 # PySCF
 export PYTHONPATH=\$HOME/apps/pyscf-1.6.1:\$PYTHONPATH
-# Temp fix for MKL with PySCF
-#export LD_PRELOAD=\$MKLROOT/lib/intel64/libmkl_avx.so:\$MKLROOT/lib/intel64/libmkl_core.so
+export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/src/QMCTools:\$PYTHONPATH
 # QP
 source \$HOME/apps/qp2/quantum_package.rc
 # END-QMCPACK-RELATED
@@ -215,7 +223,7 @@ export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/nexus/lib:$PYTHONPATH
 export PATH=$HOME/apps/qe-6.4/bin:$PATH
 # PySCF
 export PYTHONPATH=$HOME/apps/pyscf-1.6.1:$PYTHONPATH
-#export LD_PRELOAD=$MKLROOT/lib/intel64/libmkl_avx.so:$MKLROOT/lib/intel64/libmkl_core.so
+export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/src/QMCTools:$PYTHONPATH
 # QP
 source $HOME/apps/qp2/quantum_package.rc
 
