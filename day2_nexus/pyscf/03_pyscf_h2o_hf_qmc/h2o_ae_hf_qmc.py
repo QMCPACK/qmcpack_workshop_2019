@@ -38,7 +38,7 @@ c4q = generate_convert4qmc(
     path         = 'H2O/hf',
     job          = job(cores=1),
     no_jastrow   = True,
-    hdf5         = True,          # use hdf5 format
+    hdf5         = True,              # use hdf5 format
     dependencies = (scf,'orbitals'),
     )
 
@@ -63,12 +63,12 @@ optJ2 = generate_qmcpack(
     path              = 'H2O/optJ2',
     job               = job(cores=16),
     system            = system,
-    J2                = True,
-    J1_rcut           = 4.0,
-    J2_rcut           = 7.0,
-    qmc               = 'opt',          # use opt defaults
-    cycles            = 6,
-    alloweddifference = 1e-3,
+    J2                = True,         # 2-body B-spline Jastrow
+    J1_rcut           = 4.0,          # 4 Bohr cutoff for J1
+    J2_rcut           = 7.0,          # 7 Bohr cutoff for J2
+    qmc               = 'opt',        # quartic variance optimization
+    cycles            = 6,            # loop max of 6
+    alloweddifference = 1e-3,         # increase allowed energy difference
     dependencies      = orbdeps,
     )
 
@@ -79,10 +79,10 @@ optJ3 = generate_qmcpack(
     path              = 'H2O/optJ3',
     job               = job(cores=16),
     system            = system,
-    J3                = True,
-    qmc               = 'opt',
-    cycles            = 6,
-    alloweddifference = 1e-3,
+    J3                = True,         # 3-body polynomial Jastrow
+    qmc               = 'opt',        # quartic variance optimization
+    cycles            = 6,            # loop max of 6
+    alloweddifference = 1e-3,         # increase allowed energy difference
     dependencies      = orbdeps+[(optJ2,'jastrow')],
     )
 
@@ -94,7 +94,7 @@ qmc = generate_qmcpack(
     job          = job(cores=16),
     system       = system,
     jastrows     = [],
-    qmc          = 'vmc',    # use vmc defaults
+    qmc          = 'vmc',             # vmc run
     blocks       = 800,
     steps        = 100,
     dependencies = orbdeps+[(optJ3,'jastrow')],
@@ -108,8 +108,8 @@ qmc = generate_qmcpack(
     job          = job(cores=16),
     system       = system,
     jastrows     = [],
-    qmc          = 'dmc',    # use dmc defaults
-    eq_dmc       = True,     # add equilibration run
+    qmc          = 'dmc',             # dmc run
+    eq_dmc       = True,              # add dmc equilibration
     dependencies = orbdeps+[(optJ3,'jastrow')],
     )
 
