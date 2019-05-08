@@ -4,7 +4,7 @@ Nexus PySCF+QMCPACK Example 1: Water molecule (RHF)
 In this example, we show how to run a very simple PySCF restricted 
 Hartree-Fock calculation with Nexus for an all-electron water molecule.
 
-The Nexus script for this example is ``h2o_ae_hf.py''.
+The Nexus script for this example is ``h2o_ae_hf.py``.
 
 Similar to Nexus, the user interface to PySCF is in the form of pure 
 Python scripts.  Because a PySCF script can come in a wide variety of 
@@ -14,7 +14,7 @@ to an existing user-written PySCF template script.
 
 A simple template script that performs a restricted Hartree-Fock 
 calculation is used for this example.  The contents of this script 
-(``scf_template.py'') are shown below:
+(``scf_template.py``) are shown below:
 
 .. code-block:: python
 
@@ -30,10 +30,10 @@ calculation is used for this example.  The contents of this script
 
 If you are familiar with PySCF, you will notice that information about 
 the molecular structure and the gaussian basisset have been suppressed. 
-Instead, ``$system'' appears in the template PySCF script.  This variable 
+Instead, ``$system`` appears in the template PySCF script.  This variable 
 will be expanded by Nexus prior to the actual execution of the script. 
 
-The Nexus script, ``h2o_ae_hf.py'', is shown below:
+The Nexus script, ``h2o_ae_hf.py``, is shown below:
 
 .. code-block:: python
 
@@ -85,7 +85,7 @@ within the Nexus script.  In this case we instead use an external file,
     H  0.000000  0.757160 -0.586260
 
 Additionally all use of MPI (via mpirun) in the job execution is suppressed 
-by specifying ``job(serial=True)''.  PySCF can make use of threads, however, 
+by specifying ``job(serial=True)``.  PySCF can make use of threads, however, 
 but this is unimportant for a simple molecule like H2O in open boundary 
 conditions.
 
@@ -145,7 +145,7 @@ Now let's look at the PySCF script produced by Nexus (see
     mf.kernel()
 
 Information from Nexus' physical system object (from 
-``generate_physical_system``) have been populated into ``mol'', including 
+``generate_physical_system``) have been populated into ``mol``, including 
 the distance units, net charge, net spin, atomic species, and atomic positions. 
 The basis and symmetry information, provided separately as described above, 
 have also been filled in.
