@@ -113,7 +113,7 @@ Let's run the example now:
       ...
     Project finished
 
-Now let's look at the PySCF script produced by Nexus (see 
+Next, let's look at the PySCF script produced by Nexus (see 
 ``./runs/h2o_ae_hf/scf.py``):
 
 .. code-block:: python
