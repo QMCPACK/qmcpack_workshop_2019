@@ -1,0 +1,81 @@
+\mode<presentation>
+\usetheme{NCSUstat}
+%% \setbeamercovered{transparent}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{epstopdf}
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{xfrac}
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{amsbsy}
+\usepackage[many]{tcolorbox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{pgfplots}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{hyperref}
+
+\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fadings}
+\newcommand{\mymk}[1]{%
+   \tikz[baseline=(char.base)]\node[anchor=south west, draw,rectangle, rounded corners, inner sep=2pt, minimum size=7mm,
+	      text height=2mm](char){\ensuremath{#1}} ;}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+\setbeamertemplate{navigation symbols}{}
+
+\makeatletter
+\newcommand\mathcircledy[1]{%
+  \mathpalette\@mathcircledy{#1}%
+}
+  \newcommand\@mathcircledy[2]{%
+      \tikz[baseline=(math.base)] \node[draw=none,ellipse,inner sep=0.5pt,fill=yellow!50] (math) {$\m@th#1#2$};%
+}
+\makeatother
+\makeatletter
+\newcommand\mathcircledb[1]{%
+  \mathpalette\@mathcircledb{#1}%
+}
+  \newcommand\@mathcircledb[2]{%
+      \tikz[baseline=(math.base)] \node[draw=none,ellipse,inner sep=0.5pt,fill=blue!20] (math) {$\m@th#1#2$};%
+}
+\makeatother
+
+\makeatletter
+\newcommand\mathcircledwr[1]{%
+  \mathpalette\@mathcircledwr{#1}%
+}
+  \newcommand\@mathcircledwr[2]{%
+      \tikz[baseline=(math.base)] \node[draw=none,ellipse,inner sep=0.5pt,fill=wolfred] (math) {$\m@th#1#2$};%
+}
+\makeatother
+
+\makeatletter
+\newcommand\mathcircleddb[1]{%
+  \mathpalette\@mathcircleddb{#1}%
+}
+  \newcommand\@mathcircleddb[2]{%
+      \tikz[baseline=(math.base)] \node[draw=none,ellipse,inner sep=0.5pt,fill=blue] (math) {$\m@th#1#2$};%
+}
+\makeatother
+
+\newmdenv[innerlinewidth=0.5pt, roundcorner=4pt,linecolor=cyan,innerleftmargin=6pt,
+innerrightmargin=6pt,innertopmargin=6pt,innerbottommargin=6pt]{mybox}
+\newmdenv[innerlinewidth=0.5pt, roundcorner=5pt,linecolor=black,innerleftmargin=6pt,
+innerrightmargin=6pt,innertopmargin=6pt,backgroundcolor=cyan!30,innerbottommargin=6pt]{mybox2}
+
+

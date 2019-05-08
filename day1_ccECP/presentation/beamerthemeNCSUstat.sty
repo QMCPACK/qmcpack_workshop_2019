@@ -1,0 +1,86 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeNCSUstat}[2010/02/12 Beamer theme for NCSU
+presentations with official logo]
+
+% Copyright 2004 by Madhusudan Singh <madhusudan.singh@gmail.com>
+% NCSU logo added by Peter Bloomfield
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\mode<presentation>
+
+\useinnertheme[shadow=false]{rounded}
+%\useinnertheme{rounded}
+%\useinnertheme{circles}
+%\useinnertheme{rectangles}
+
+\useoutertheme{infolines}
+%\useoutertheme{shadow}
+%\useoutertheme{tree}
+%\useoutertheme{smoothtree}
+%\useoutertheme{smoothbars}
+
+\usecolortheme{wolfstat}
+
+\setbeamercolor{NCSU logo}{fg=white,bg=wolfred}
+\setbeamercolor{NCSU rule}{fg=wolfred,bg=wolfred}
+\setbeamercolor{NCSU footer}{fg=black,bg=white}
+\setbeamercolor{NCSU header}{fg=white,bg=blue!25!white}
+\setbeamerfont{details in NCSU foot}{size=\Tiny}
+\setbeamerfont{page number in NCSU foot}{size=\tiny}
+
+
+\newcommand{\footlineupper}[1]{\def\@footlineupper{#1}}
+\def\@footlineupper{}
+\newcommand{\footlinelower}[1]{\def\@footlinelower{#1}}
+\def\@footlinelower{}
+
+\defbeamertemplate*{footline}{NCSU theme}
+{
+  \leavevmode%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{NCSU rule}%
+    \hrulefill%
+  \end{beamercolorbox}\par%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=3.5ex,dp=1.15ex,center]{NCSU logo}%
+      \pgfdeclareimage[height=4.9ex]{ncsu-logo}{ncsu-red}%
+      \raisebox{-1.15ex}{\pgfuseimage{ncsu-logo}}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.2\paperwidth,ht=3.5ex,dp=1.15ex,center]{NCSU footer}%
+      \usebeamerfont{page number in NCSU foot}\insertframenumber{} / \inserttotalframenumber%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.4\paperwidth,ht=3.5ex,dp=1.15ex,vmode]{NCSU footer}%
+       \begin{beamercolorbox}[wd=.4\paperwidth,ht=1.5ex,dp=0.5ex,right,top]{NCSU footer}%
+         \usebeamerfont{details in NCSU foot}\@footlineupper{}\hspace*{2em}%
+       \end{beamercolorbox}%
+       \begin{beamercolorbox}[wd=.4\paperwidth,ht=1.5ex,dp=0.5ex,right,bot]{NCSU footer}%
+         \usebeamerfont{details in NCSU foot}\@footlinelower{}\hspace*{2em}%
+       \end{beamercolorbox}%
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\defbeamertemplate*{headline}{NCSU theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+  \end{beamercolorbox}%
+}\par%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{section in head/foot}%
+  \usebeamerfont{author in head/foot}\hrulefill%
+  \end{beamercolorbox}%
+  \vskip0pt%
+}
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\setbeamerfont{block title}{size={}}
+%\setbeamercolor{titlelike}{parent=structure,bg=yellow!85!orange}
+\mode
+<all>

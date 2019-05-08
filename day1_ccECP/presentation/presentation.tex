@@ -1,0 +1,31 @@
+\documentclass[12pt,unknownkeysallowed,aspectratio=169,usenames,dvipsnames]{beamer}
+\usepackage{myStyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{title}
+\begin{document}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section{Introduction}
+\input{intro}
+\section{Quantum Chemistry Examples}
+\input{qchem}
+\section{Solid State Examples}
+\input{solids}
+
+\section{Conclusions}
+\begin{frame}
+    \begin{itemize}
+        \item Each ccECP that has been developed has a {\it .nwchem \& .gamess} extension, which allows them to be used with \textsc{GAMESS}, \textsc{PySCF}, and  \textsc{Quantum Package} using the appropriate format. 
+        \item The number of UPF files is currently limited, but will be updated as they are generated and tested. For transition metals, a good alternative is to use the projectors from Jaron Krogel, listed under RRKJ\_PRB\_93\_075143 and TM\_PRB\_93\_075143. 
+        \item To proceed further, simply download the XML potential for \textsc{QMCPACK} and run the appropriate converter to generate the files (convert4qmc for  \textsc{Quantum Package}, \textsc{PySCF}, and \textsc{GAMESS} and pw2qmcpack for \textsc{Quantum Espresso} and proceed with your QMC workflow.
+    \end{itemize}
+\end{frame}
+
+\end{document}
