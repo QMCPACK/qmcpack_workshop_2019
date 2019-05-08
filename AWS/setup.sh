@@ -188,12 +188,15 @@ source /opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
 export PATH=\$HOME/apps/qmcpack/build/bin:\$PATH
 export PATH=\$HOME/apps/qmcpack/qmcpack/nexus/bin:\$PATH
 export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/nexus/lib:\$PYTHONPATH
+export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/utils/afqmctools:\$PYTHONPATH
 # QE
 export PATH=\$HOME/apps/qe-6.4/bin:\$PATH
 # PySCF
 export PYTHONPATH=\$HOME/apps/pyscf-1.6.1:\$PYTHONPATH
-# QP (put qpsh on path)
-export PATH=\$HOME/apps/qp2/bin:\$PATH
+# Temp fix for MKL with PySCF
+#export LD_PRELOAD=\$MKLROOT/lib/intel64/libmkl_avx.so:\$MKLROOT/lib/intel64/libmkl_core.so
+# QP
+source \$HOME/apps/qp2/quantum_package.rc
 # END-QMCPACK-RELATED
 EOF
 else
@@ -212,8 +215,9 @@ export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/nexus/lib:$PYTHONPATH
 export PATH=$HOME/apps/qe-6.4/bin:$PATH
 # PySCF
 export PYTHONPATH=$HOME/apps/pyscf-1.6.1:$PYTHONPATH
-# QP (put qpsh on path)
-export PATH=$HOME/apps/qp2/bin:$PATH
+#export LD_PRELOAD=$MKLROOT/lib/intel64/libmkl_avx.so:$MKLROOT/lib/intel64/libmkl_core.so
+# QP
+source $HOME/apps/qp2/quantum_package.rc
 
 echo --- Workshop files `date`
 # Workshop files
