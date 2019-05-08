@@ -12,8 +12,8 @@ settings(
 
 system = generate_physical_system(
     structure = 'H2O.xyz',
-    O         = 6,
-    H         = 1,
+    O         = 6,                    # Zeff=6 for BFD oxygen
+    H         = 1,                    # Zeff=1 for BFD hydrogen
     )
 
 scf = generate_pyscf(
