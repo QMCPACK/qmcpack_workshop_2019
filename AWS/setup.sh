@@ -202,6 +202,7 @@ export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/utils/afqmctools:\$PYTHONPATH
 export PATH=\$HOME/apps/qe-6.4/bin:\$PATH
 # PySCF
 export PYTHONPATH=\$HOME/apps/pyscf-1.6.1:\$PYTHONPATH
+export PYTHONPATH=\$HOME/apps/qmcpack/qmcpack/src/QMCTools:\$PYTHONPATH
 # QP
 source \$HOME/apps/qp2/quantum_package.rc
 # END-QMCPACK-RELATED
@@ -222,6 +223,7 @@ export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/nexus/lib:$PYTHONPATH
 export PATH=$HOME/apps/qe-6.4/bin:$PATH
 # PySCF
 export PYTHONPATH=$HOME/apps/pyscf-1.6.1:$PYTHONPATH
+export PYTHONPATH=$HOME/apps/qmcpack/qmcpack/src/QMCTools:$PYTHONPATH
 # QP
 source $HOME/apps/qp2/quantum_package.rc
 
