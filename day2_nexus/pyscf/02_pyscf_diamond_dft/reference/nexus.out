@@ -1,0 +1,203 @@
+Applying user settings 
+
+Project starting 
+  checking for file collisions 
+  loading cascade images 
+    cascade 0 checking in 
+  checking cascade dependencies 
+    all simulation dependencies satisfied 
+  
+  starting runs:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  elapsed time 0.0 s  memory 102.27 MB 
+    Entering ./runs/diamond_pp_dft_gamma 0 
+      writing input files  0 scf 
+    Entering ./runs/diamond_pp_dft_gamma 0 
+      sending required files  0 scf 
+      submitting job  0 scf 
+    Entering ./runs/diamond_pp_dft_gamma 0 
+      Executing:  
+        export OMP_NUM_THREADS=16
+        python scf.py 
+
+  elapsed time 3.0 s  memory 168.03 MB 
+  elapsed time 6.1 s  memory 168.03 MB 
+  elapsed time 9.1 s  memory 168.03 MB 
+  elapsed time 12.1 s  memory 168.03 MB 
+  elapsed time 15.2 s  memory 168.03 MB 
+  elapsed time 18.2 s  memory 168.03 MB 
+  elapsed time 21.3 s  memory 168.03 MB 
+  elapsed time 24.3 s  memory 168.03 MB 
+  elapsed time 27.3 s  memory 168.03 MB 
+  elapsed time 30.3 s  memory 168.03 MB 
+  elapsed time 33.4 s  memory 168.03 MB 
+  elapsed time 36.4 s  memory 168.03 MB 
+  elapsed time 39.4 s  memory 168.03 MB 
+  elapsed time 42.5 s  memory 168.03 MB 
+  elapsed time 45.5 s  memory 168.03 MB 
+  elapsed time 48.5 s  memory 168.03 MB 
+  elapsed time 51.6 s  memory 168.03 MB 
+  elapsed time 54.6 s  memory 168.03 MB 
+  elapsed time 57.6 s  memory 168.03 MB 
+  elapsed time 60.7 s  memory 168.03 MB 
+  elapsed time 63.7 s  memory 168.03 MB 
+  elapsed time 66.8 s  memory 168.03 MB 
+  elapsed time 69.8 s  memory 168.03 MB 
+  elapsed time 72.8 s  memory 168.03 MB 
+  elapsed time 75.9 s  memory 168.03 MB 
+  elapsed time 78.9 s  memory 168.03 MB 
+  elapsed time 82.0 s  memory 168.03 MB 
+  elapsed time 85.0 s  memory 168.03 MB 
+  elapsed time 88.0 s  memory 168.03 MB 
+  elapsed time 91.1 s  memory 168.03 MB 
+  elapsed time 94.1 s  memory 168.03 MB 
+  elapsed time 97.2 s  memory 168.03 MB 
+  elapsed time 100.2 s  memory 168.03 MB 
+  elapsed time 103.2 s  memory 168.03 MB 
+  elapsed time 106.3 s  memory 168.03 MB 
+  elapsed time 109.3 s  memory 168.03 MB 
+  elapsed time 112.3 s  memory 168.03 MB 
+  elapsed time 115.4 s  memory 168.03 MB 
+  elapsed time 118.4 s  memory 168.03 MB 
+  elapsed time 121.5 s  memory 168.03 MB 
+  elapsed time 124.5 s  memory 168.03 MB 
+  elapsed time 127.5 s  memory 168.03 MB 
+  elapsed time 130.6 s  memory 168.03 MB 
+  elapsed time 133.6 s  memory 168.03 MB 
+  elapsed time 136.7 s  memory 168.03 MB 
+  elapsed time 139.7 s  memory 168.03 MB 
+  elapsed time 142.7 s  memory 168.03 MB 
+  elapsed time 145.8 s  memory 168.03 MB 
+  elapsed time 148.8 s  memory 168.03 MB 
+  elapsed time 151.8 s  memory 168.03 MB 
+  elapsed time 154.9 s  memory 168.03 MB 
+  elapsed time 157.9 s  memory 168.03 MB 
+  elapsed time 161.0 s  memory 168.03 MB 
+  elapsed time 164.0 s  memory 168.03 MB 
+  elapsed time 167.1 s  memory 168.03 MB 
+  elapsed time 170.1 s  memory 168.03 MB 
+  elapsed time 173.1 s  memory 168.03 MB 
+  elapsed time 176.2 s  memory 168.03 MB 
+  elapsed time 179.2 s  memory 168.03 MB 
+  elapsed time 182.3 s  memory 168.03 MB 
+  elapsed time 185.3 s  memory 168.03 MB 
+  elapsed time 188.3 s  memory 168.03 MB 
+  elapsed time 191.4 s  memory 168.03 MB 
+  elapsed time 194.4 s  memory 168.03 MB 
+  elapsed time 197.5 s  memory 168.03 MB 
+  elapsed time 200.5 s  memory 168.03 MB 
+  elapsed time 203.5 s  memory 168.03 MB 
+  elapsed time 206.6 s  memory 168.03 MB 
+  elapsed time 209.6 s  memory 168.03 MB 
+  elapsed time 212.6 s  memory 168.03 MB 
+  elapsed time 215.7 s  memory 168.03 MB 
+  elapsed time 218.7 s  memory 168.03 MB 
+  elapsed time 221.8 s  memory 168.03 MB 
+  elapsed time 224.8 s  memory 168.03 MB 
+  elapsed time 227.8 s  memory 168.03 MB 
+  elapsed time 230.9 s  memory 168.03 MB 
+  elapsed time 233.9 s  memory 168.03 MB 
+  elapsed time 236.9 s  memory 168.03 MB 
+  elapsed time 240.0 s  memory 168.03 MB 
+  elapsed time 243.0 s  memory 168.03 MB 
+  elapsed time 246.1 s  memory 168.03 MB 
+  elapsed time 249.1 s  memory 168.03 MB 
+  elapsed time 252.1 s  memory 168.03 MB 
+  elapsed time 255.2 s  memory 168.03 MB 
+  elapsed time 258.2 s  memory 168.03 MB 
+  elapsed time 261.2 s  memory 168.03 MB 
+  elapsed time 264.3 s  memory 168.03 MB 
+  elapsed time 267.3 s  memory 168.03 MB 
+  elapsed time 270.4 s  memory 168.03 MB 
+  elapsed time 273.4 s  memory 168.03 MB 
+  elapsed time 276.4 s  memory 168.03 MB 
+  elapsed time 279.5 s  memory 168.03 MB 
+  elapsed time 282.5 s  memory 168.03 MB 
+  elapsed time 285.5 s  memory 168.03 MB 
+  elapsed time 288.6 s  memory 168.03 MB 
+  elapsed time 291.6 s  memory 168.03 MB 
+  elapsed time 294.7 s  memory 168.03 MB 
+  elapsed time 297.7 s  memory 168.03 MB 
+  elapsed time 300.7 s  memory 168.03 MB 
+  elapsed time 303.8 s  memory 168.03 MB 
+  elapsed time 306.8 s  memory 168.03 MB 
+  elapsed time 309.8 s  memory 168.03 MB 
+  elapsed time 312.9 s  memory 168.03 MB 
+  elapsed time 315.9 s  memory 168.03 MB 
+  elapsed time 319.0 s  memory 168.03 MB 
+  elapsed time 322.0 s  memory 168.03 MB 
+  elapsed time 325.0 s  memory 168.03 MB 
+  elapsed time 328.1 s  memory 168.03 MB 
+  elapsed time 331.1 s  memory 168.03 MB 
+  elapsed time 334.2 s  memory 168.03 MB 
+  elapsed time 337.2 s  memory 168.03 MB 
+  elapsed time 340.2 s  memory 168.03 MB 
+  elapsed time 343.3 s  memory 168.03 MB 
+  elapsed time 346.3 s  memory 168.03 MB 
+  elapsed time 349.4 s  memory 168.03 MB 
+  elapsed time 352.4 s  memory 168.03 MB 
+  elapsed time 355.4 s  memory 168.03 MB 
+  elapsed time 358.5 s  memory 168.03 MB 
+  elapsed time 361.5 s  memory 168.03 MB 
+  elapsed time 364.5 s  memory 168.03 MB 
+  elapsed time 367.6 s  memory 168.03 MB 
+  elapsed time 370.6 s  memory 168.03 MB 
+  elapsed time 373.6 s  memory 168.03 MB 
+  elapsed time 376.6 s  memory 168.03 MB 
+  elapsed time 379.7 s  memory 168.03 MB 
+  elapsed time 382.7 s  memory 168.03 MB 
+  elapsed time 385.7 s  memory 168.03 MB 
+  elapsed time 388.7 s  memory 168.03 MB 
+  elapsed time 391.8 s  memory 168.03 MB 
+  elapsed time 394.8 s  memory 168.03 MB 
+  elapsed time 397.8 s  memory 168.03 MB 
+  elapsed time 400.8 s  memory 168.03 MB 
+  elapsed time 403.8 s  memory 168.03 MB 
+  elapsed time 406.8 s  memory 168.03 MB 
+  elapsed time 409.9 s  memory 168.03 MB 
+  elapsed time 412.9 s  memory 168.03 MB 
+  elapsed time 415.9 s  memory 168.03 MB 
+  elapsed time 418.9 s  memory 168.03 MB 
+  elapsed time 421.9 s  memory 168.03 MB 
+  elapsed time 425.0 s  memory 168.03 MB 
+  elapsed time 428.0 s  memory 168.03 MB 
+  elapsed time 431.0 s  memory 168.03 MB 
+  elapsed time 434.0 s  memory 168.03 MB 
+  elapsed time 437.0 s  memory 168.03 MB 
+  elapsed time 440.0 s  memory 168.03 MB 
+  elapsed time 443.1 s  memory 168.03 MB 
+  elapsed time 446.1 s  memory 168.03 MB 
+  elapsed time 449.1 s  memory 168.03 MB 
+  elapsed time 452.1 s  memory 168.03 MB 
+  elapsed time 455.1 s  memory 168.03 MB 
+  elapsed time 458.1 s  memory 168.03 MB 
+  elapsed time 461.2 s  memory 168.03 MB 
+  elapsed time 464.2 s  memory 168.03 MB 
+  elapsed time 467.2 s  memory 168.03 MB 
+  elapsed time 470.2 s  memory 168.03 MB 
+  elapsed time 473.2 s  memory 168.03 MB 
+  elapsed time 476.2 s  memory 168.03 MB 
+  elapsed time 479.3 s  memory 168.03 MB 
+  elapsed time 482.3 s  memory 168.03 MB 
+  elapsed time 485.3 s  memory 181.44 MB 
+  elapsed time 488.3 s  memory 192.91 MB 
+  elapsed time 491.4 s  memory 192.91 MB 
+  elapsed time 494.4 s  memory 192.91 MB 
+  elapsed time 497.4 s  memory 192.91 MB 
+  elapsed time 500.5 s  memory 192.91 MB 
+  elapsed time 503.5 s  memory 192.91 MB 
+  elapsed time 506.5 s  memory 196.37 MB 
+  elapsed time 509.6 s  memory 197.22 MB 
+  elapsed time 512.6 s  memory 197.65 MB 
+  elapsed time 515.6 s  memory 197.92 MB 
+  elapsed time 518.7 s  memory 198.18 MB 
+  elapsed time 521.7 s  memory 246.55 MB 
+  elapsed time 524.8 s  memory 280.78 MB 
+  elapsed time 527.8 s  memory 102.24 MB 
+    Entering ./runs/diamond_pp_dft_gamma 0 
+      copying results  0 scf 
+    Entering ./runs/diamond_pp_dft_gamma 0 
+      analyzing  0 scf 
+
+Project finished
+ 
