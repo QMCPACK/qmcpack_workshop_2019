@@ -57,7 +57,7 @@ to generate the necessary AFQMC input file.
 
 .. code-block:: bash
 
-    mpirun -n 8 /path/to/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v -a
+    mpirun -n 8 $HOME/apps/qmcpack/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v -a
 
 
 Note that the commands necessary to generate the integrals are identical to those for the

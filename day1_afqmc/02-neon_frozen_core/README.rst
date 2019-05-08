@@ -7,7 +7,7 @@ electrons. The following only currently works for RHF/ROHF trial wavefunctions.
 
 .. code-block:: bash
 
-    mpirun -n 1 /path/to/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v -q afqmc.xml -c 8,22
+    mpirun -n 1 $HOME/apps/qmcpack/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v -q afqmc.xml -c 8,22
 
 Comparing the above to the previous example we see that we have added the `-c` or `--cas`
 option followed by a comma separated list of the form N,M defining a (N,M) CAS space
