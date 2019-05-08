@@ -59,11 +59,12 @@ echo --- Installing HDF5 `date`
     cd ..
 fi
 
+# Requirements for full NEXUS demo:
+sudo apt-get -y install python-numpy python-scipy python-matplotlib python-pydot python-h5py
+
 sudo apt-get -y install python-pip
 CC="mpigcc" HDF5_MPI="ON" HDF5_DIR=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi pip install --no-binary=h5py h5py
 
-# Requirements for full NEXUS demo:
-sudo apt-get -y install python-numpy python-scipy python-matplotlib python-pydot python-pip
 pip install --user spglib
 pip install --user seekpath
 
