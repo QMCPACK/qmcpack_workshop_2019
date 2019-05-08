@@ -46,7 +46,7 @@ this we do (assuming afqmctools is in your PYTHONPATH):
 
 .. code-block:: bash
 
-    mpirun -n 1 /path/to/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v
+    mpirun -n 1 $HOME/apps/qmcpack/qmcpack/utils/afqmctools/bin/pyscf_to_afqmc.py -i scf.chk -o hamil.h5 -t 1e-5 -v
 
 which will peform the necessary AO to MO transformation of the one and two electron
 integrals and perform a modified cholesky transormation of the two electron integrals. A
@@ -161,17 +161,17 @@ We can now run the qmcpack simulation:
 
 .. code-block:: bash
 
-    mpirun -n 8 /path/to/qmcpack afqmc.xml > qmcpack.out
+    mpirun -n 8 $HOME/apps/qmcpack/build_complex/bin/qmcpack afqmc.xml > qmcpack.out
 
-assuming we are on a supercomputer.  Assuming the calculation finishes
-successfully, the very first thing you should do is check the information in
-`qmcpack.out` to see confirm no warnings were raised.  The second thing you
-should check is that the energy of the starting determinant matches the
-Hartree--Fock energy you computed earlier from pyscf to within roughly the
-error threshold you specified when generating the Cholesky decomposition. This
-check is not very meaningful if using, say, DFT orbitals. However if this
-energy is crazy it's a good sign something went wrong with either the
-wavefunction or integral generation.  Next you should inspect the
+Note that we will use the complex build throughout. Assuming the calculation
+finishes successfully, the very first thing you should do is check the
+information in `qmcpack.out` to see confirm no warnings were raised.  The
+second thing you should check is that the energy of the starting determinant
+matches the Hartree--Fock energy you computed earlier from pyscf to within
+roughly the error threshold you specified when generating the Cholesky
+decomposition. This check is not very meaningful if using, say, DFT orbitals.
+However if this energy is crazy it's a good sign something went wrong with
+either the wavefunction or integral generation.  Next you should inspect the
 `qmc.scalar.s000.dat` file which contains the mixed estimates for various
 quantities. This can be plotted using gnuplot.  `EnergyEstim__nume_real`
 contains the block averaged values for the local energy, which should be the

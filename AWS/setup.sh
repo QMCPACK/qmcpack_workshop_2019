@@ -125,7 +125,7 @@ make -j 16 >&make.out
 ctest -R deterministic >& ctest.out
 cat ctest.out
 cd ../build/bin
-ln -s ../build_complex/bin/qmcpack qmcpack_complex
+ln -sf ../../build_complex/bin/qmcpack qmcpack_complex
 cd ..
 fi
 
