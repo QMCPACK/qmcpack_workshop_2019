@@ -77,6 +77,8 @@ The Nexus script, ``diamond_pp_dft_gamma.py``, is shown below:
             ),
         )
 
+    run_project()
+
 Here, as before, the use of MPI in the job execution is suppressed, but now 
 16 OpenMP threads have been requested.  This will help speed up the (very 
 slow) PBC calculations.
