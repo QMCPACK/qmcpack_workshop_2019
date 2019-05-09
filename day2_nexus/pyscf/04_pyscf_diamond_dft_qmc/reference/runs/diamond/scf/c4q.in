@@ -1,0 +1,1 @@
+convert4qmc -pyscf scf.h5 -prefix c4q -hdf5 -nojastrow

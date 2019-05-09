@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<qmcsystem>
+  <wavefunction name="psi0" target="e">
+         <determinantset type="MolecularOrbital" href="../scf/scf.h5" twist="0 0 0" source="ion0" transform="yes" name="LCAOBSet" PBCimages="5 5 5">
+            <slaterdeterminant>
+               <determinant id="updet" size="8">
+                  <occupation mode="ground">                                                     </occupation>
+                  <coefficient size="52" spindataset="0">                                                     </coefficient>
+               </determinant>
+               <determinant id="downdet" size="8">
+                  <occupation mode="ground">                                                     </occupation>
+                  <coefficient size="52" spindataset="0">                                                     </coefficient>
+               </determinant>
+            </slaterdeterminant>
+         </determinantset>
+         <jastrow type="One-Body" name="J1" function="bspline" source="ion0" print="yes">
+            <correlation elementType="C" size="5" rcut="2.385185123200013" cusp="0.0">
+               <coefficients id="eC" type="Array"> -0.2243517288 -0.2061993826 -0.1632399636 -0.1023490603 -0.04514090912</coefficients>
+            </correlation>
+         </jastrow>
+         <jastrow type="Two-Body" name="J2" function="bspline" print="yes">
+            <correlation speciesA="u" speciesB="u" size="5" rcut="2.385185123200013">
+               <coefficients id="uu" type="Array"> 0.2932477095 0.1993101216 0.1341415997 0.07308743171 0.03678921609</coefficients>
+            </correlation>
+            <correlation speciesA="u" speciesB="d" size="5" rcut="2.385185123200013">
+               <coefficients id="ud" type="Array"> 0.4959199066 0.3219287204 0.1990770687 0.1044876073 0.04918768446</coefficients>
+            </correlation>
+         </jastrow>
+      </wavefunction>
+</qmcsystem>

@@ -1,0 +1,36 @@
+Index of ion charge 0
+Index of valence charge 1
+Using c4q to name output files
+Converting Wavefunction from the PySCF Code
+Periodic Boundary Conditions: yes
+usingECP: yes
+Multideterminants: no
+NUMBER OF AOs: 52
+Size of Basis Set: 52
+NUMBER OF MOs: 52
+Unit in Bohr=1
+Number of alpha electrons: 8
+Number of beta electrons: 8
+Number of electrons: 16
+SPIN MULTIPLICITY: 1
+NUMBER OF ATOMS: 4
+Lattice parameters in Bohr:
+6.746322300000e+00  6.746322300000e+00  0.000000000000e+00
+0.000000000000e+00  3.373161150000e+00  3.373161150000e+00
+3.373161150000e+00  0.000000000000e+00  3.373161150000e+00
+Generating Inputs for Supertwist  with coordinates:0.000000000000e+00  0.000000000000e+00  0.000000000000e+00
+ QMCGaussianParserBase::dumpPBC 
+Number of alpha electrons 8
+Number of beta electrons 8
+ Generating Standard Input file containing VMC, standard optmization, and DMC blocks.
+ Modify according to the accuracy you would like to achieve. 
+Hamiltonian using ECP for Electron Ion=1
+Generating Inputs for Supertwist  with coordinates:0.000000000000e+00  0.000000000000e+00  0.000000000000e+00
+ QMCGaussianParserBase::dumpPBC 
+Number of alpha electrons 8
+Number of beta electrons 8
+Adding Two-Body and One-Body jastrows with rcut="10" and size="10"
+Adding Three-Body jastrows with rcut="5"
+ Generating Standard Input file containing VMC, standard optmization, and DMC blocks.
+ Modify according to the accuracy you would like to achieve. 
+Hamiltonian using ECP for Electron Ion=1
