@@ -89,6 +89,7 @@ cc = generate_cusp_correction(
 
 # optimize 2-body Jastrow
 optJ2 = generate_qmcpack(
+    block           = True,
     identifier      = 'opt',
     path            = 'O_dimer/optJ2',
     job             = qmc_job,
@@ -106,6 +107,7 @@ optJ2 = generate_qmcpack(
 
 # optimize 3-body Jastrow
 optJ3 = generate_qmcpack(
+    block           = True,
     identifier      = 'opt',
     path            = 'O_dimer/optJ3',
     job             = qmc_job,
@@ -124,6 +126,7 @@ optJ3 = generate_qmcpack(
 
 # run VMC with QMCPACK
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'vmc',
     path         = 'O_dimer/vmc',
     job          = qmc_job,
@@ -137,6 +140,7 @@ qmc = generate_qmcpack(
 
 # run DMC with QMCPACK
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'dmc',
     path         = 'O_dimer/dmc',
     job          = qmc_job,
