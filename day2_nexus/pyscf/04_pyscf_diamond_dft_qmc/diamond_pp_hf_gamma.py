@@ -22,16 +22,18 @@ system = generate_physical_system(
                C  0.0000  0.0000  0.0000
                C  0.8925  0.8925  0.8925
                ''',
+    #tiling   = (2,1,1),
     kgrid    = (1,1,1),
     kshift   = (0,0,0),
     C        = 4,
     )
+system.structure.change_units('B')
 
 scf = generate_pyscf(
     identifier = 'scf',                      # log output goes to scf.out
-    path       = 'diamond_pp_dft_gamma',     # directory to run in
+    path       = 'diamond/scf',              # directory to run in
     job        = job(serial=True,threads=16),# pyscf must run w/o mpi
-    template   = './dft_template.py',        # pyscf template file
+    template   = './scf_template.py',        # pyscf template file
     system     = system,
     cell       = obj(                        # used to make Cell() inputs
         basis         = 'bfd-vdz',
@@ -44,15 +46,17 @@ scf = generate_pyscf(
 
 c4q = generate_convert4qmc(
     identifier   = 'c4q',
-    path         = 'diamond_pp_dft_gamma',
+    path         = 'diamond/scf',
     job          = job(cores=1),
     no_jastrow   = True,
+    hdf5         = True,
     dependencies = (scf,'orbitals'),
     )
 
 qmc = generate_qmcpack(
+    #block        = True,
     identifier   = 'vmc',
-    path         = 'diamond_pp_dft_gamma',
+    path         = 'diamond/vmc_test',
     job          = job(cores=16),
     system       = system,
     pseudos      = ['C.BFD.xml'],
