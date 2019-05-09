@@ -14,6 +14,7 @@ sudo apt-get -y install cmake g++ gfortran libboost-dev libhdf5-dev libxml2-dev
 # Slow/unoptimized BLAS and LAPACK for expedient linking with QP and PySCF
 #sudo apt-get -y install libblas-dev liblapack-dev
 sudo apt-get -y install libopenblas-dev
+
 if [ ! -e $HOME/apps ]; then
     mkdir $HOME/apps
 fi
@@ -169,8 +170,6 @@ ln -sf ../../build_complex/bin/qmcpack qmcpack_complex
 cd ..
 fi
 
-# Get slow/unoptimized BLAS and LAPACK for expedient linking with QP and PySCF
-sudo apt-get install libblas-dev liblapack-dev
 
 # PySCF
 cd $HOME/apps
