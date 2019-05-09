@@ -60,6 +60,7 @@ cc = generate_cusp_correction(
 
 # optimize 2-body Jastrow
 optJ2 = generate_qmcpack(
+    block           = True,
     identifier      = 'opt',
     path            = 'H2O/optJ2',
     job             = qmc_job,
@@ -78,6 +79,7 @@ optJ2 = generate_qmcpack(
 
 # optimize 3-body Jastrow
 optJ3 = generate_qmcpack(
+    block           = True,
     identifier      = 'opt',
     path            = 'H2O/optJ3',
     job             = qmc_job,
@@ -96,12 +98,15 @@ optJ3 = generate_qmcpack(
 
 # run VMC with QMCPACK
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'vmc',
     path         = 'H2O/vmc',
     job          = qmc_job,
     system       = system,
     jastrows     = [],
     qmc          = 'vmc',    # use vmc defaults
+    blocks       = 800,
+    steps        = 100,
     dependencies = [(c4q,'orbitals'),
                     (cc,'cuspcorr'),
                     (optJ3,'jastrow')],
@@ -109,6 +114,7 @@ qmc = generate_qmcpack(
 
 # run DMC with QMCPACK
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'dmc',
     path         = 'H2O/dmc',
     job          = qmc_job,
