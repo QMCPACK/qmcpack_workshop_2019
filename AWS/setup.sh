@@ -127,12 +127,14 @@ fi
 
 # QE
 if [ ! -e $HOME/apps/qe-6.4/bin/pw.x ]; then
-echo --- Patching and Building QE `date`
+    echo --- Patching and Building QE `date`
     cd $HOME/apps/qmcpack/qmcpack/external_codes/quantum_espresso/
     ./download_and_patch_qe6.4.sh
     cd qe-6.4
     ./configure  CC=mpigcc MPIF90=mpif90 F77=mpif77 --with-scalapack=intel --with-hdf5=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi  >&configure.out
+    echo --- Make pw
     make pw >&make_pw.out
+    echo --- Make pwall
     make pwall >&make_pwall.out
     if [ -e $HOME/apps/qe-6.4 ]; then
 	rm -r -f $HOME/apps/qe-6.4
