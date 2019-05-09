@@ -1,5 +1,5 @@
-Nexus PySCF+QMCPACK Example 4: Diamond primitive cell (RHF+VMC/DMC)
-=====================================================================
+Nexus PySCF+QMCPACK Example 4: Diamond supercell (RHF+VMC/DMC)
+==============================================================
 
 In this example, we expand on the prior PySCF RHF pseudopotential 
 calculation for diamond in Example 2 to include the necessary steps 
