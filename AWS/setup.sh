@@ -45,6 +45,7 @@ if [ ! -e qp2 ]; then
     ninja
     cd plugins
     git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
+    sed -i s/"QMCPack"/"qmcpack"/ qmcpack/save_for_qmcpack.irp.f
     cd ../
     qp_plugins install qmcpack
     sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
