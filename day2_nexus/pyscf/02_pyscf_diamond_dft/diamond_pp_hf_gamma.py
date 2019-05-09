@@ -27,9 +27,9 @@ system = generate_physical_system(
 
 scf = generate_pyscf(
     identifier = 'scf',                      # log output goes to scf.out
-    path       = 'diamond_pp_dft_gamma',     # directory to run in
+    path       = 'diamond_pp_hf_gamma',      # directory to run in
     job        = job(serial=True,threads=16),# pyscf must run w/o mpi
-    template   = './dft_template.py',        # pyscf template file
+    template   = './scf_template.py',        # pyscf template file
     system     = system,
     cell       = obj(                        # used to make Cell() inputs
         basis         = 'bfd-vdz',

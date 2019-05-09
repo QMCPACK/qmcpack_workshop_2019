@@ -1,13 +1,13 @@
-Nexus PySCF+QMCPACK Example 2: Diamond primitive cell (B3LYP)
-=============================================================
+Nexus PySCF+QMCPACK Example 2: Diamond primitive cell (RHF)
+===========================================================
 
-In this example, we show how to run a simple PySCF B3LYP pseudopotential 
+In this example, we show how to run a simple PySCF RHF pseudopotential 
 calculation with Nexus for the primitive cell of diamond at the Gamma point.  
 
-The Nexus script for this example is ``diamond_pp_dft_gamma.py``.
+The Nexus script for this example is ``diamond_pp_hf_gamma.py``.
 
-A simple template PySCF script that performs a B3LYP calculation is used 
-for this example.  The contents of this script (``dft_template.py``) are 
+A simple template PySCF script that performs an RHF calculation is used 
+for this example.  The contents of this script (``scf_template.py``) are 
 shown below:
 
 .. code-block:: python
@@ -18,13 +18,10 @@ shown below:
     
     $system
     
-    gdf = df.GDF(cell,kpts)
+    gdf = df.FFTDF(cell,kpts)
     gdf.auxbasis = 'weigend'
-    gdf.build()
     
-    mf = scf.KRKS(cell,kpts).density_fit()
-    mf.xc      ='b3lyp'
-    mf.tol     = 1e-10
+    mf = scf.KRHF(cell,kpts).density_fit()
     mf.exxdiv  = 'ewald'
     mf.with_df = gdf
     mf.kernel()
@@ -32,7 +29,7 @@ shown below:
 Similar to the last example, information about the atomic structure and 
 gaussian basisset have been suppressed with the ``$system`` placeholder. 
 
-The Nexus script, ``diamond_pp_dft_gamma.py``, is shown below:
+The Nexus script, ``diamond_pp_hf_gamma.py``, is shown below:
 
 .. code-block:: python
 
@@ -65,9 +62,9 @@ The Nexus script, ``diamond_pp_dft_gamma.py``, is shown below:
     
     scf = generate_pyscf(
         identifier = 'scf',                      # log output goes to scf.out
-        path       = 'diamond_pp_dft_gamma',     # directory to run in
+        path       = 'diamond_pp_hf_gamma',      # directory to run in
         job        = job(serial=True,threads=16),# pyscf must run w/o mpi
-        template   = './dft_template.py',        # pyscf template file
+        template   = './scf_template.py',        # pyscf template file
         system     = system,
         cell       = obj(                        # used to make Cell() inputs
             basis         = 'bfd-vdz',
@@ -76,7 +73,7 @@ The Nexus script, ``diamond_pp_dft_gamma.py``, is shown below:
             verbose       = 5,
             ),
         )
-
+    
     run_project()
 
 Here, as before, the use of MPI in the job execution is suppressed, but now 
@@ -91,7 +88,7 @@ Now let's run the example.  This may take a few minutes:
 
 .. code-block:: bash
 
-    >./diamond_pp_dft_gamma.py 
+    >./diamond_pp_hf_gamma.py 
     
     ...
   
@@ -99,7 +96,7 @@ Now let's run the example.  This may take a few minutes:
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
     elapsed time 0.0 s  memory 102.27 MB 
       ...
-      Entering ./runs/diamond_pp_dft_gamma 0 
+      Entering ./runs/diamond_pp_hf_gamma 0 
         Executing:  
           export OMP_NUM_THREADS=16
           python scf.py 
@@ -107,23 +104,22 @@ Now let's run the example.  This may take a few minutes:
     elapsed time 3.0 s  memory 168.03 MB 
     ...
     elapsed time 527.8 s  memory 102.24 MB 
-      Entering ./runs/diamond_pp_dft_gamma 0 
+      Entering ./runs/diamond_pp_hf_gamma 0 
         copying results  0 scf 
-      Entering ./runs/diamond_pp_dft_gamma 0 
+      Entering ./runs/diamond_pp_hf_gamma 0 
         analyzing  0 scf 
   
     Project finished
 
 
 Next, let's look at the PySCF script produced by Nexus (see 
-``./runs/diamond_pp_dft_gamma/scf.py``):
+``./runs/diamond_pp_hf_gamma/scf.py``):
 
 .. code-block:: python
 
     #!/usr/bin/env python
     
     from pyscf.pbc import df, scf
-    
     
     ### generated system text ###
     from numpy import array
@@ -151,15 +147,10 @@ Next, let's look at the PySCF script produced by Nexus (see
         [0.0, 0.0, 0.0]])
     ### end generated system text ###
     
-    
-    
-    gdf = df.GDF(cell,kpts)
+    gdf = df.FFTDF(cell,kpts)
     gdf.auxbasis = 'weigend'
-    gdf.build()
     
-    mf = scf.KRKS(cell,kpts).density_fit()
-    mf.xc      ='b3lyp'
-    mf.tol     = 1e-10
+    mf = scf.KRHF(cell,kpts).density_fit()
     mf.exxdiv  = 'ewald'
     mf.with_df = gdf
     mf.kernel()
@@ -167,17 +158,17 @@ Next, let's look at the PySCF script produced by Nexus (see
 Similar to the prior example, information regarding the atoms, basisset and 
 pseudopotentials are populated into ``cell``.  An important addition is the 
 ``kpts`` array, which holds an explicit list of primitive cell k-points for 
-the DFT calculation (just Gamma in this case).  This will be more important 
+the HF calculation (just Gamma in this case).  This will be more important 
 in later examples where we will add QMC calculations for a supercell.  
 
-For the PySCF B3LYP total energy for the diamond primitive cell, you 
+For the PySCF RHF total energy for the diamond primitive cell, you 
 should get something very similar to the following:
 
 .. code-block:: bash
 
-  >tail -n1 runs/diamond_pp_dft_gamma/scf.out
+  >tail -n1 runs/diamond_pp_hf_gamma/scf.out
   
-  converged SCF energy = -10.3151528665386
+  converged SCF energy = -10.2472172154513
 
 In the next example we will return to the water molecule, but now with 
 the necessary additional steps to perform VMC with QMCPACK.
