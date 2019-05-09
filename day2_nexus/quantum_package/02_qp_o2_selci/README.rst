@@ -23,7 +23,7 @@ the script are shown below:
     from nexus import generate_quantum_package
     
     # note: you must source the QP config file before running this script
-    #   source /your/path/to/quantum_package.rc
+    #   source /home/ubuntu/apps/qp2/quantum_package.rc
     
     settings(
         results       = '',
@@ -31,7 +31,7 @@ the script are shown below:
         generate_only = 0,
         sleep         = 3,
         machine       = 'ws16',
-        qprc          = '/home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc',
+        qprc          = '/home/ubuntu/apps/qp2/quantum_package.rc',
         )
     
     # define run details
@@ -101,7 +101,7 @@ Now let's run the Nexus script and see how these steps are executed:
 
 .. code-block:: bash
 
-    >source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+    >source /home/ubuntu/apps/qp2/quantum_package.rc
 
     >./o2_selci.py
 
@@ -115,7 +115,7 @@ Now let's run the Nexus script and see how these steps are executed:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run scf fci.ezfio >scf.out 2>scf.err
           
@@ -128,7 +128,7 @@ Now let's run the Nexus script and see how these steps are executed:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run fci fci.ezfio >fci0.out 2>fci0.err
           
@@ -143,7 +143,7 @@ Now let's run the Nexus script and see how these steps are executed:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run fci fci.ezfio 
     ...

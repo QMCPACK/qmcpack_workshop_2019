@@ -154,7 +154,7 @@ selected-CI, wavefunction conversion, and cusp correction steps:
 
 .. code-block:: bash
 
-    >source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+    >source /home/ubuntu/apps/qp2/quantum_package.rc
 
     >./o2_selci_vmc_dmc.py
   
@@ -168,7 +168,7 @@ selected-CI, wavefunction conversion, and cusp correction steps:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run scf fci.ezfio >scf.out 2>scf.err
           
@@ -181,7 +181,7 @@ selected-CI, wavefunction conversion, and cusp correction steps:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run fci fci.ezfio >fci0.out 2>fci0.err
           
@@ -196,7 +196,7 @@ selected-CI, wavefunction conversion, and cusp correction steps:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run fci fci.ezfio >fci.out 2>fci.err
           

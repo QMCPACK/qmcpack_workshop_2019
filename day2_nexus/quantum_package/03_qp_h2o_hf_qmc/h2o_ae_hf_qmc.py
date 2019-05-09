@@ -8,7 +8,7 @@ from nexus import generate_cusp_correction
 from nexus import generate_qmcpack
 
 # note: you must source the QP config file before running this script
-#   source /your/path/to/quantum_package.rc
+#   source /home/ubuntu/apps/qp2/quantum_package.rc
 
 settings(
     results       = '',
@@ -17,7 +17,7 @@ settings(
     sleep         = 3,
     machine       = 'ws16',
     qprc          = \
-'/home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc',
+'/home/ubuntu/apps/qp2/quantum_package.rc',
     )
 
 scf_job = job(cores=16,threads=16)

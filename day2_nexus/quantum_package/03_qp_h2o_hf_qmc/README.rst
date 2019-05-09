@@ -140,7 +140,7 @@ orbital conversion, and cusp correction steps:
 
 .. code-block:: bash
 
-    >source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+    >source /home/ubuntu/apps/qp2/quantum_package.rc
 
     >./h2o_ae_hf_qmc.py
   
@@ -154,7 +154,7 @@ orbital conversion, and cusp correction steps:
         Executing:  
           export OMP_NUM_THREADS=16
           
-          source /home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc
+          source /home/ubuntu/apps/qp2/quantum_package.rc
           
           mpirun -np 1 qp_run scf h2o.ezfio >hf.out 2>hf.err
           
