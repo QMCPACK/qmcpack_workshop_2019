@@ -120,10 +120,11 @@ fi
 cd qmcpack
 if [ ! -e qmcpack ]; then
     git clone https://github.com/QMCPACK/qmcpack.git
-else
-    cd qmcpack
-    git pull
-    cd ..
+    git checkout f95f17d2abb3cf3304553f3fd54aac3c712a1278 # development branch on 2019-05-09 "Nexus:pyscf expects kpoints..." fix, PR #1591
+#else
+#    cd qmcpack
+#    git pull
+#    cd ..
 fi
 
 # QE
