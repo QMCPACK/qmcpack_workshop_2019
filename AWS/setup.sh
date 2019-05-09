@@ -103,12 +103,12 @@ fi
 sudo apt-get -y install python-pip
 sudo apt-get -y install python-numpy python-scipy python-matplotlib python-pydot python-h5py
 
-CC="mpigcc" HDF5_MPI="ON" HDF5_DIR=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi pip install --user --no-binary=h5py h5py
-
+pip install --user mpi4py # Maybe for AFQMC demo?
 pip install --user spglib
 pip install --user seekpath
 
-pip install --user mpi4py # Maybe for AFQMC demo?
+CC="mpigcc" HDF5_MPI="ON" HDF5_DIR=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi pip install --user --no-binary=h5py h5py
+
 
 # QMCPACK and patched QE
 echo --- QMCPACK and QE setup
