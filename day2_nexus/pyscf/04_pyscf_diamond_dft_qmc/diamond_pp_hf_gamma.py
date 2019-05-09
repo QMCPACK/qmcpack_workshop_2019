@@ -27,7 +27,6 @@ system = generate_physical_system(
     kshift   = (0,0,0),
     C        = 4,
     )
-system.change_units('B') # currently a bug in pyscf with A units
 
 scf = generate_pyscf(
     identifier = 'scf',                      # log output goes to scf.out
@@ -49,22 +48,57 @@ c4q = generate_convert4qmc(
     path         = 'diamond/scf',
     job          = job(cores=1),
     no_jastrow   = True,
-    hdf5         = True,
+    hdf5         = True,              # use hdf5 format
     dependencies = (scf,'orbitals'),
     )
 
+opt = generate_qmcpack(
+    block           = True,
+    identifier      = 'opt',
+    path            = 'diamond/optJ2',
+    job             = job(cores=16,threads=4,app='qmcpack'),
+    input_type      = 'basic',
+    system          = system,
+    pseudos         = ['C.BFD.xml'],
+    corrections     = [],
+    J2              = True,
+    qmc             = 'opt',
+    minmethod       = 'oneshiftonly', # adjust for oneshift
+    init_cycles     = 3,
+    init_minwalkers = 0.1,
+    cycles          = 3,
+    samples         = 25600,
+    dependencies    = (c4q,'orbitals'),
+    )
+
 qmc = generate_qmcpack(
-    #block        = True,
+    block        = True,
     identifier   = 'vmc',
-    path         = 'diamond/vmc_test',
-    job          = job(cores=16),
+    path         = 'diamond/vmc',
+    job          = job(cores=16,threads=4,app='qmcpack'),
+    input_type   = 'basic',
     system       = system,
     pseudos      = ['C.BFD.xml'],
-    input_type   = 'basic',
-    jastrows     = [],
     corrections  = [],
     qmc          = 'vmc',
-    dependencies = (c4q,'orbitals'),
+    dependencies = [(c4q,'orbitals'),
+                    (opt,'jastrow')],
+    )
+
+qmc = generate_qmcpack(
+    block        = True,
+    identifier   = 'dmc',
+    path         = 'diamond/dmc',
+    job          = job(cores=16,threads=4,app='qmcpack'),
+    input_type   = 'basic',
+    system       = system,
+    pseudos      = ['C.BFD.xml'],
+    corrections  = [],
+    qmc          = 'dmc',
+    vmc_samples  = 800,
+    eq_dmc       = True,
+    dependencies = [(c4q,'orbitals'),
+                    (opt,'jastrow')],
     )
 
 run_project()
