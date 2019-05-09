@@ -13,8 +13,7 @@ settings(
     generate_only = 0,
     sleep         = 3,
     machine       = 'ws16',
-    qprc          = \
-'/home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc',
+    qprc          = '/home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc',
     )
 
 # define run details
