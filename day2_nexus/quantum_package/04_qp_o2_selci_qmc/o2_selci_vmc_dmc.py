@@ -133,6 +133,8 @@ qmc = generate_qmcpack(
     system       = dimer,
     jastrows     = [],
     qmc          = 'vmc',
+    blocks       = 800,
+    steps        = 100,
     dependencies = [(c4q,'orbitals'),
                     (cc,'cuspcorr'),
                     (optJ3,'jastrow')],
