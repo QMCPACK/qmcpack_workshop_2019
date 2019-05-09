@@ -164,5 +164,5 @@ If you want to see what changes are required to run with pseudopotentials
 ``h2o_pp_hf.py``.
 
 In the next example we will look at how to run PySCF in periodic boundary 
-conditions by considering a DFT calculation of the diamond primitive cell. 
+conditions by considering an RHF calculation of the diamond primitive cell. 
 
