@@ -4,9 +4,8 @@ from pyscf.pbc import df, scf
 
 $system
 
-gdf = df.GDF(cell,kpts)
+gdf = df.FFTDF(cell,kpts)
 gdf.auxbasis = 'weigend'
-gdf.build()
 
 mf = scf.KRHF(cell,kpts).density_fit()
 mf.exxdiv  = 'ewald'

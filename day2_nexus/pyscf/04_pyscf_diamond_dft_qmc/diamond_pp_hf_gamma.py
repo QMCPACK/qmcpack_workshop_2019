@@ -22,12 +22,12 @@ system = generate_physical_system(
                C  0.0000  0.0000  0.0000
                C  0.8925  0.8925  0.8925
                ''',
-    #tiling   = (2,1,1),
+    tiling   = (2,1,1),
     kgrid    = (1,1,1),
     kshift   = (0,0,0),
     C        = 4,
     )
-system.structure.change_units('B')
+system.change_units('B') # currently a bug in pyscf with A units
 
 scf = generate_pyscf(
     identifier = 'scf',                      # log output goes to scf.out
