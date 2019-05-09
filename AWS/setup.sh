@@ -11,6 +11,46 @@ echo -- START `date`
 sudo apt-get -y update
 sudo apt-get -y install cmake g++ gfortran libboost-dev libhdf5-dev libxml2-dev 
 
+# Slow/unoptimized BLAS and LAPACK for expedient linking with QP and PySCF
+#sudo apt-get -y install libblas-dev liblapack-dev
+sudo apt-get -y install libopenblas-dev
+
+if [ ! -e $HOME/apps ]; then
+    mkdir $HOME/apps
+fi
+
+# QP install ahead of other apps
+sudo apt-get -y install ninja-build m4 unzip
+sudo apt-get -y install python # QP dependencies assume python availability
+cd $HOME/apps
+if [ ! -e qp2 ]; then
+    echo --- Building QP2 `date`
+    CC=gcc
+    CXX=g++
+    F90=gfortran
+    F95=gfortran
+    F77=gfortran
+    git clone https://github.com/QuantumPackage/qp2.git 
+    cd qp2
+    ./configure -i all
+# Default 
+#    ./configure -c config/gfortran.cfg
+# Workaround for AWS     
+    sed 's/-Ofast -march=native/-O3 -march=broadwell/g' config/gfortran.cfg >config/gfortran_safe.cfg
+    ./configure -c config/gfortran_safe.cfg
+# Failed attempt to use MKL. Is unreliable.    
+#    sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
+#    ./configure -c config/gfortran_mkl.cfg
+    source quantum_package.rc
+    ninja
+    cd plugins
+    git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
+    cd ../
+    qp_plugins install qmcpack
+    sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
+    ninja
+fi
+
 echo --- Intel files setup `date`
 # Setup Intel MKL and MPI
 # Instructions from https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo
@@ -59,15 +99,16 @@ echo --- Installing HDF5 `date`
     cd ..
 fi
 
-sudo apt-get -y install python-pip
-CC="mpigcc" HDF5_MPI="ON" HDF5_DIR=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi pip install --no-binary=h5py h5py
-
 # Requirements for full NEXUS demo:
-sudo apt-get -y install python-numpy python-scipy python-matplotlib python-pydot python-pip
+sudo apt-get -y install python-pip
+sudo apt-get -y install python-numpy python-scipy python-matplotlib python-pydot python-h5py
+
+pip install --user mpi4py # Maybe for AFQMC demo?
 pip install --user spglib
 pip install --user seekpath
 
-pip install --user mpi4py # Maybe for AFQMC demo?
+CC="mpigcc" HDF5_MPI="ON" HDF5_DIR=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi pip install --user --no-binary=h5py h5py
+
 
 # QMCPACK and patched QE
 echo --- QMCPACK and QE setup
@@ -86,12 +127,14 @@ fi
 
 # QE
 if [ ! -e $HOME/apps/qe-6.4/bin/pw.x ]; then
-echo --- Patching and Building QE `date`
+    echo --- Patching and Building QE `date`
     cd $HOME/apps/qmcpack/qmcpack/external_codes/quantum_espresso/
     ./download_and_patch_qe6.4.sh
     cd qe-6.4
     ./configure  CC=mpigcc MPIF90=mpif90 F77=mpif77 --with-scalapack=intel --with-hdf5=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi  >&configure.out
+    echo --- Make pw
     make pw >&make_pw.out
+    echo --- Make pwall
     make pwall >&make_pwall.out
     if [ -e $HOME/apps/qe-6.4 ]; then
 	rm -r -f $HOME/apps/qe-6.4
@@ -129,8 +172,6 @@ ln -sf ../../build_complex/bin/qmcpack qmcpack_complex
 cd ..
 fi
 
-# Get slow/unoptimized BLAS and LAPACK for expedient linking with QP and PySCF
-sudo apt-get install libblas-dev liblapack-dev
 
 # PySCF
 cd $HOME/apps
@@ -152,33 +193,6 @@ echo --- Building PySCF
 #    cmake -DBLA_VENDOR=Intel10_64lp_seq ..
     make
     cd ..
-fi
-
-# QP
-sudo apt-get -y install ninja-build m4 unzip
-cd $HOME/apps
-if [ ! -e qp2 ]; then
-    echo --- Building QP2
-    CC=gcc
-    CXX=g++
-    F90=gfortran
-    F95=gfortran
-    F77=gfortran
-    git clone https://github.com/QuantumPackage/qp2.git 
-    cd qp2
-    ./configure -i all
-# Failed attempt to use MKL. Is unreliable.    
-#    sed -e 's/-lblas -llapack/-L\/opt\/intel\/compilers_and_libraries_2019.3.199\/linux\/mkl\/lib\/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl/g' config/gfortran.cfg >config/gfortran_mkl.cfg
-#    ./configure -c config/gfortran_mkl.cfg
-    ./configure -c config/gfortran.cfg
-    source quantum_package.rc
-    ninja
-    cd plugins
-    git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
-    cd ../
-    qp_plugins install qmcpack
-    sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
-    ninja
 fi
 
 
