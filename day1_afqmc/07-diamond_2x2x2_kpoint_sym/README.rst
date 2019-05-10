@@ -16,17 +16,6 @@ Essentially all that changes in the integral generation step is that we pass the
 You will notice that now the Cholesky decomposition is done for each momentum transfer
 independently and the the form of the hamiltonian file has changed to be k-point dependent.
 
-In addition the input file `afqmc.xml` contains a different Hamiltonian xml block
-
-.. code-block:: xml
-
-        <Hamiltonian name="ham0" type="KPFactorized" info="info0">
-          <parameter name="filetype">hdf5</parameter>
-          <parameter name="filename">hamil.h5</parameter>
-        </Hamiltonian>
-
-where we see that the Hamiltonian type has changed from `Factorized` to `KPFactorized`.
-
 Apart from these changes, running the AFQMC simulation proceeds as before, however you
 should see a significant performance boost relative to the supercell simulations,
 particularly on GPU machines.
