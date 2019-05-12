@@ -95,7 +95,7 @@ Next we specify the Hamiltonian and wavefunction to use:
 
 .. code-block:: xml
 
-        <Hamiltonian name="ham0" type="Factorized" info="info0">
+        <Hamiltonian name="ham0" info="info0">
           <parameter name="filetype">hdf5</parameter>
           <parameter name="filename">hamil.h5</parameter>
         </Hamiltonian>
@@ -105,10 +105,10 @@ Next we specify the Hamiltonian and wavefunction to use:
           <parameter name="filename">wfn.dat</parameter>
         </Wavefunction>
 
-The above should be enough for most molecular calculations as we only use a `Factorized`
-Hamiltonian type, whilst a `NOMSD` (non-orthogonal multi-Slater determinant) wavefunction
-allows for a generalised wavefunction input in the form of a single (or multiple) matrix
-(matrices) of molecular orbital coefficients for the RHF calculation we perform here.
+The above should be enough for most calculations. A `NOMSD` (non-orthogonal multi-Slater
+determinant) wavefunction allows for a generalised wavefunction input in the form of a
+single (or multiple) matrix (matrices) of molecular orbital coefficients for the RHF
+calculation we perform here.
 
 We next set the walker options:
 

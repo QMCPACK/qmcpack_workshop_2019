@@ -8,7 +8,7 @@ from nexus import generate_cusp_correction
 from nexus import generate_qmcpack
 
 # note: you must source the QP config file before running this script
-#   source /your/path/to/quantum_package.rc
+#   source /home/ubuntu/apps/qp2/quantum_package.rc
 
 settings(
     results       = '',
@@ -16,7 +16,7 @@ settings(
     generate_only = 0,
     sleep         = 3,
     machine       = 'ws16',
-    qprc          = '/home/j1k/apps/quantum_package/qp2-2.0.0-beta/quantum_package.rc',
+    qprc          = '/home/ubuntu/apps/qp2/quantum_package.rc',
     )
 
 # define run details
@@ -89,6 +89,7 @@ cc = generate_cusp_correction(
 
 # optimize 2-body Jastrow
 optJ2 = generate_qmcpack(
+    block           = True,
     identifier      = 'opt',
     path            = 'O_dimer/optJ2',
     job             = qmc_job,
@@ -106,6 +107,7 @@ optJ2 = generate_qmcpack(
 
 # optimize 3-body Jastrow
 optJ3 = generate_qmcpack(
+    block           = True,
     identifier      = 'opt',
     path            = 'O_dimer/optJ3',
     job             = qmc_job,
@@ -124,12 +126,15 @@ optJ3 = generate_qmcpack(
 
 # run VMC with QMCPACK
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'vmc',
     path         = 'O_dimer/vmc',
     job          = qmc_job,
     system       = dimer,
     jastrows     = [],
     qmc          = 'vmc',
+    blocks       = 800,
+    steps        = 100,
     dependencies = [(c4q,'orbitals'),
                     (cc,'cuspcorr'),
                     (optJ3,'jastrow')],
@@ -137,6 +142,7 @@ qmc = generate_qmcpack(
 
 # run DMC with QMCPACK
 qmc = generate_qmcpack(
+    block        = True,
     identifier   = 'dmc',
     path         = 'O_dimer/dmc',
     job          = qmc_job,

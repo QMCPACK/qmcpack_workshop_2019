@@ -45,6 +45,7 @@ if [ ! -e qp2 ]; then
     ninja
     cd plugins
     git clone https://github.com/QuantumPackage/QMCPACK_ff.git qmcpack
+    sed -i s/"QMCPack"/"qmcpack"/ qmcpack/save_for_qmcpack.irp.f
     cd ../
     qp_plugins install qmcpack
     sed -i s/"  read_wf = .False."/"  \!read_wf = .False."/g    src/determinants/determinants.irp.f
@@ -119,10 +120,13 @@ fi
 cd qmcpack
 if [ ! -e qmcpack ]; then
     git clone https://github.com/QMCPACK/qmcpack.git
-else
     cd qmcpack
-    git pull
+    git checkout f95f17d2abb3cf3304553f3fd54aac3c712a1278 # development branch on 2019-05-09 "Nexus:pyscf expects kpoints..." fix, PR #1591
     cd ..
+#else
+#    cd qmcpack
+#    git pull
+#    cd ..
 fi
 
 # QE

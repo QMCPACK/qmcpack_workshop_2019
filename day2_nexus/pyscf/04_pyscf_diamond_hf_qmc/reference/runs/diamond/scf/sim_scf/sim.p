@@ -1,0 +1,11 @@
+Äcsimulation
+SimulationImage
+q)Åq}q(Uapp_nameqUpythonqU	image_dirqUsim_scfqUresdirqU./runs/diamond/scfq	Uerrfileq
+Uscf.errqUblock_subcascadeqâUinput_imageqUinput.pqUanalyzer_imageqU
+analyzer.pqUsubcascade_finishedqâUimresdirqU./runs/diamond/scf/sim_scfqU	sim_imageqUsim.pqUfailedqâUremdirqU./runs/diamond/scfqUinfileqUscf.pyqUfilesqc__builtin__
+set
+q]qhaÖRqUimlocdirqU./runs/diamond/scf/sim_scfq Uimremdirq!U./runs/diamond/scf/sim_scfq"Uoutputsq#NUoutfileq$Uscf.outq%Ufinishedq&àU
+process_idq'M‰aU
+sent_filesq(àUanalyzedq)àUpathq*Udiamond/scfq+U
+got_outputq,àUsetupq-àU	submittedq.àU	app_propsq/]q0(Userialq1Umpiq2eUlocdirq3U./runs/diamond/scfq4U
+identifierq5Uscfq6Ublockq7âub.

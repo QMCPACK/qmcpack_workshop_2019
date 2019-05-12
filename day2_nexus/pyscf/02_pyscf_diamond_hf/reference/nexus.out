@@ -1,0 +1,35 @@
+Applying user settings 
+
+Project starting 
+  checking for file collisions 
+  loading cascade images 
+    cascade 0 checking in 
+  checking cascade dependencies 
+    all simulation dependencies satisfied 
+  
+  starting runs:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  elapsed time 0.0 s  memory 102.21 MB 
+    Entering ./runs/diamond_pp_hf_gamma 0 
+      writing input files  0 scf 
+    Entering ./runs/diamond_pp_hf_gamma 0 
+      sending required files  0 scf 
+      submitting job  0 scf 
+    Entering ./runs/diamond_pp_hf_gamma 0 
+      Executing:  
+        export OMP_NUM_THREADS=16
+        python scf.py 
+
+  elapsed time 3.0 s  memory 185.19 MB 
+  elapsed time 6.1 s  memory 185.58 MB 
+  elapsed time 9.1 s  memory 185.85 MB 
+  elapsed time 12.2 s  memory 185.85 MB 
+  elapsed time 15.2 s  memory 318.09 MB 
+  elapsed time 18.2 s  memory 262.88 MB 
+  elapsed time 21.2 s  memory 102.22 MB 
+    Entering ./runs/diamond_pp_hf_gamma 0 
+      copying results  0 scf 
+    Entering ./runs/diamond_pp_hf_gamma 0 
+      analyzing  0 scf 
+
+Project finished
