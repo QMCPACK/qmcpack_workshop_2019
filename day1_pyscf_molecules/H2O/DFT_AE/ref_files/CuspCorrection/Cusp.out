@@ -1,0 +1,333 @@
+  Input file(s): Cusp.xml 
+
+=====================================================
+                    QMCPACK 3.7.9
+
+       (c) Copyright 2003-  QMCPACK developers
+
+                    Please cite:
+ J. Kim et al. J. Phys. Cond. Mat. 30 195901 (2018)
+      https://doi.org/10.1088/1361-648X/aab9c3
+
+  Git branch: develop
+  Last git commit: f95f17d2abb3cf3304553f3fd54aac3c712a1278
+  Last git commit date: Thu May 9 13:52:50 2019 -0500
+  Last git commit subject: Merge pull request #1591 from jtkrogel/nexus_workshop2
+=====================================================
+  Global options 
+
+  Total number of MPI ranks = 1
+  Number of MPI groups      = 1
+  MPI group ID              = 0
+  Number of ranks in group  = 1
+  MPI ranks per node        = 1
+  OMP 1st level threads     = 8
+  OMP nested threading disabled or only 1 thread on the 2nd level
+
+  Precision used in this calculation, see definitions in the manual:
+  Base precision      = double
+  Full precision      = double
+
+  Structure-of-arrays (SoA) optimization enabled
+
+  Input XML = Cusp.xml
+
+  Project = H2O_AE_DFT
+  date    = 2019-05-12 00:34:30 CDT
+  host    = abenali
+
+ Random Number
+ -------------
+  Offset for the random number seeds based on time: 102
+
+  Range of prime numbers to use as seeds over processors and threads = 569-613
+
+
+ Particle Set 
+ ------------
+  Name: ion0
+  All the species have the same mass 1
+  Particle set size: 3
+
+ Particle Set 
+ ------------
+  Name: e
+  All the species have the same mass 1
+  Particle set size: 10
+
+ Wavefunction setup: 
+ ------------------- 
+  Name: psi0
+  LCAO: SoaAtomicBasisSet<MultiQuintic,1>
+Reading BasisSet from HDF5 file:../H2O_AE_DFT.h5
+<input node="atomicBasisSet" name="cc-pvtz" expandYlm="pyscf" angular="spherical" elementType="O" normalized="no" type="Numerical" expM="0" />
+  AO BasisSet for O
+   Spherical Harmonics contain (-1)^m factor
+   Angular momentum m expanded as -l, ... ,l, with the exception of L=1 (1,-1,0)
+   Grid is created by the input paremters in h5
+    Using log grid ri = 1e-06 rf = 100 npts = 1001
+   R(n,l,m,s) 0 0 0 0
+   R(n,l,m,s) 1 0 0 0
+   R(n,l,m,s) 2 0 0 0
+   R(n,l,m,s) 3 0 0 0
+   R(n,l,m,s) 4 1 0 0
+   R(n,l,m,s) 5 1 0 0
+   R(n,l,m,s) 6 1 0 0
+   R(n,l,m,s) 7 2 0 0
+   R(n,l,m,s) 8 2 0 0
+   R(n,l,m,s) 9 3 0 0
+Expanding Ylm as L=1 as (1,-1,0) and L>1 as -l,-l+1,...,l-1,l
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 7 spherical orbitals
+  Setting cutoff radius 7.72681
+
+   Maximum Angular Momentum  = 3
+   Number of Radial functors = 10
+   Basis size                = 30
+
+<input node="atomicBasisSet" name="cc-pvtz" expandYlm="pyscf" angular="spherical" elementType="H" normalized="no" type="Numerical" expM="0" />
+  AO BasisSet for H
+   Spherical Harmonics contain (-1)^m factor
+   Angular momentum m expanded as -l, ... ,l, with the exception of L=1 (1,-1,0)
+   Grid is created by the input paremters in h5
+    Using log grid ri = 1e-06 rf = 100 npts = 1001
+   R(n,l,m,s) 0 0 0 0
+   R(n,l,m,s) 1 0 0 0
+   R(n,l,m,s) 2 0 0 0
+   R(n,l,m,s) 3 1 0 0
+   R(n,l,m,s) 4 1 0 0
+   R(n,l,m,s) 5 2 0 0
+Expanding Ylm as L=1 as (1,-1,0) and L>1 as -l,-l+1,...,l-1,l
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 5 spherical orbitals
+  Setting cutoff radius 11.1686
+
+   Maximum Angular Momentum  = 2
+   Number of Radial functors = 6
+   Basis size                = 14
+
+  Created SPOSet builder named 'LCAOBSet' of type molecularorbital
+Reuse SPOSetBuilder "LCAOBSet" type MolecularOrbital
+  Building SPOSet '' with '' basis set.
+Reading cusp info from : ../CuspCorrection/updet.cuspInfo.xml
+Could not find precomputed cusp data for spo set: updet
+Recalculating data.
+Working on Center 0
+Working on Mo 0
+Working on Mo 1
+Working on Mo 2
+Working on Mo 3
+Working on Mo 4
+Working on Center 1
+Working on Mo 0
+Working on Mo 1
+Working on Mo 2
+Working on Mo 3
+Working on Mo 4
+Working on Center 2
+Working on Mo 0
+Working on Mo 1
+Working on Mo 2
+Working on Mo 3
+Working on Mo 4
+Saving resulting cusp Info xml block to: updet.cuspInfo.xml
+Reuse SPOSetBuilder "LCAOBSet" type MolecularOrbital
+  Building SPOSet '' with '' basis set.
+Reading cusp info from : ../CuspCorrection/downdet.cuspInfo.xml
+Could not find precomputed cusp data for spo set: downdet
+Recalculating data.
+Working on Center 0
+Working on Mo 0
+Working on Mo 1
+Working on Mo 2
+Working on Mo 3
+Working on Mo 4
+Working on Center 1
+Working on Mo 0
+Working on Mo 1
+Working on Mo 2
+Working on Mo 3
+Working on Mo 4
+Working on Center 2
+Working on Mo 0
+Working on Mo 1
+Working on Mo 2
+Working on Mo 3
+Working on Mo 4
+Saving resulting cusp Info xml block to: downdet.cuspInfo.xml
+  Creating a determinant updet group=0 sposet=updet
+  Reusing a SPO set updet
+Using DiracDeterminant with DelayedUpdate engine
+Using rank-1 Sherman-Morrison Fahy update
+
+  Creating a determinant downdet group=1 sposet=downdet
+  Reusing a SPO set downdet
+Using DiracDeterminant with DelayedUpdate engine
+Using rank-1 Sherman-Morrison Fahy update
+
+  FermionWF = SlaterDet
+  QMCHamiltonian::addOperator Kinetic to H, physical Hamiltonian 
+  QMCHamiltonian::addOperator ElecElec to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named ElecElec
+  QMCHamiltonian::addOperator IonIon to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named IonIon
+  QMCHamiltonian::addOperator IonElec to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named IonElec
+
+  QMCHamiltonian::add2WalkerProperty added
+    4 to P::PropertyList 
+    0 to P::Collectables 
+    starting Index of the observables in P::PropertyList = 9
+ParticleSetPool::randomize 
+<init source="ion0" target="e">
+</init>
+  Initialization Execution time = 6.701 secs
+=========================================================
+ Summary of QMC systems 
+=========================================================
+ParticleSetPool has: 
+
+  ParticleSet 'e' contains 10 particles :  u(5) d(5)
+
+    u  7.2192240619e-01 -1.9805378537e-02  2.7239264584e-01
+    u -5.2735937641e-01 -1.9526525347e-01  6.7762659349e-01
+    u -4.3292144135e-01 -2.6575897699e-01 -2.9417299948e-01
+    u  4.3518567499e-01  1.3522917178e-01 -3.4088647414e-01
+    u -5.1967621646e-01  1.8047212481e+00 -1.2247900783e+00
+    d -7.1266580776e-01 -4.6296848986e-02  1.0291484874e-01
+    d  3.0977221589e-01 -2.6813198581e-01 -3.7523037002e-01
+    d  5.6207427946e-01 -3.4322403438e-02 -2.3334281493e-01
+    d  2.3073084879e-01  5.2379828150e-01 -2.2165911105e-01
+    d -5.5926879470e-01 -1.4348391369e+00 -1.3463772630e+00
+
+  Distance table for similar particles (A-A):
+    source/target: e
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+  Distance table for dissimilar particles (A-B):
+    source: ion0  target: e
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+
+  ParticleSet 'ion0' contains 3 particles :  H(2) O(1)
+
+    H  0.0000000000e+00  1.4309006215e+00 -8.8665949765e-01
+    H  0.0000000000e+00 -1.4309006215e+00 -8.8665949765e-01
+    O  0.0000000000e+00  0.0000000000e+00  2.2166487441e-01
+
+  Distance table for similar particles (A-A):
+    source/target: ion0
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+
+  Hamiltonian h0
+  Kinetic         Kinetic energy
+  ElecElec        CoulombAA source/target e
+
+  IonIon          CoulombAA source/target ion0
+
+  IonElec         CoulombAB source=ion0
+
+
+
+=========================================================
+  Start VMC
+  File Root H2O_AE_DFT.s000 append = no 
+=========================================================
+  Adding 8 walkers to 0 existing sets
+  Total number of walkers: 8.0000000000e+00
+  Total weight: 8.0000000000e+00
+  Resetting Properties of the walkers 1 x 13
+
+<vmc function="put">
+  qmc_counter=0  my_counter=0
+  time step      = 5.0000000000e-02
+  blocks         = 1000
+  steps          = 30
+  substeps       = 30
+  current        = 0
+  target samples = 8.0000000000e+01
+  walkers/mpi    = 8
+
+  stepsbetweensamples = 3000
+<parameter name="blocks" condition="int">1000</parameter>
+<parameter name="blocks_between_recompute" condition="int">0</parameter>
+<parameter name="check_properties" condition="int">100</parameter>
+<parameter name="checkproperties" condition="int">100</parameter>
+<parameter name="current" condition="int">0</parameter>
+<parameter name="dmcwalkersperthread" condition="real">1.0000000000e+01</parameter>
+<parameter name="maxcpusecs" condition="real">3.6000000000e+05</parameter>
+<parameter name="record_configs" condition="int">0</parameter>
+<parameter name="record_walkers" condition="int">3000</parameter>
+<parameter name="recordconfigs" condition="int">0</parameter>
+<parameter name="recordwalkers" condition="int">3000</parameter>
+<parameter name="rewind" condition="int">0</parameter>
+<parameter name="samples" condition="real">8.0000000000e+01</parameter>
+<parameter name="samplesperthread" condition="real">1.0000000000e+01</parameter>
+<parameter name="steps" condition="int">30</parameter>
+<parameter name="stepsbetweensamples" condition="int">3000</parameter>
+<parameter name="store_configs" condition="int">0</parameter>
+<parameter name="storeconfigs" condition="int">0</parameter>
+<parameter name="sub_steps" condition="int">30</parameter>
+<parameter name="substeps" condition="int">30</parameter>
+<parameter name="tau" condition="au">5.0000000000e-02</parameter>
+<parameter name="time_step" condition="au">5.0000000000e-02</parameter>
+<parameter name="timestep" condition="au">5.0000000000e-02</parameter>
+<parameter name="use_drift" condition="string">no</parameter>
+<parameter name="usedrift" condition="string">no</parameter>
+<parameter name="walkers" condition="int">8</parameter>
+<parameter name="warmup_steps" condition="int">100</parameter>
+<parameter name="warmupsteps" condition="int">100</parameter>
+  DumpConfig==false Nothing (configurations, state) will be saved.
+  Walker Samples are dumped every 3000 steps.
+</vmc>
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  CloneManager::makeClones makes 8 clones for W/Psi/H.
+  Cloning methods for both Psi and H are used
+===== Memory Usage before cloning =====
+Available memory on node 0, free + buffers : 17370 MB
+Memory footprint by rank 0 on node 0       : 49 MB
+==================================================
+===== Memory Usage after cloning =====
+Available memory on node 0, free + buffers : 17370 MB
+Memory footprint by rank 0 on node 0       : 49 MB
+==================================================
+  Initial partition of walkers 0 1 2 3 4 5 6 7 8 
+
+  Using Particle by Particle moves
+  Walker moves without drift
+  Total Sample Size   =80
+  Walker distribution on root = 0 1 2 3 4 5 6 7 8 
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 17370 MB
+Memory footprint by rank 0 on node 0       : 49 MB
+==================================================
+  Anonymous Buffer size per walker : 2944 Bytes.
+MEMORY increase 0 MB VMC::resetRun
+====================================================
+  SimpleFixedNodeBranch::finalize after a VMC block
+    QMC counter        = 0
+    time step          = 0.05
+    reference energy   = -75.8559
+    reference variance = 6.70976
+====================================================
+  QMC Execution time = 1.6437e+01 secs
+  Total Execution time = 1.6439e+01 secs
+
+=========================================================
+  A new xml input file : H2O_AE_DFT.s000.cont.xml

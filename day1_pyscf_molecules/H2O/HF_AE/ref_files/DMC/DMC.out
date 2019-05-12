@@ -1,0 +1,608 @@
+  Input file(s): DMC.xml 
+
+=====================================================
+                    QMCPACK 3.7.9
+
+       (c) Copyright 2003-  QMCPACK developers
+
+                    Please cite:
+ J. Kim et al. J. Phys. Cond. Mat. 30 195901 (2018)
+      https://doi.org/10.1088/1361-648X/aab9c3
+
+  Git branch: develop
+  Last git commit: f95f17d2abb3cf3304553f3fd54aac3c712a1278
+  Last git commit date: Thu May 9 13:52:50 2019 -0500
+  Last git commit subject: Merge pull request #1591 from jtkrogel/nexus_workshop2
+=====================================================
+  Global options 
+
+  Total number of MPI ranks = 1
+  Number of MPI groups      = 1
+  MPI group ID              = 0
+  Number of ranks in group  = 1
+  MPI ranks per node        = 1
+  OMP 1st level threads     = 8
+  OMP nested threading disabled or only 1 thread on the 2nd level
+
+  Precision used in this calculation, see definitions in the manual:
+  Base precision      = double
+  Full precision      = double
+
+  Structure-of-arrays (SoA) optimization enabled
+
+  Input XML = DMC.xml
+
+  Project = H2O_AE_HF
+  date    = 2019-05-12 00:04:30 CDT
+  host    = abenali
+
+ Random Number
+ -------------
+  Offset for the random number seeds based on time: 350
+
+  Range of prime numbers to use as seeds over processors and threads = 2377-2423
+
+
+ Particle Set 
+ ------------
+  Name: ion0
+  All the species have the same mass 1
+  Particle set size: 3
+
+ Particle Set 
+ ------------
+  Name: e
+  All the species have the same mass 1
+  Particle set size: 10
+
+ Wavefunction setup: 
+ ------------------- 
+  Name: psi0
+  LCAO: SoaAtomicBasisSet<MultiQuintic,1>
+Reading BasisSet from HDF5 file:../H2O_AE_HF.h5
+<input node="atomicBasisSet" name="cc-pvtz" expandYlm="pyscf" angular="spherical" elementType="O" normalized="no" type="Numerical" expM="0" />
+  AO BasisSet for O
+   Spherical Harmonics contain (-1)^m factor
+   Angular momentum m expanded as -l, ... ,l, with the exception of L=1 (1,-1,0)
+   Grid is created by the input paremters in h5
+    Using log grid ri = 1e-06 rf = 100 npts = 1001
+   R(n,l,m,s) 0 0 0 0
+   R(n,l,m,s) 1 0 0 0
+   R(n,l,m,s) 2 0 0 0
+   R(n,l,m,s) 3 0 0 0
+   R(n,l,m,s) 4 1 0 0
+   R(n,l,m,s) 5 1 0 0
+   R(n,l,m,s) 6 1 0 0
+   R(n,l,m,s) 7 2 0 0
+   R(n,l,m,s) 8 2 0 0
+   R(n,l,m,s) 9 3 0 0
+Expanding Ylm as L=1 as (1,-1,0) and L>1 as -l,-l+1,...,l-1,l
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 7 spherical orbitals
+  Setting cutoff radius 7.72681
+
+   Maximum Angular Momentum  = 3
+   Number of Radial functors = 10
+   Basis size                = 30
+
+<input node="atomicBasisSet" name="cc-pvtz" expandYlm="pyscf" angular="spherical" elementType="H" normalized="no" type="Numerical" expM="0" />
+  AO BasisSet for H
+   Spherical Harmonics contain (-1)^m factor
+   Angular momentum m expanded as -l, ... ,l, with the exception of L=1 (1,-1,0)
+   Grid is created by the input paremters in h5
+    Using log grid ri = 1e-06 rf = 100 npts = 1001
+   R(n,l,m,s) 0 0 0 0
+   R(n,l,m,s) 1 0 0 0
+   R(n,l,m,s) 2 0 0 0
+   R(n,l,m,s) 3 1 0 0
+   R(n,l,m,s) 4 1 0 0
+   R(n,l,m,s) 5 2 0 0
+Expanding Ylm as L=1 as (1,-1,0) and L>1 as -l,-l+1,...,l-1,l
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 5 spherical orbitals
+  Setting cutoff radius 11.1686
+
+   Maximum Angular Momentum  = 2
+   Number of Radial functors = 6
+   Basis size                = 14
+
+  Created SPOSet builder named 'LCAOBSet' of type molecularorbital
+Reuse SPOSetBuilder "LCAOBSet" type MolecularOrbital
+  Building SPOSet '' with '' basis set.
+Reading cusp info from : ../CuspCorrection/updet.cuspInfo.xml
+Found precomputed cusp data for spo set: updet
+Reuse SPOSetBuilder "LCAOBSet" type MolecularOrbital
+  Building SPOSet '' with '' basis set.
+Reading cusp info from : ../CuspCorrection/downdet.cuspInfo.xml
+Found precomputed cusp data for spo set: downdet
+  Creating a determinant updet group=0 sposet=updet
+  Reusing a SPO set updet
+Using DiracDeterminant with DelayedUpdate engine
+Using rank-1 Sherman-Morrison Fahy update
+
+  Creating a determinant downdet group=1 sposet=downdet
+  Reusing a SPO set downdet
+Using DiracDeterminant with DelayedUpdate engine
+Using rank-1 Sherman-Morrison Fahy update
+
+  FermionWF = SlaterDet
+
+   Jastrow
+   -------
+    Name: J2   Type: Two-Body   Function: Bspline
+
+    Radial function for species: u - u
+     Number of parameters: 20
+     Cusp: -0.25
+     Cutoff radius: 10
+
+      Name         Value Type Recompute Use Index
+     ----- ------------- ---- --------- --- -----
+      uu_0  2.304723e-01    1         1  ON     0
+      uu_1  1.431313e-01    1         1  ON     1
+      uu_2  6.801155e-02    1         1  ON     2
+      uu_3  1.486978e-02    1         1  ON     3
+      uu_4 -2.363531e-02    1         1  ON     4
+      uu_5 -4.946907e-02    1         1  ON     5
+      uu_6 -6.421160e-02    1         1  ON     6
+      uu_7 -7.452641e-02    1         1  ON     7
+      uu_8 -7.885969e-02    1         1  ON     8
+      uu_9 -6.890731e-02    1         1  ON     9
+     uu_10 -4.812234e-02    1         1  ON    10
+     uu_11 -3.673890e-02    1         1  ON    11
+     uu_12 -1.804922e-02    1         1  ON    12
+     uu_13 -9.297368e-03    1         1  ON    13
+     uu_14 -1.511809e-03    1         1  ON    14
+     uu_15  7.060041e-04    1         1  ON    15
+     uu_16  2.555055e-04    1         1  ON    16
+     uu_17  2.129752e-03    1         1  ON    17
+     uu_18  7.164797e-03    1         1  ON    18
+     uu_19  5.944447e-03    1         1  ON    19
+
+    Radial function for species: u - d
+     Number of parameters: 20
+     Cusp: -0.5
+     Cutoff radius: 10
+
+      Name         Value Type Recompute Use Index
+     ----- ------------- ---- --------- --- -----
+      ud_0  4.868368e-01    1         1  ON     0
+      ud_1  2.931843e-01    1         1  ON     1
+      ud_2  1.515811e-01    1         1  ON     2
+      ud_3  6.153657e-02    1         1  ON     3
+      ud_4  8.264459e-03    1         1  ON     4
+      ud_5 -2.157423e-02    1         1  ON     5
+      ud_6 -4.330362e-02    1         1  ON     6
+      ud_7 -6.262066e-02    1         1  ON     7
+      ud_8 -7.889071e-02    1         1  ON     8
+      ud_9 -8.390115e-02    1         1  ON     9
+     ud_10 -8.060244e-02    1         1  ON    10
+     ud_11 -8.433926e-02    1         1  ON    11
+     ud_12 -8.531762e-02    1         1  ON    12
+     ud_13 -9.089599e-02    1         1  ON    13
+     ud_14 -8.388092e-02    1         1  ON    14
+     ud_15 -6.031705e-02    1         1  ON    15
+     ud_16 -4.551426e-02    1         1  ON    16
+     ud_17 -3.108227e-02    1         1  ON    17
+     ud_18 -1.706580e-02    1         1  ON    18
+     ud_19 -1.162855e-02    1         1  ON    19
+
+
+   Jastrow
+   -------
+    Name: J1   Type: One-Body   Function: Bspline
+
+    Radial function for element: H
+     Number of parameters: 10
+     Cusp: 0
+     Cutoff radius: 5
+
+     Name         Value Type Recompute Use Index
+     ---- ------------- ---- --------- --- -----
+     eH_0 -1.742326e-01    1         1  ON     0
+     eH_1 -1.500907e-01    1         1  ON     1
+     eH_2 -1.076640e-01    1         1  ON     2
+     eH_3 -7.793556e-02    1         1  ON     3
+     eH_4 -7.060282e-02    1         1  ON     4
+     eH_5 -6.416942e-02    1         1  ON     5
+     eH_6 -4.991912e-02    1         1  ON     6
+     eH_7 -3.982053e-02    1         1  ON     7
+     eH_8 -2.819809e-02    1         1  ON     8
+     eH_9 -1.791770e-02    1         1  ON     9
+
+    Radial function for element: O
+     Number of parameters: 10
+     Cusp: 0
+     Cutoff radius: 5
+
+     Name         Value Type Recompute Use Index
+     ---- ------------- ---- --------- --- -----
+     eO_0 -1.813001e+00    1         1  ON     0
+     eO_1 -1.731021e+00    1         1  ON     1
+     eO_2 -1.264638e+00    1         1  ON     2
+     eO_3 -7.150891e-01    1         1  ON     3
+     eO_4 -1.994846e-01    1         1  ON     4
+     eO_5  1.532406e-01    1         1  ON     5
+     eO_6  2.512689e-01    1         1  ON     6
+     eO_7  3.667205e-01    1         1  ON     7
+     eO_8  3.682055e-01    1         1  ON     8
+     eO_9  3.087153e-01    1         1  ON     9
+
+
+   Jastrow
+   -------
+    Name: J3   Type: eeI   Function: polynomial
+
+     Ion: H   electron-electron: u - u
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+        Name         Value Type Recompute Use Index
+      ------ ------------- ---- --------- --- -----
+       uuH_0 -3.851673e-03    1         1  ON     0
+       uuH_1  6.683366e-03    1         1  ON     1
+       uuH_2  1.144078e-02    1         1  ON     2
+       uuH_3 -5.393254e-03    1         1  ON     3
+       uuH_4 -8.074455e-03    1         1  ON     4
+       uuH_5 -5.671687e-04    1         1  ON     5
+       uuH_6  1.915623e-02    1         1  ON     6
+       uuH_7 -1.064130e-03    1         1  ON     7
+       uuH_8  2.616724e-02    1         1  ON     8
+       uuH_9 -7.342293e-03    1         1  ON     9
+      uuH_10 -9.498207e-03    1         1  ON    10
+      uuH_11 -9.596378e-03    1         1  ON    11
+      uuH_12 -1.401779e-02    1         1  ON    12
+      uuH_13  5.232836e-03    1         1  ON    13
+      uuH_14  9.205959e-03    1         1  ON    14
+      uuH_15  6.816881e-04    1         1  ON    15
+      uuH_16  7.733184e-03    1         1  ON    16
+      uuH_17  7.558688e-03    1         1  ON    17
+      uuH_18  1.695627e-02    1         1  ON    18
+      uuH_19  5.006824e-03    1         1  ON    19
+      uuH_20 -1.440375e-03    1         1  ON    20
+      uuH_21 -1.018941e-02    1         1  ON    21
+      uuH_22  1.657541e-03    1         1  ON    22
+      uuH_23 -9.158905e-04    1         1  ON    23
+      uuH_24  4.698566e-03    1         1  ON    24
+      uuH_25 -1.536224e-03    1         1  ON    25
+
+     Ion: H   electron-electron: u - d
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+        Name         Value Type Recompute Use Index
+      ------ ------------- ---- --------- --- -----
+       udH_0  1.357633e-03    1         1  ON     0
+       udH_1  2.256304e-03    1         1  ON     1
+       udH_2  6.895968e-03    1         1  ON     2
+       udH_3 -2.571274e-03    1         1  ON     3
+       udH_4 -4.479339e-03    1         1  ON     4
+       udH_5  4.123678e-04    1         1  ON     5
+       udH_6  1.212279e-02    1         1  ON     6
+       udH_7 -1.317068e-02    1         1  ON     7
+       udH_8  1.524773e-02    1         1  ON     8
+       udH_9 -9.766982e-03    1         1  ON     9
+      udH_10 -3.591227e-03    1         1  ON    10
+      udH_11 -5.884027e-03    1         1  ON    11
+      udH_12 -1.060360e-02    1         1  ON    12
+      udH_13  5.925166e-03    1         1  ON    13
+      udH_14  4.296534e-03    1         1  ON    14
+      udH_15  1.252403e-03    1         1  ON    15
+      udH_16  3.026813e-02    1         1  ON    16
+      udH_17 -5.732888e-03    1         1  ON    17
+      udH_18  1.707416e-02    1         1  ON    18
+      udH_19  6.707488e-03    1         1  ON    19
+      udH_20 -1.606458e-02    1         1  ON    20
+      udH_21 -4.095751e-03    1         1  ON    21
+      udH_22 -8.728078e-04    1         1  ON    22
+      udH_23  8.840395e-03    1         1  ON    23
+      udH_24 -5.280346e-04    1         1  ON    24
+      udH_25  2.985750e-04    1         1  ON    25
+
+     Ion: O   electron-electron: u - u
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+        Name         Value Type Recompute Use Index
+      ------ ------------- ---- --------- --- -----
+       uuO_0  9.197699e-05    1         1  ON     0
+       uuO_1  5.470650e-03    1         1  ON     1
+       uuO_2  4.481259e-03    1         1  ON     2
+       uuO_3 -1.009269e-02    1         1  ON     3
+       uuO_4 -9.332314e-03    1         1  ON     4
+       uuO_5  1.266079e-05    1         1  ON     5
+       uuO_6  6.810050e-03    1         1  ON     6
+       uuO_7 -5.301659e-03    1         1  ON     7
+       uuO_8  1.951840e-02    1         1  ON     8
+       uuO_9 -5.266215e-04    1         1  ON     9
+      uuO_10 -1.302393e-02    1         1  ON    10
+      uuO_11  1.515366e-02    1         1  ON    11
+      uuO_12 -1.874104e-02    1         1  ON    12
+      uuO_13  1.367377e-02    1         1  ON    13
+      uuO_14  1.362328e-02    1         1  ON    14
+      uuO_15  8.836005e-04    1         1  ON    15
+      uuO_16 -1.691867e-02    1         1  ON    16
+      uuO_17  4.627266e-02    1         1  ON    17
+      uuO_18 -5.263295e-02    1         1  ON    18
+      uuO_19  2.705322e-02    1         1  ON    19
+      uuO_20  3.433874e-03    1         1  ON    20
+      uuO_21  5.912726e-03    1         1  ON    21
+      uuO_22 -5.668047e-03    1         1  ON    22
+      uuO_23 -4.206604e-03    1         1  ON    23
+      uuO_24 -5.505394e-04    1         1  ON    24
+      uuO_25  1.279325e-03    1         1  ON    25
+
+     Ion: O   electron-electron: u - d
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+        Name         Value Type Recompute Use Index
+      ------ ------------- ---- --------- --- -----
+       udO_0 -6.570682e-04    1         1  ON     0
+       udO_1 -3.366090e-03    1         1  ON     1
+       udO_2  2.736088e-03    1         1  ON     2
+       udO_3  5.220409e-04    1         1  ON     3
+       udO_4  5.702751e-04    1         1  ON     4
+       udO_5  3.526141e-04    1         1  ON     5
+       udO_6 -1.182724e-02    1         1  ON     6
+       udO_7  5.610496e-03    1         1  ON     7
+       udO_8  7.522294e-03    1         1  ON     8
+       udO_9  1.328491e-02    1         1  ON     9
+      udO_10  4.777513e-03    1         1  ON    10
+      udO_11 -1.911549e-02    1         1  ON    11
+      udO_12 -4.277400e-03    1         1  ON    12
+      udO_13 -1.171077e-02    1         1  ON    13
+      udO_14  2.348793e-03    1         1  ON    14
+      udO_15  8.074868e-04    1         1  ON    15
+      udO_16 -1.276362e-02    1         1  ON    16
+      udO_17 -2.473693e-02    1         1  ON    17
+      udO_18  4.276756e-02    1         1  ON    18
+      udO_19 -2.245816e-03    1         1  ON    19
+      udO_20  1.170715e-02    1         1  ON    20
+      udO_21 -1.155382e-02    1         1  ON    21
+      udO_22  1.542196e-03    1         1  ON    22
+      udO_23 -5.787886e-03    1         1  ON    23
+      udO_24  4.476859e-03    1         1  ON    24
+      udO_25 -9.798027e-04    1         1  ON    25
+
+  QMCHamiltonian::addOperator Kinetic to H, physical Hamiltonian 
+  QMCHamiltonian::addOperator ElecElec to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named ElecElec
+  QMCHamiltonian::addOperator IonIon to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named IonIon
+  QMCHamiltonian::addOperator IonElec to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named IonElec
+
+  QMCHamiltonian::add2WalkerProperty added
+    4 to P::PropertyList 
+    0 to P::Collectables 
+    starting Index of the observables in P::PropertyList = 9
+ParticleSetPool::randomize 
+<init source="ion0" target="e">
+</init>
+  Initialization Execution time = 0.05523 secs
+=========================================================
+ Summary of QMC systems 
+=========================================================
+ParticleSetPool has: 
+
+  ParticleSet 'e' contains 10 particles :  u(5) d(5)
+
+    u -6.8269647033e-01 -8.0164942355e-02  4.4890182515e-01
+    u -6.7146738767e-01  1.4535035360e-01  4.5001185245e-01
+    u  4.9473062115e-01 -2.1452630984e-01 -2.6140612995e-01
+    u -6.8781803497e-01 -5.3278962569e-03 -4.2012024314e-03
+    u  6.3722312420e-01  1.2766514698e+00 -1.1937285608e+00
+    d -6.6799168338e-02  4.1563260986e-01  8.1066820640e-01
+    d -5.2711752781e-01  4.7930331222e-01  3.5032320931e-01
+    d -7.9161444686e-02 -4.3201654564e-01 -3.5386330939e-01
+    d  5.2352473245e-02  6.7335740716e-01 -3.9077414341e-02
+    d  7.4957968861e-02 -2.1507806706e+00 -9.0373398527e-01
+
+  Distance table for similar particles (A-A):
+    source/target: e
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+  Distance table for dissimilar particles (A-B):
+    source: ion0  target: e
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+
+  ParticleSet 'ion0' contains 3 particles :  H(2) O(1)
+
+    H  0.0000000000e+00  1.4309006215e+00 -8.8665949765e-01
+    H  0.0000000000e+00 -1.4309006215e+00 -8.8665949765e-01
+    O  0.0000000000e+00  0.0000000000e+00  2.2166487441e-01
+
+  Distance table for similar particles (A-A):
+    source/target: ion0
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+
+  Hamiltonian h0
+  Kinetic         Kinetic energy
+  ElecElec        CoulombAA source/target e
+
+  IonIon          CoulombAA source/target ion0
+
+  IonElec         CoulombAB source=ion0
+
+
+
+=========================================================
+  Start VMC
+  File Root H2O_AE_HF.s000 append = no 
+=========================================================
+  Adding 8 walkers to 0 existing sets
+  Total number of walkers: 8.0000000000e+00
+  Total weight: 8.0000000000e+00
+  Resetting Properties of the walkers 1 x 13
+
+<vmc function="put">
+  qmc_counter=0  my_counter=0
+  time step      = 1.0000000000e-01
+  blocks         = 200
+  steps          = 1
+  substeps       = 30
+  current        = 0
+  target samples = 8.0000000000e+00
+  walkers/mpi    = 8
+
+  stepsbetweensamples = 200
+<parameter name="blocks" condition="int">200</parameter>
+<parameter name="blocks_between_recompute" condition="int">0</parameter>
+<parameter name="check_properties" condition="int">100</parameter>
+<parameter name="checkproperties" condition="int">100</parameter>
+<parameter name="current" condition="int">0</parameter>
+<parameter name="dmcwalkersperthread" condition="real">1.0000000000e+00</parameter>
+<parameter name="maxcpusecs" condition="real">3.6000000000e+05</parameter>
+<parameter name="record_configs" condition="int">0</parameter>
+<parameter name="record_walkers" condition="int">200</parameter>
+<parameter name="recordconfigs" condition="int">0</parameter>
+<parameter name="recordwalkers" condition="int">200</parameter>
+<parameter name="rewind" condition="int">0</parameter>
+<parameter name="samples" condition="real">8.0000000000e+00</parameter>
+<parameter name="samplesperthread" condition="real">1.0000000000e+00</parameter>
+<parameter name="steps" condition="int">1</parameter>
+<parameter name="stepsbetweensamples" condition="int">200</parameter>
+<parameter name="store_configs" condition="int">0</parameter>
+<parameter name="storeconfigs" condition="int">0</parameter>
+<parameter name="sub_steps" condition="int">30</parameter>
+<parameter name="substeps" condition="int">30</parameter>
+<parameter name="tau" condition="au">1.0000000000e-01</parameter>
+<parameter name="time_step" condition="au">1.0000000000e-01</parameter>
+<parameter name="timestep" condition="au">1.0000000000e-01</parameter>
+<parameter name="use_drift" condition="string">no</parameter>
+<parameter name="usedrift" condition="string">no</parameter>
+<parameter name="walkers" condition="int">8</parameter>
+<parameter name="warmup_steps" condition="int">100</parameter>
+<parameter name="warmupsteps" condition="int">100</parameter>
+  DumpConfig==false Nothing (configurations, state) will be saved.
+  Walker Samples are dumped every 200 steps.
+</vmc>
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  CloneManager::makeClones makes 8 clones for W/Psi/H.
+  Cloning methods for both Psi and H are used
+===== Memory Usage before cloning =====
+Available memory on node 0, free + buffers : 17375 MB
+Memory footprint by rank 0 on node 0       : 47 MB
+==================================================
+===== Memory Usage after cloning =====
+Available memory on node 0, free + buffers : 17373 MB
+Memory footprint by rank 0 on node 0       : 49 MB
+==================================================
+  Initial partition of walkers 0 1 2 3 4 5 6 7 8 
+
+  Using Particle by Particle moves
+  Walker moves without drift
+  Total Sample Size   =8
+  Walker distribution on root = 0 1 2 3 4 5 6 7 8 
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 17373 MB
+Memory footprint by rank 0 on node 0       : 50 MB
+==================================================
+  Anonymous Buffer size per walker : 4352 Bytes.
+MEMORY increase 0 MB VMC::resetRun
+====================================================
+  SimpleFixedNodeBranch::finalize after a VMC block
+    QMC counter        = 0
+    time step          = 0.1
+    reference energy   = -76.2261
+    reference variance = 0.218838
+====================================================
+  QMC Execution time = 1.0138e+00 secs
+
+=========================================================
+  Start DMC
+  File Root H2O_AE_HF.s001 append = no 
+=========================================================
+Using existing walkers 
+  Resetting Properties of the walkers 1 x 13
+  Set drift_modifier UNR parameter a = 1.0000e+00
+  EstimatorManagerBase::add replace LocalEnergy estimator.
+  Cannot make clones again. Use existing 8 clones
+  Total number of walkers: 8.0000e+00
+  Total weight: 8.0000e+00
+  Creating WalkerController: target  number of walkers = 16000
+  Using WalkerControlBase for dynamic population control.
+  START ALL OVER 
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 32001
+    Min Walkers per MPI rank 3201
+    Using non-blocking send/recv
+  QMC counter      = 1
+  time step        = 1.0000e-03
+  effective time step = 1.0000e-03
+  trial energy     = -7.6226e+01
+  reference energy = -7.6226e+01
+  Feedback = 1.0000e+00
+  reference variance = 2.1884e-01
+  target walkers = 16000
+  branching cutoff scheme classic
+  branch cutoff = 5.0000e+01 7.5000e+01
+  Max and minimum walkers per node= 32001 3201
+  QMC Status (BranchMode) = 0000001101
+  Total number of walkers: 1.6000e+04
+  Total weight: 1.6000e+04
+  Initial partition of walkers on a node: 0 2000 4000 6000 8000 10000 12000 14000 16000 
+  Updates by particle-by-particle moves
+  DMC moves are rejected when a node crossing is detected
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 17122 MB
+Memory footprint by rank 0 on node 0       : 301 MB
+==================================================
+SimpleFixedNodeBranch::checkParameters 
+  Average Energy of a population  = -76.2261
+  Energy Variance = 0.218838
+
+  Fluctuating population
+  Persistent walkers are killed after 1 MC sweeps
+  BranchInterval = 1
+  Steps per block = 20
+  Number of blocks = 50
+
+  DMC Engine Initialization = 2.5401e-01 secs
+
+ Warmup is completed after 100
+
+  TauEff     = 9.9464e-04
+ TauEff/Tau = 9.9464e-01
+  Etrial     = -7.6726e+01
+ Running average of energy = -7.6376e+01
+                  Variance = 1.8830e+00
+branch cutoff = 1.8830e+01 2.8244e+01
+====================================================
+  SimpleFixedNodeBranch::finalize after a DMC block
+    QMC counter                   = 1
+    time step                     = 0.001
+    effective time step           = 0.000994585
+    trial energy                  = -76.4164
+    reference energy              = -76.4123
+    reference variance            = 1.88295
+    target walkers                = 16000
+    branch cutoff                 = 18.8295 28.2443
+    Max and minimum walkers per node= 32001 3201
+    Feedback                      = 1
+    QMC Status (BranchMode)       = 0000001111
+====================================================
+  QMC Execution time = 3.9548e+02 secs
+  Total Execution time = 3.9650e+02 secs
+
+=========================================================
+  A new xml input file : H2O_AE_HF.s001.cont.xml
