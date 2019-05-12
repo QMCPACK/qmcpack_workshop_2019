@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<simulation>
+
+  <project id="h2o" series="0"/>
+
+  <!--random seed="244734"/-->
+
+  <!-- input from gaussian converter -->
+  <include href="sample.Gaussian-G2.ptcl.xml"/>
+  <include href="sample.Gaussian-G2.xml"/>
+
+  <!--  Hamiltonian -->
+      <hamiltonian name="h0" type="generic" target="e">
+         <pairpot type="coulomb" name="ElecElec" source="e" target="e"/>
+         <pairpot type="pseudo" name="PseudoPot" source="ion0" target="e" wavefunction="psi0" format="xml">
+            <pseudo elementType="H" format="xml" href="H.BFD.xml" />
+            <pseudo elementType="O" format="xml" href="O.BFD.xml" />
+         </pairpot>
+        <constant name="IonIon" type="coulomb" source="ion0" target="ion0"/>
+      </hamiltonian>
+
+  <loop max="100">
+    <qmc method="linear" move="pbyp" checkpoint="-1" gpu="no">
+      <parameter name="walkers">    1  </parameter>
+      <parameter name="samples"> 200 </parameter>
+      <parameter name="stepsbetweensamples"> 1 </parameter>
+      <parameter name="steps"> 1 </parameter>
+      <parameter name="substeps"> 1 </parameter>
+      <parameter name="warmupsteps"> 10 </parameter>
+      <parameter name="blocks">  200  </parameter>
+      <parameter name="timestep"> 1.0 </parameter>
+      <parameter name="useDrift">  no </parameter>
+      <estimator name="LocalEnergy" hdf5="no"/>
+           <cost name="energy">               0.95 </cost>
+           <cost name="unreweightedvariance"> 0.00 </cost>
+           <cost name="reweightedvariance">   0.05 </cost>
+      <parameter name="nonlocalpp"> yes </parameter>
+
+      <parameter name="MinMethod"> adaptive </parameter>
+      <parameter name="targetExcited"> yes </parameter>
+      <parameter name="omega"> -17.779  </parameter>
+
+    </qmc>
+  </loop>
+</simulation>
