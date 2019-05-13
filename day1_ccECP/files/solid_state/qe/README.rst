@@ -6,7 +6,7 @@ To utilize our ccECPs within plane-wave codes like quantum espresso, we need a m
 Instead, these utilize fully non-local potentials, known as Kleinmann-Bylander potentials. 
 While this KB comes with many benefits, such as efficient evaluation in the plane-wave basis, it also can introduce a variety of issues.
 Some of the issues are addressed in the *.rpt* file, which can be downloaded from pseudopotentiallibrary.org. 
-This is generated from a modified version of OPIUM, which can generate KB transformations for a variety of semi-local potentials, and perform ghost state testing, transferability, and plane-wave cutoff estimation at the DFT level. 
+This is generated from a modified version of `OPIUM <http://opium.sourceforge.net>`_, which can generate KB transformations for a variety of semi-local potentials, and perform ghost state testing, transferability, and plane-wave cutoff estimation at the DFT level. 
 
 .. code-block:: bash
 
