@@ -173,7 +173,7 @@ ctest -R deterministic >& ctest.out
 cat ctest.out
 cd ../build/bin
 ln -sf ../../build_complex/bin/qmcpack qmcpack_complex
-cd ..
+cd ../..
 fi
 
 if [ ! -e build_aos/bin/qmcpack ]; then
@@ -187,7 +187,7 @@ ctest -R deterministic >& ctest.out
 cat ctest.out
 cd ../build/bin
 ln -sf ../../build_aos/bin/qmcpack qmcpack_aos
-cd ..
+cd ../..
 fi
 
 # PySCF
