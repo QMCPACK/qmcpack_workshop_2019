@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<simulation>
+  <project id="H2O-Tr6" series="2"><host>Q02-I2-J01.vesta.itd</host><date>Sun May 12 23:02:04 2019
+</date></project>
+  <include href="../H2O-Tr6.structure.xml"/>
+  <include href="H2O-Tr6.wfj.xml"/>
+  <hamiltonian name="h0" type="generic" target="e">
+    <pairpot name="ElecElec" type="coulomb" source="e" target="e" physical="true"/>
+    <pairpot name="IonIon" type="coulomb" source="ion0" target="ion0"/>
+    <pairpot name="IonElec" type="coulomb" source="ion0" target="e"/>
+  </hamiltonian><mcwalkerset fileroot="H2O-Tr6.s001" node="-1" nprocs="256" version="3 7" collected="yes"/>
+  <qmc method="vmc" move="pbyp" checkpoint="-1">
+    <estimator name="LocalEnergy" hdf5="no"/>
+    <parameter name="walkers">1</parameter>
+    <parameter name="samplesperthread">1</parameter>
+    <parameter name="stepsbetweensamples">10</parameter>
+    <parameter name="substeps">30</parameter>
+    <parameter name="warmupSteps">10</parameter>
+    <parameter name="blocks">50</parameter>
+    <parameter name="timestep">0.1</parameter>
+    <parameter name="usedrift">no</parameter>
+  </qmc>
+  <qmc method="dmc" move="pbyp" checkpoint="20">
+    <estimator name="LocalEnergy" hdf5="no"/>
+    <parameter name="targetwalkers">16000</parameter>
+    <parameter name="reconfiguration">no</parameter>
+    <parameter name="warmupSteps">100</parameter>
+    <parameter name="timestep">0.001</parameter>
+    <parameter name="steps">20</parameter>
+    <parameter name="blocks">200</parameter>
+    <parameter name="nonlocalmoves">yes</parameter>
+  </qmc>
+</simulation>

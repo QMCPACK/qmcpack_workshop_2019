@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<qmcsystem>
+  <wavefunction name="psi0" target="e">
+    <determinantset type="MolecularOrbital" name="LCAOBSet" source="ion0" transform="yes" cuspCorrection="yes" href="../H2O-Tr5.orbs.h5">
+      <sposet basisset="LCAOBSet" name="spo-up" size="71" cuspInfo="../CuspCorrection/spo-up.cuspInfo.xml">
+        <occupation mode="ground"/>
+        <coefficient size="71" spindataset="0"/>
+      </sposet>
+      <sposet basisset="LCAOBSet" name="spo-dn" size="71" cuspInfo="../CuspCorrection/spo-dn.cuspInfo.xml">
+        <occupation mode="ground"/>
+        <coefficient size="71" spindataset="0"/>
+      </sposet>
+      <multideterminant optimize="no" spo_up="spo-up" spo_dn="spo-dn">
+        <detlist size="18863" type="DETS" nca="0" ncb="0" nea="5" neb="5" nstates="71" cutoff="1e-20" href="../H2O-Tr5.orbs.h5"/>
+      </multideterminant>
+    </determinantset>
+    <jastrow name="J2" type="Two-Body" function="Bspline" print="yes">
+      <correlation rcut="10" size="20" speciesA="u" speciesB="u">
+        <coefficients id="uu" type="Array"> 0.1929604677 0.1043289616 0.04004552167 0.001051818792 -0.02180861 -0.03049940191 -0.03454644658 -0.03596956998 -0.03679046823 -0.03777498363 -0.03656589309 -0.03787450816 -0.03886919578 -0.04669636966 -0.03740162158 0.004898019605 0.0227702373 0.01305681949 -0.0008733926929 0.001207084467</coefficients>
+      </correlation>
+      <correlation rcut="10" size="20" speciesA="u" speciesB="d">
+        <coefficients id="ud" type="Array"> 0.2526886029 0.09309356125 0.02483628938 6.679431679e-05 -0.007545298735 -0.01190298629 -0.01528918191 -0.02028580495 -0.0215778117 -0.02791713024 -0.03550737532 -0.04595067409 -0.05253928395 -0.05776341014 -0.06100054645 -0.05402826734 -0.004120644 0.02164841804 0.0110468933 0.007348737231</coefficients>
+      </correlation>
+    </jastrow>
+    <jastrow name="J1" type="One-Body" function="Bspline" source="ion0" print="yes">
+      <correlation rcut="5" size="10" cusp="0" elementType="H">
+        <coefficients id="eH" type="Array"> -0.05260485008 -0.05683495458 -0.04681157109 -0.03679148628 -0.03075618083 -0.03063846173 -0.02420733832 -0.02125389449 -0.01674033937 -0.006395900243</coefficients>
+      </correlation>
+      <correlation rcut="5" size="10" cusp="0" elementType="O">
+        <coefficients id="eO" type="Array"> -0.4518327699 -0.3842746752 -0.1692345633 -0.05415564908 0.06279396771 0.1410223302 0.1672954372 0.2042232623 0.1881549934 0.139157074</coefficients>
+      </correlation>
+    </jastrow>
+    <jastrow name="J3" type="eeI" function="polynomial" source="ion0" print="yes">
+      <correlation ispecies="H" especies="u" isize="3" esize="3" rcut="5">
+        <coefficients id="uuH" type="Array" optimize="yes"> 0.005547415591 0.006186213102 -0.008106195379 -0.006870539323 -0.003094691374 -0.0008607511452 0.001542309752 0.0108087745 0.008103104677 -0.003641196776 -0.008832717612 -0.008025400295 -0.00727011753 0.006056561004 0.01270560648 -0.001238258361 0.003065831042 0.01496037385 0.01378140934 0.002765226691 -0.001590346581 -0.01221556203 0.002615986477 -0.0002662688573 0.005230839052 -0.00174711422</coefficients>
+      </correlation>
+      <correlation ispecies="H" especies1="u" especies2="d" isize="3" esize="3" rcut="5">
+        <coefficients id="udH" type="Array" optimize="yes"> -0.0038158229 0.002236204929 0.01062349622 -0.0009542695189 -0.006021708018 -0.0007353062701 0.008723633029 0.002817063387 0.0194881184 -0.001389772298 -0.003045899793 -0.008374567984 -0.01340358848 9.728382631e-05 0.008277938664 0.001129446437 0.00209780164 0.005252241161 0.002171416009 0.01306139188 -0.0002132135103 -0.003679321891 -0.002143259843 8.709164183e-05 0.0011905505 0.000353389931</coefficients>
+      </correlation>
+      <correlation ispecies="O" especies="u" isize="3" esize="3" rcut="5">
+        <coefficients id="uuO" type="Array" optimize="yes"> 0.004459876661 0.002526388273 -0.007360288648 -0.007544445402 -0.001380374448 -0.000268583559 -0.004305481905 -0.003515281672 0.00336244812 0.001999051289 -0.007388350907 0.0139105012 -0.005611077832 0.0121071522 0.008080398668 -0.0005489796921 -0.01924845304 0.03990553808 -0.0385184348 0.01063997188 0.0007938898069 0.005236623987 -0.00224485143 -0.001070841404 -0.002095767736 0.0009929028492</coefficients>
+      </correlation>
+      <correlation ispecies="O" especies1="u" especies2="d" isize="3" esize="3" rcut="5">
+        <coefficients id="udO" type="Array" optimize="yes"> 0.0006728942505 0.0008109948643 0.004264330722 -0.001237386748 -0.004287786361 -0.0005926285803 0.01358331958 -0.02374236171 0.002068789702 -0.00768036733 -0.005524124406 0.0193957789 -0.006519740372 0.007321686546 -0.002350160496 0.001546749627 0.02773608032 0.00611778719 -0.02415035705 0.008944826172 -0.01968357689 0.01105972988 -0.003672345494 0.01106182255 -0.007083325416 0.00217323735</coefficients>
+      </correlation>
+    </jastrow>
+  </wavefunction>
+</qmcsystem>
