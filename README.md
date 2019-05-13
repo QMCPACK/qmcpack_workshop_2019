@@ -6,7 +6,7 @@ Files for the QMCPACK Users Workshop 14-15 May 2019
 
 ## Day 1 Presentations
 
-* [Welcome and Introduction](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/Workshop_Schedule.pdf)
+* [Welcome and Introduction](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_Welcome_and_Introduction.pdf)
 * [Correlation Consistent Pseudopotentials](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_ccECP/presentation/presentation.pdf)
 * PySCF for Molecules and Solids
 * Auxiliary Field Quantum Monte Carlo (AFQMC)
