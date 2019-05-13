@@ -176,6 +176,19 @@ ln -sf ../../build_complex/bin/qmcpack qmcpack_complex
 cd ..
 fi
 
+if [ ! -e build_aos/bin/qmcpack ]; then
+echo --- Building QMCPACK AoS `date`
+rm -r -f build_aos
+mkdir build_aos
+cd build_aos
+cmake -DCMAKE_CXX_COMPILER=mpigxx -DCMAKE_C_COMPILER=mpigcc -DQMC_COMPLEX=0 -DBUILD_AFQMC=0 -DENABLE_SOA=0 -DBUILD_LMYENGINE_INTERFACE=1 -DQMC_MPI=1  -DENABLE_MKL=1 -DMKL_ROOT=$MKLROOT -DHDF5_ROOT=$HOME/apps/hdf5-hdf5-1_10_5-gcc-impi -DQE_BIN=$HOME/apps/qe-6.4/bin -DCMAKE_C_FLAGS=-march=broadwell -DCMAKE_CXX_FLAGS=-march=broadwell ../qmcpack/ >&cmake.out
+make -j 16 >&make.out
+ctest -R deterministic >& ctest.out
+cat ctest.out
+cd ../build/bin
+ln -sf ../../build_aos/bin/qmcpack qmcpack_aos
+cd ..
+fi
 
 # PySCF
 cd $HOME/apps
