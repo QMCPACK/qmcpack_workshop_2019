@@ -69,7 +69,6 @@ Another import command is the command
   
 In PBC, gaussian basis functions with diffuse exponents can lead to linear dependence issues.
 Therefore, we drop these exponents in hopes that it converges. 
-If your calculations are still problematic, the minimum exponent may need to be increased. 
 
 Executing this should result in an energy of 
 
@@ -147,5 +146,12 @@ We can attempt to go further by trying the VQZ basis, but
                                                                            
   WARN: Singularity detected in overlap matrix (condition number = 2.71e+11). SCF may be inaccurate and hard to converge.
                                                                                   
-This indicates some of the issues that can arise for gaussian basis sets in PBC. In order to converge further, modification of the basis may be needed.
 
+This indicates some of the issues that can arise for gaussian basis sets in PBC.
+If your calculations are problematic, the minimum exponent may need to be increased, or the entire basis set may need to be reoptimized.
+If you decide to optimize your own basis, a number of issues should be considered:
+
+- The contracted basis functions should be tailored to your specific ECP. These can generally be optimized for the atom. A good rule of thumb is to optimize the atomic state somewhere in between the ground state and the oxidation state of the atom in the solid. 
+- The primitive, uncontracted exponents can be taken from existing basis sets used in solids. A number of basis sets with useful primitive exponents can be found at `CRYSTAL BASIS SET <http://www.crystal.unito.it/basis-sets.php>`_ or from `Crystal Resources Page <https://www.tcm.phy.cam.ac.uk/~mdt26/crystal.html>`_. If these are insufficient, you may have to construct your own. 
+- If you need to generate your own primitive exponents, this should be optimized for your problem. Try a molecular system with bonding similar to your solid state system to optimize the primitives, and then test them in your application. 
+- A number of documents describing in detail how to optimize solid state gaussian basis sets can be found at `http://qwalk.org/tarballs/tutorial/basis_sets.pdf <http://qwalk.org/tarballs/tutorial/basis_sets.pdf>`_ and `https://www.tcm.phy.cam.ac.uk/~mdt26/basis_sets/basis_sets_2000.ps <https://www.tcm.phy.cam.ac.uk/~mdt26/basis_sets/basis_sets_2000.ps>`_
