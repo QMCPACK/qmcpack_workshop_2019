@@ -2,7 +2,7 @@
 <simulation>
   <project id="H2O_AE_HF" series="0"/>
   <include href="../H2O_AE_HF.structure.xml"/>
-  <include href="../H2O_AE_HF.wfj.xml"/>
+  <include href="H2O_AE_HF.wfj.xml"/>
   <hamiltonian name="h0" type="generic" target="e">
     <pairpot name="ElecElec" type="coulomb" source="e" target="e" physical="true"/>
     <pairpot name="IonIon" type="coulomb" source="ion0" target="ion0"/>
