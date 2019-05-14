@@ -16,5 +16,5 @@ Files for the QMCPACK Users Workshop 14-15 May 2019
 
 * Selected CI Trial Wavefunction with Quantum Package and QMCPACK
 * [Wavefunction Optimization algorithms in QMCPACK](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day2_opt/Wfn_Opt_LuningZhao.pdf)
-* NEXUS workflow system
+* [NEXUS workflow system](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day2_nexus/Nexus_Slides.pdf)
 * Running Solids Efficiently at Scale
