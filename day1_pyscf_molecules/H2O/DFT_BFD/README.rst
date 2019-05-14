@@ -149,24 +149,22 @@ To select the est JAstrow Parameters they need to lead to the lowest VMC energy:
      mpirun -n 1 qmcpack Opt.xml | tee Opt.out
      qmca -q ev *.scalar.dat | sort -k4
 
-                            LocalEnergy               Variance           ratio 
- 
-                            LocalEnergy               Variance           ratio 
-H2O_DFT_BFD  series 0  -16.917112 +/- 0.091249   2.206084 +/- 0.507540   0.1304 
-H2O_DFT_BFD  series 1  -16.952442 +/- 0.008993   2.552856 +/- 0.017657   0.1506 
-H2O_DFT_BFD  series 2  -17.203955 +/- 0.002632   0.449546 +/- 0.006093   0.0261 
-H2O_DFT_BFD  series 3  -17.221622 +/- 0.002985   0.433558 +/- 0.009227   0.0252 
-H2O_DFT_BFD  series 5  -17.222677 +/- 0.001852   0.456094 +/- 0.005915   0.0265 
-H2O_DFT_BFD  series 12  -17.222827 +/- 0.001848   0.460657 +/- 0.011720   0.0267 
-H2O_DFT_BFD  series 7  -17.224370 +/- 0.001626   0.474714 +/- 0.011704   0.0276 
-H2O_DFT_BFD  series 14  -17.224563 +/- 0.002599   0.481431 +/- 0.018505   0.0280 
-H2O_DFT_BFD  series 6  -17.224641 +/- 0.002245   0.464094 +/- 0.013082   0.0269 
-H2O_DFT_BFD  series 13  -17.225089 +/- 0.002650   0.478029 +/- 0.007099   0.0278 
-H2O_DFT_BFD  series 9  -17.226046 +/- 0.001791   0.488931 +/- 0.016957   0.0284 
-H2O_DFT_BFD  series 4  -17.226620 +/- 0.002564   0.474710 +/- 0.010913   0.0276 
-H2O_DFT_BFD  series 10  -17.227309 +/- 0.002985   0.475297 +/- 0.017481   0.0276 
-H2O_DFT_BFD  series 11  -17.228171 +/- 0.002130   0.462997 +/- 0.008928   0.0269 
-H2O_DFT_BFD  series 8  -17.229854 +/- 0.009619   0.431436 +/- 0.004379   0.0250 
+                                  LocalEnergy               Variance           ratio 
+     H2O_DFT_BFD  series 0  -16.917112 +/- 0.091249   2.206084 +/- 0.507540   0.1304 
+     H2O_DFT_BFD  series 1  -16.952442 +/- 0.008993   2.552856 +/- 0.017657   0.1506 
+     H2O_DFT_BFD  series 2  -17.203955 +/- 0.002632   0.449546 +/- 0.006093   0.0261 
+     H2O_DFT_BFD  series 3  -17.221622 +/- 0.002985   0.433558 +/- 0.009227   0.0252 
+     H2O_DFT_BFD  series 5  -17.222677 +/- 0.001852   0.456094 +/- 0.005915   0.0265 
+     H2O_DFT_BFD  series 12  -17.222827 +/- 0.001848   0.460657 +/- 0.011720   0.0267 
+     H2O_DFT_BFD  series 7  -17.224370 +/- 0.001626   0.474714 +/- 0.011704   0.0276 
+     H2O_DFT_BFD  series 14  -17.224563 +/- 0.002599   0.481431 +/- 0.018505   0.0280 
+     H2O_DFT_BFD  series 6  -17.224641 +/- 0.002245   0.464094 +/- 0.013082   0.0269 
+     H2O_DFT_BFD  series 13  -17.225089 +/- 0.002650   0.478029 +/- 0.007099   0.0278 
+     H2O_DFT_BFD  series 9  -17.226046 +/- 0.001791   0.488931 +/- 0.016957   0.0284 
+     H2O_DFT_BFD  series 4  -17.226620 +/- 0.002564   0.474710 +/- 0.010913   0.0276 
+     H2O_DFT_BFD  series 10  -17.227309 +/- 0.002985   0.475297 +/- 0.017481   0.0276 
+     H2O_DFT_BFD  series 11  -17.228171 +/- 0.002130   0.462997 +/- 0.008928   0.0269 
+     H2O_DFT_BFD  series 8  -17.229854 +/- 0.009619   0.431436 +/- 0.004379   0.0250 
 
 
 Series 08 seems to give the lowest energy. In the case, the energy in the series 08 was computed using the Jastrow from the previous round. 
@@ -183,38 +181,38 @@ At this point, one needs to uncomment the 3J in the wavefunction file and change
 .. code-block:: bash 
      mpirun -n 1 qmcpack Opt.xml | tee Opt.out
      qmca -q ev *.scalar.dat | sort -k4
- 
-                            LocalEnergy               Variance           ratio 
-H2O_DFT_BFD  series 0  -16.917112 +/- 0.091249   2.206084 +/- 0.507540   0.1304 
-H2O_DFT_BFD  series 1  -16.952442 +/- 0.008993   2.552856 +/- 0.017657   0.1506 
-H2O_DFT_BFD  series 15  -17.178117 +/- 0.063800   0.276239 +/- 0.051467   0.0161 
-H2O_DFT_BFD  series 2  -17.203955 +/- 0.002632   0.449546 +/- 0.006093   0.0261 
-H2O_DFT_BFD  series 19  -17.216962 +/- 0.003117   0.609390 +/- 0.007641   0.0354 
-H2O_DFT_BFD  series 3  -17.221622 +/- 0.002985   0.433558 +/- 0.009227   0.0252 
-H2O_DFT_BFD  series 5  -17.222677 +/- 0.001852   0.456094 +/- 0.005915   0.0265 
-H2O_DFT_BFD  series 12  -17.222827 +/- 0.001848   0.460657 +/- 0.011720   0.0267 
-H2O_DFT_BFD  series 7  -17.224370 +/- 0.001626   0.474714 +/- 0.011704   0.0276 
-H2O_DFT_BFD  series 14  -17.224563 +/- 0.002599   0.481431 +/- 0.018505   0.0280 
-H2O_DFT_BFD  series 6  -17.224641 +/- 0.002245   0.464094 +/- 0.013082   0.0269 
-H2O_DFT_BFD  series 13  -17.225089 +/- 0.002650   0.478029 +/- 0.007099   0.0278 
-H2O_DFT_BFD  series 9  -17.226046 +/- 0.001791   0.488931 +/- 0.016957   0.0284 
-H2O_DFT_BFD  series 16  -17.226073 +/- 0.002456   0.466268 +/- 0.009573   0.0271 
-H2O_DFT_BFD  series 4  -17.226620 +/- 0.002564   0.474710 +/- 0.010913   0.0276 
-H2O_DFT_BFD  series 10  -17.227309 +/- 0.002985   0.475297 +/- 0.017481   0.0276 
-H2O_DFT_BFD  series 11  -17.228171 +/- 0.002130   0.462997 +/- 0.008928   0.0269 
-H2O_DFT_BFD  series 8  -17.229854 +/- 0.009619   0.431436 +/- 0.004379   0.0250 
-H2O_DFT_BFD  series 21  -17.234906 +/- 0.001583   0.402230 +/- 0.003977   0.0233 
-H2O_DFT_BFD  series 18  -17.236017 +/- 0.002675   0.385650 +/- 0.006869   0.0224 
-H2O_DFT_BFD  series 28  -17.236995 +/- 0.001482   0.380467 +/- 0.005228   0.0221 
-H2O_DFT_BFD  series 24  -17.237332 +/- 0.001446   0.424339 +/- 0.007657   0.0246 
-H2O_DFT_BFD  series 26  -17.237824 +/- 0.001548   0.395232 +/- 0.008362   0.0229 
-H2O_DFT_BFD  series 29  -17.238078 +/- 0.001366   0.411559 +/- 0.008788   0.0239 
-H2O_DFT_BFD  series 20  -17.238988 +/- 0.002073   0.420054 +/- 0.007020   0.0244 
-H2O_DFT_BFD  series 25  -17.239046 +/- 0.001913   0.397342 +/- 0.014986   0.0230 
-H2O_DFT_BFD  series 17  -17.239803 +/- 0.002399   0.401429 +/- 0.012750   0.0233 
-H2O_DFT_BFD  series 23  -17.240150 +/- 0.001502   0.396726 +/- 0.005160   0.0230 
-H2O_DFT_BFD  series 22  -17.241260 +/- 0.001667   0.418435 +/- 0.009165   0.0243 
-H2O_DFT_BFD  series 27  -17.242482 +/- 0.001551   0.408790 +/- 0.006770   0.0237 
+
+                                  LocalEnergy               Variance           ratio 
+     H2O_DFT_BFD  series 0  -16.917112 +/- 0.091249   2.206084 +/- 0.507540   0.1304 
+     H2O_DFT_BFD  series 1  -16.952442 +/- 0.008993   2.552856 +/- 0.017657   0.1506 
+     H2O_DFT_BFD  series 15  -17.178117 +/- 0.063800   0.276239 +/- 0.051467   0.0161 
+     H2O_DFT_BFD  series 2  -17.203955 +/- 0.002632   0.449546 +/- 0.006093   0.0261 
+     H2O_DFT_BFD  series 19  -17.216962 +/- 0.003117   0.609390 +/- 0.007641   0.0354 
+     H2O_DFT_BFD  series 3  -17.221622 +/- 0.002985   0.433558 +/- 0.009227   0.0252 
+     H2O_DFT_BFD  series 5  -17.222677 +/- 0.001852   0.456094 +/- 0.005915   0.0265 
+     H2O_DFT_BFD  series 12  -17.222827 +/- 0.001848   0.460657 +/- 0.011720   0.0267 
+     H2O_DFT_BFD  series 7  -17.224370 +/- 0.001626   0.474714 +/- 0.011704   0.0276 
+     H2O_DFT_BFD  series 14  -17.224563 +/- 0.002599   0.481431 +/- 0.018505   0.0280 
+     H2O_DFT_BFD  series 6  -17.224641 +/- 0.002245   0.464094 +/- 0.013082   0.0269 
+     H2O_DFT_BFD  series 13  -17.225089 +/- 0.002650   0.478029 +/- 0.007099   0.0278 
+     H2O_DFT_BFD  series 9  -17.226046 +/- 0.001791   0.488931 +/- 0.016957   0.0284 
+     H2O_DFT_BFD  series 16  -17.226073 +/- 0.002456   0.466268 +/- 0.009573   0.0271 
+     H2O_DFT_BFD  series 4  -17.226620 +/- 0.002564   0.474710 +/- 0.010913   0.0276 
+     H2O_DFT_BFD  series 10  -17.227309 +/- 0.002985   0.475297 +/- 0.017481   0.0276 
+     H2O_DFT_BFD  series 11  -17.228171 +/- 0.002130   0.462997 +/- 0.008928   0.0269 
+     H2O_DFT_BFD  series 8  -17.229854 +/- 0.009619   0.431436 +/- 0.004379   0.0250 
+     H2O_DFT_BFD  series 21  -17.234906 +/- 0.001583   0.402230 +/- 0.003977   0.0233 
+     H2O_DFT_BFD  series 18  -17.236017 +/- 0.002675   0.385650 +/- 0.006869   0.0224 
+     H2O_DFT_BFD  series 28  -17.236995 +/- 0.001482   0.380467 +/- 0.005228   0.0221 
+     H2O_DFT_BFD  series 24  -17.237332 +/- 0.001446   0.424339 +/- 0.007657   0.0246 
+     H2O_DFT_BFD  series 26  -17.237824 +/- 0.001548   0.395232 +/- 0.008362   0.0229 
+     H2O_DFT_BFD  series 29  -17.238078 +/- 0.001366   0.411559 +/- 0.008788   0.0239 
+     H2O_DFT_BFD  series 20  -17.238988 +/- 0.002073   0.420054 +/- 0.007020   0.0244 
+     H2O_DFT_BFD  series 25  -17.239046 +/- 0.001913   0.397342 +/- 0.014986   0.0230 
+     H2O_DFT_BFD  series 17  -17.239803 +/- 0.002399   0.401429 +/- 0.012750   0.0233 
+     H2O_DFT_BFD  series 23  -17.240150 +/- 0.001502   0.396726 +/- 0.005160   0.0230 
+     H2O_DFT_BFD  series 22  -17.241260 +/- 0.001667   0.418435 +/- 0.009165   0.0243 
+     H2O_DFT_BFD  series 27  -17.242482 +/- 0.001551   0.408790 +/- 0.006770   0.0237 
 
 You will notice that the Variance did not improve significantly from not using a Jastrow to using a well converged Jastrow. The reason is that using ECP 
 reduces significantly the variance when compared to all electrons, therefore the gain from the Jastrow is reduced. 
@@ -235,10 +233,9 @@ In this case and for the AWS, This will lead to the followin answers:
     mpirun -n 1 qmcpack DMC.xml | tee DMC.out 
     qmca -q ev *.scalar.out
 
- 
-                            LocalEnergy               Variance           ratio 
-H2O_DFT_BFD  series 0  -17.267279 +/- 0.015368   0.368301 +/- 0.047889   0.0213 
-H2O_DFT_BFD  series 1  -17.270029 +/- 0.002751   0.421050 +/- 0.006122   0.0244 
+                               LocalEnergy               Variance           ratio 
+    H2O_DFT_BFD  series 0  -17.267279 +/- 0.015368   0.368301 +/- 0.047889   0.0213 
+    H2O_DFT_BFD  series 1  -17.270029 +/- 0.002751   0.421050 +/- 0.006122   0.0244 
 
 
 

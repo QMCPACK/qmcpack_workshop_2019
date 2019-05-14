@@ -182,26 +182,22 @@ To select the est JAstrow Parameters they need to lead to the lowest VMC energy:
      mpirun -n 1 qmcpack Opt.xml | tee Opt.out
      qmca -q ev *.scalar.dat | sort -k4
 
-                            LocalEnergy               Variance           ratio 
- 
-                            LocalEnergy               Variance           ratio 
- 
-                            LocalEnergy               Variance           ratio 
-H2O_DFT_NCSU  series 1  -16.952183 +/- 0.006669   2.225046 +/- 0.022009   0.1313 
-H2O_DFT_NCSU  series 0  -17.096525 +/- 0.100425   2.254386 +/- 0.606384   0.1319 
-H2O_DFT_NCSU  series 2  -17.187683 +/- 0.002017   0.348122 +/- 0.003547   0.0203 
-H2O_DFT_NCSU  series 4  -17.201283 +/- 0.002302   0.413550 +/- 0.016525   0.0240 
-H2O_DFT_NCSU  series 3  -17.202526 +/- 0.002083   0.366304 +/- 0.006741   0.0213 
-H2O_DFT_NCSU  series 7  -17.202532 +/- 0.002292   0.376960 +/- 0.013003   0.0219 
-H2O_DFT_NCSU  series 5  -17.203145 +/- 0.001451   0.391668 +/- 0.008957   0.0228 
-H2O_DFT_NCSU  series 6  -17.203215 +/- 0.001592   0.388356 +/- 0.013275   0.0226 
-H2O_DFT_NCSU  series 10  -17.203964 +/- 0.001375   0.366203 +/- 0.006412   0.0213 
-H2O_DFT_NCSU  series 8  -17.204103 +/- 0.001615   0.403955 +/- 0.014639   0.0235 
-H2O_DFT_NCSU  series 9  -17.204107 +/- 0.001444   0.371984 +/- 0.007616   0.0216 
-H2O_DFT_NCSU  series 11  -17.204609 +/- 0.001583   0.375518 +/- 0.006082   0.0218 
-H2O_DFT_NCSU  series 13  -17.204887 +/- 0.001647   0.384491 +/- 0.005797   0.0223 
-H2O_DFT_NCSU  series 12  -17.206662 +/- 0.001458   0.377860 +/- 0.009055   0.0220 
-H2O_DFT_NCSU  series 14  -17.206960 +/- 0.001201   0.376994 +/- 0.012357   0.0219 
+                                   LocalEnergy               Variance           ratio 
+     H2O_DFT_NCSU  series 1  -16.952183 +/- 0.006669   2.225046 +/- 0.022009   0.1313 
+     H2O_DFT_NCSU  series 0  -17.096525 +/- 0.100425   2.254386 +/- 0.606384   0.1319 
+     H2O_DFT_NCSU  series 2  -17.187683 +/- 0.002017   0.348122 +/- 0.003547   0.0203 
+     H2O_DFT_NCSU  series 4  -17.201283 +/- 0.002302   0.413550 +/- 0.016525   0.0240 
+     H2O_DFT_NCSU  series 3  -17.202526 +/- 0.002083   0.366304 +/- 0.006741   0.0213 
+     H2O_DFT_NCSU  series 7  -17.202532 +/- 0.002292   0.376960 +/- 0.013003   0.0219 
+     H2O_DFT_NCSU  series 5  -17.203145 +/- 0.001451   0.391668 +/- 0.008957   0.0228 
+     H2O_DFT_NCSU  series 6  -17.203215 +/- 0.001592   0.388356 +/- 0.013275   0.0226 
+     H2O_DFT_NCSU  series 10  -17.203964 +/- 0.001375   0.366203 +/- 0.006412   0.0213 
+     H2O_DFT_NCSU  series 8  -17.204103 +/- 0.001615   0.403955 +/- 0.014639   0.0235 
+     H2O_DFT_NCSU  series 9  -17.204107 +/- 0.001444   0.371984 +/- 0.007616   0.0216 
+     H2O_DFT_NCSU  series 11  -17.204609 +/- 0.001583   0.375518 +/- 0.006082   0.0218 
+     H2O_DFT_NCSU  series 13  -17.204887 +/- 0.001647   0.384491 +/- 0.005797   0.0223 
+     H2O_DFT_NCSU  series 12  -17.206662 +/- 0.001458   0.377860 +/- 0.009055   0.0220 
+     H2O_DFT_NCSU  series 14  -17.206960 +/- 0.001201   0.376994 +/- 0.012357   0.0219 
 
 
 Series 14 seems to give the lowest energy. In the case, the energy in the series 14 was computed using the Jastrow from the previous round. 
@@ -218,40 +214,38 @@ At this point, one needs to uncomment the 3J in the wavefunction file and change
 .. code-block:: bash 
      mpirun -n 1 qmcpack Opt.xml | tee Opt.out
      qmca -q ev *.scalar.dat | sort -k4
- 
-                            LocalEnergy               Variance           ratio 
- 
-                            LocalEnergy               Variance           ratio 
-H2O_DFT_NCSU  series 1  -16.952183 +/- 0.006669   2.225046 +/- 0.022009   0.1313 
-H2O_DFT_NCSU  series 19  -17.086395 +/- 0.004705   2.339084 +/- 0.029483   0.1369 
-H2O_DFT_NCSU  series 0  -17.096525 +/- 0.100425   2.254386 +/- 0.606384   0.1319 
-H2O_DFT_NCSU  series 2  -17.187683 +/- 0.002017   0.348122 +/- 0.003547   0.0203 
-H2O_DFT_NCSU  series 4  -17.201283 +/- 0.002302   0.413550 +/- 0.016525   0.0240 
-H2O_DFT_NCSU  series 3  -17.202526 +/- 0.002083   0.366304 +/- 0.006741   0.0213 
-H2O_DFT_NCSU  series 7  -17.202532 +/- 0.002292   0.376960 +/- 0.013003   0.0219 
-H2O_DFT_NCSU  series 5  -17.203145 +/- 0.001451   0.391668 +/- 0.008957   0.0228 
-H2O_DFT_NCSU  series 6  -17.203215 +/- 0.001592   0.388356 +/- 0.013275   0.0226 
-H2O_DFT_NCSU  series 10  -17.203964 +/- 0.001375   0.366203 +/- 0.006412   0.0213 
-H2O_DFT_NCSU  series 8  -17.204103 +/- 0.001615   0.403955 +/- 0.014639   0.0235 
-H2O_DFT_NCSU  series 9  -17.204107 +/- 0.001444   0.371984 +/- 0.007616   0.0216 
-H2O_DFT_NCSU  series 11  -17.204609 +/- 0.001583   0.375518 +/- 0.006082   0.0218 
-H2O_DFT_NCSU  series 13  -17.204887 +/- 0.001647   0.384491 +/- 0.005797   0.0223 
-H2O_DFT_NCSU  series 12  -17.206662 +/- 0.001458   0.377860 +/- 0.009055   0.0220 
-H2O_DFT_NCSU  series 14  -17.206960 +/- 0.001201   0.376994 +/- 0.012357   0.0219 
-H2O_DFT_NCSU  series 16  -17.209466 +/- 0.002443   0.378594 +/- 0.007401   0.0220 
-H2O_DFT_NCSU  series 17  -17.210250 +/- 0.002443   0.472917 +/- 0.018699   0.0275 
-H2O_DFT_NCSU  series 20  -17.211429 +/- 0.002043   0.445033 +/- 0.008557   0.0259 
-H2O_DFT_NCSU  series 22  -17.212446 +/- 0.001407   0.435827 +/- 0.012642   0.0253 
-H2O_DFT_NCSU  series 23  -17.212674 +/- 0.002479   0.469187 +/- 0.016440   0.0273 
-H2O_DFT_NCSU  series 25  -17.213040 +/- 0.002035   0.489033 +/- 0.011526   0.0284 
-H2O_DFT_NCSU  series 27  -17.215119 +/- 0.001202   0.454452 +/- 0.008121   0.0264 
-H2O_DFT_NCSU  series 29  -17.216723 +/- 0.001490   0.470956 +/- 0.020307   0.0274 
-H2O_DFT_NCSU  series 28  -17.216777 +/- 0.001690   0.436631 +/- 0.014319   0.0254 
-H2O_DFT_NCSU  series 26  -17.217729 +/- 0.001966   0.434323 +/- 0.007951   0.0252 
-H2O_DFT_NCSU  series 24  -17.217954 +/- 0.001569   0.407915 +/- 0.008845   0.0237 
-H2O_DFT_NCSU  series 21  -17.218353 +/- 0.002158   0.412844 +/- 0.018898   0.0240 
-H2O_DFT_NCSU  series 18  -17.226017 +/- 0.006922   0.433053 +/- 0.020304   0.0251 
-H2O_DFT_NCSU  series 15  -17.269486 +/- 0.087271   0.324993 +/- 0.074642   0.0188 
+
+                              LocalEnergy               Variance           ratio 
+     H2O_DFT_NCSU  series 1  -16.952183 +/- 0.006669   2.225046 +/- 0.022009   0.1313 
+     H2O_DFT_NCSU  series 19  -17.086395 +/- 0.004705   2.339084 +/- 0.029483   0.1369 
+     H2O_DFT_NCSU  series 0  -17.096525 +/- 0.100425   2.254386 +/- 0.606384   0.1319 
+     H2O_DFT_NCSU  series 2  -17.187683 +/- 0.002017   0.348122 +/- 0.003547   0.0203 
+     H2O_DFT_NCSU  series 4  -17.201283 +/- 0.002302   0.413550 +/- 0.016525   0.0240 
+     H2O_DFT_NCSU  series 3  -17.202526 +/- 0.002083   0.366304 +/- 0.006741   0.0213 
+     H2O_DFT_NCSU  series 7  -17.202532 +/- 0.002292   0.376960 +/- 0.013003   0.0219 
+     H2O_DFT_NCSU  series 5  -17.203145 +/- 0.001451   0.391668 +/- 0.008957   0.0228 
+     H2O_DFT_NCSU  series 6  -17.203215 +/- 0.001592   0.388356 +/- 0.013275   0.0226 
+     H2O_DFT_NCSU  series 10  -17.203964 +/- 0.001375   0.366203 +/- 0.006412   0.0213 
+     H2O_DFT_NCSU  series 8  -17.204103 +/- 0.001615   0.403955 +/- 0.014639   0.0235 
+     H2O_DFT_NCSU  series 9  -17.204107 +/- 0.001444   0.371984 +/- 0.007616   0.0216 
+     H2O_DFT_NCSU  series 11  -17.204609 +/- 0.001583   0.375518 +/- 0.006082   0.0218 
+     H2O_DFT_NCSU  series 13  -17.204887 +/- 0.001647   0.384491 +/- 0.005797   0.0223 
+     H2O_DFT_NCSU  series 12  -17.206662 +/- 0.001458   0.377860 +/- 0.009055   0.0220 
+     H2O_DFT_NCSU  series 14  -17.206960 +/- 0.001201   0.376994 +/- 0.012357   0.0219 
+     H2O_DFT_NCSU  series 16  -17.209466 +/- 0.002443   0.378594 +/- 0.007401   0.0220 
+     H2O_DFT_NCSU  series 17  -17.210250 +/- 0.002443   0.472917 +/- 0.018699   0.0275 
+     H2O_DFT_NCSU  series 20  -17.211429 +/- 0.002043   0.445033 +/- 0.008557   0.0259 
+     H2O_DFT_NCSU  series 22  -17.212446 +/- 0.001407   0.435827 +/- 0.012642   0.0253 
+     H2O_DFT_NCSU  series 23  -17.212674 +/- 0.002479   0.469187 +/- 0.016440   0.0273 
+     H2O_DFT_NCSU  series 25  -17.213040 +/- 0.002035   0.489033 +/- 0.011526   0.0284 
+     H2O_DFT_NCSU  series 27  -17.215119 +/- 0.001202   0.454452 +/- 0.008121   0.0264 
+     H2O_DFT_NCSU  series 29  -17.216723 +/- 0.001490   0.470956 +/- 0.020307   0.0274 
+     H2O_DFT_NCSU  series 28  -17.216777 +/- 0.001690   0.436631 +/- 0.014319   0.0254 
+     H2O_DFT_NCSU  series 26  -17.217729 +/- 0.001966   0.434323 +/- 0.007951   0.0252 
+     H2O_DFT_NCSU  series 24  -17.217954 +/- 0.001569   0.407915 +/- 0.008845   0.0237 
+     H2O_DFT_NCSU  series 21  -17.218353 +/- 0.002158   0.412844 +/- 0.018898   0.0240 
+     H2O_DFT_NCSU  series 18  -17.226017 +/- 0.006922   0.433053 +/- 0.020304   0.0251 
+     H2O_DFT_NCSU  series 15  -17.269486 +/- 0.087271   0.324993 +/- 0.074642   0.0188 
 
 In this case Series 15 and 18 while being the lowest in energy  seems to behave as outlayers (too low compared to all other runs,  
 They should be discarded  as an outlayer.
@@ -272,10 +266,9 @@ In this case and for the AWS, This will lead to the followin answers:
     mpirun -n 1 qmcpack DMC.xml | tee DMC.out 
     qmca -q ev *.scalar.out
 
- 
-                            LocalEnergy               Variance           ratio 
-H2O_DFT_NCSU  series 0  -17.225782 +/- 0.017659   0.403923 +/- 0.064485   0.0234 
-H2O_DFT_NCSU  series 1  -17.245958 +/- 0.001986   0.426762 +/- 0.004081   0.0247 
+                                    LocalEnergy               Variance           ratio 
+    H2O_DFT_NCSU  series 0  -17.225782 +/- 0.017659   0.403923 +/- 0.064485   0.0234 
+    H2O_DFT_NCSU  series 1  -17.245958 +/- 0.001986   0.426762 +/- 0.004081   0.0247 
 
 
 

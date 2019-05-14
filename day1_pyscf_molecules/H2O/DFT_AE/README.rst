@@ -121,7 +121,7 @@ part of the trial wavefunction and a longer than necessary VMC block to compare 
 .. code-block:: bash 
      qmca -q ev *.scalar.dat
                             LocalEnergy               Variance           ratio 
-H2O_AE_DFT  series 0  -76.061535 +/- 0.008421   17.644684 +/- 0.510746   0.2320 
+     H2O_AE_DFT  series 0  -76.061535 +/- 0.008421   17.644684 +/- 0.510746   0.2320 
 
 This  energy is significantly different from the DFT result of -76.4227090252327 Ha. 
 The reason is DFT adds to the energy an XC energy from the used functional. VMC does not.
@@ -161,21 +161,21 @@ To select the est JAstrow Parameters they need to lead to the lowest VMC energy:
      qmca -q ev *.scalar.dat | sort -k4
 
                             LocalEnergy               Variance           ratio 
-H2O_AE_DFT  series 0  -75.374060 +/- 0.371321   6.717349 +/- 2.587564   0.0891 
-H2O_AE_DFT  series 1  -76.128852 +/- 0.038761   5.963490 +/- 0.174963   0.0783 
-H2O_AE_DFT  series 10  -76.314322 +/- 0.013607   4.405358 +/- 0.182043   0.0577 
-H2O_AE_DFT  series 6  -76.321053 +/- 0.021226   4.649470 +/- 0.261492   0.0609 
-H2O_AE_DFT  series 5  -76.321748 +/- 0.011121   4.256483 +/- 0.126845   0.0558 
-H2O_AE_DFT  series 13  -76.328038 +/- 0.013470   4.260497 +/- 0.079198   0.0558 
-H2O_AE_DFT  series 9  -76.328197 +/- 0.013156   4.191349 +/- 0.101476   0.0549 
-H2O_AE_DFT  series 14  -76.329850 +/- 0.012077   4.531482 +/- 0.228191   0.0594 
-H2O_AE_DFT  series 2  -76.336262 +/- 0.027683   3.460298 +/- 0.111215   0.0453 
-H2O_AE_DFT  series 4  -76.342807 +/- 0.019891   4.292159 +/- 0.129885   0.0562 
-H2O_AE_DFT  series 3  -76.344315 +/- 0.017467   4.026520 +/- 0.168988   0.0527 
-H2O_AE_DFT  series 8  -76.345056 +/- 0.014600   4.080318 +/- 0.060097   0.0534 
-H2O_AE_DFT  series 7  -76.346992 +/- 0.011128   4.299614 +/- 0.080107   0.0563 
-H2O_AE_DFT  series 11  -76.349011 +/- 0.012945   4.487658 +/- 0.088711   0.0588 
-H2O_AE_DFT  series 12  -76.368072 +/- 0.014845   4.313579 +/- 0.090184   0.0565 
+     H2O_AE_DFT  series 0  -75.374060 +/- 0.371321   6.717349 +/- 2.587564   0.0891 
+     H2O_AE_DFT  series 1  -76.128852 +/- 0.038761   5.963490 +/- 0.174963   0.0783 
+     H2O_AE_DFT  series 10  -76.314322 +/- 0.013607   4.405358 +/- 0.182043   0.0577 
+     H2O_AE_DFT  series 6  -76.321053 +/- 0.021226   4.649470 +/- 0.261492   0.0609 
+     H2O_AE_DFT  series 5  -76.321748 +/- 0.011121   4.256483 +/- 0.126845   0.0558 
+     H2O_AE_DFT  series 13  -76.328038 +/- 0.013470   4.260497 +/- 0.079198   0.0558 
+     H2O_AE_DFT  series 9  -76.328197 +/- 0.013156   4.191349 +/- 0.101476   0.0549 
+     H2O_AE_DFT  series 14  -76.329850 +/- 0.012077   4.531482 +/- 0.228191   0.0594 
+     H2O_AE_DFT  series 2  -76.336262 +/- 0.027683   3.460298 +/- 0.111215   0.0453 
+     H2O_AE_DFT  series 4  -76.342807 +/- 0.019891   4.292159 +/- 0.129885   0.0562 
+     H2O_AE_DFT  series 3  -76.344315 +/- 0.017467   4.026520 +/- 0.168988   0.0527 
+     H2O_AE_DFT  series 8  -76.345056 +/- 0.014600   4.080318 +/- 0.060097   0.0534 
+     H2O_AE_DFT  series 7  -76.346992 +/- 0.011128   4.299614 +/- 0.080107   0.0563 
+     H2O_AE_DFT  series 11  -76.349011 +/- 0.012945   4.487658 +/- 0.088711   0.0588 
+     H2O_AE_DFT  series 12  -76.368072 +/- 0.014845   4.313579 +/- 0.090184   0.0565 
 
 In this case Series 12 while being the lowest in energy yields a higher variance and a larger error bar and it would be better to
 discard it as an outlayer.
@@ -195,39 +195,38 @@ At this point, one needs to uncomment the 3J in the wavefunction file and change
      mpirun -n 1 qmcpack Opt.xml | tee Opt.out
      qmca -q ev *.scalar.dat | sort -k4
 
+                             LocalEnergy               Variance           ratio 
+     H2O_AE_DFT  series 0  -75.374060 +/- 0.371321   6.717349 +/- 2.587564   0.0891 
+     H2O_AE_DFT  series 1  -76.128852 +/- 0.038761   5.963490 +/- 0.174963   0.0783 
+     H2O_AE_DFT  series 15  -76.164676 +/- 0.193024   3.079528 +/- 0.588058   0.0404 
+     H2O_AE_DFT  series 18  -76.178938 +/- 0.013996   6.672877 +/- 0.116149   0.0876 
+     H2O_AE_DFT  series 17  -76.311466 +/- 0.020733   4.622419 +/- 0.224774   0.0606 
+     H2O_AE_DFT  series 10  -76.314322 +/- 0.013607   4.405358 +/- 0.182043   0.0577 
+     H2O_AE_DFT  series 6  -76.321053 +/- 0.021226   4.649470 +/- 0.261492   0.0609 
+     H2O_AE_DFT  series 5  -76.321748 +/- 0.011121   4.256483 +/- 0.126845   0.0558 
+     H2O_AE_DFT  series 13  -76.328038 +/- 0.013470   4.260497 +/- 0.079198   0.0558 
+     H2O_AE_DFT  series 9  -76.328197 +/- 0.013156   4.191349 +/- 0.101476   0.0549 
+     H2O_AE_DFT  series 14  -76.329850 +/- 0.012077   4.531482 +/- 0.228191   0.0594 
+     H2O_AE_DFT  series 2  -76.336262 +/- 0.027683   3.460298 +/- 0.111215   0.0453 
+     H2O_AE_DFT  series 16  -76.341265 +/- 0.071827   4.347790 +/- 0.284500   0.0570 
+     H2O_AE_DFT  series 4  -76.342807 +/- 0.019891   4.292159 +/- 0.129885   0.0562 
+     H2O_AE_DFT  series 3  -76.344315 +/- 0.017467   4.026520 +/- 0.168988   0.0527 
+     H2O_AE_DFT  series 8  -76.345056 +/- 0.014600   4.080318 +/- 0.060097   0.0534 
+     H2O_AE_DFT  series 7  -76.346992 +/- 0.011128   4.299614 +/- 0.080107   0.0563 
+     H2O_AE_DFT  series 11  -76.349011 +/- 0.012945   4.487658 +/- 0.088711   0.0588 
+     H2O_AE_DFT  series 12  -76.368072 +/- 0.014845   4.313579 +/- 0.090184   0.0565 
+     H2O_AE_DFT  series 27  -76.373757 +/- 0.008148   2.203106 +/- 0.080330   0.0288 
+     H2O_AE_DFT  series 22  -76.373883 +/- 0.010398   2.347633 +/- 0.071127   0.0307 
+     H2O_AE_DFT  series 23  -76.375095 +/- 0.013046   2.261811 +/- 0.120170   0.0296 
+     H2O_AE_DFT  series 29  -76.377463 +/- 0.008902   2.459788 +/- 0.149225   0.0322 
+     H2O_AE_DFT  series 20  -76.378593 +/- 0.010231   4.479266 +/- 1.922687   0.0586 
+     H2O_AE_DFT  series 19  -76.382036 +/- 0.018650   2.661659 +/- 0.280192   0.0348 
+     H2O_AE_DFT  series 28  -76.388138 +/- 0.008604   2.296048 +/- 0.109135   0.0301 
+     H2O_AE_DFT  series 25  -76.392127 +/- 0.007138   2.556821 +/- 0.334158   0.0335 
+     H2O_AE_DFT  series 21  -76.392933 +/- 0.007818   2.380255 +/- 0.082507   0.0312 
+     H2O_AE_DFT  series 24  -76.394555 +/- 0.010593   2.089199 +/- 0.078011   0.0273 
+     H2O_AE_DFT  series 26  -76.395727 +/- 0.013572   2.171732 +/- 0.092267   0.0284 
  
-                            LocalEnergy               Variance           ratio 
-H2O_AE_DFT  series 0  -75.374060 +/- 0.371321   6.717349 +/- 2.587564   0.0891 
-H2O_AE_DFT  series 1  -76.128852 +/- 0.038761   5.963490 +/- 0.174963   0.0783 
-H2O_AE_DFT  series 15  -76.164676 +/- 0.193024   3.079528 +/- 0.588058   0.0404 
-H2O_AE_DFT  series 18  -76.178938 +/- 0.013996   6.672877 +/- 0.116149   0.0876 
-H2O_AE_DFT  series 17  -76.311466 +/- 0.020733   4.622419 +/- 0.224774   0.0606 
-H2O_AE_DFT  series 10  -76.314322 +/- 0.013607   4.405358 +/- 0.182043   0.0577 
-H2O_AE_DFT  series 6  -76.321053 +/- 0.021226   4.649470 +/- 0.261492   0.0609 
-H2O_AE_DFT  series 5  -76.321748 +/- 0.011121   4.256483 +/- 0.126845   0.0558 
-H2O_AE_DFT  series 13  -76.328038 +/- 0.013470   4.260497 +/- 0.079198   0.0558 
-H2O_AE_DFT  series 9  -76.328197 +/- 0.013156   4.191349 +/- 0.101476   0.0549 
-H2O_AE_DFT  series 14  -76.329850 +/- 0.012077   4.531482 +/- 0.228191   0.0594 
-H2O_AE_DFT  series 2  -76.336262 +/- 0.027683   3.460298 +/- 0.111215   0.0453 
-H2O_AE_DFT  series 16  -76.341265 +/- 0.071827   4.347790 +/- 0.284500   0.0570 
-H2O_AE_DFT  series 4  -76.342807 +/- 0.019891   4.292159 +/- 0.129885   0.0562 
-H2O_AE_DFT  series 3  -76.344315 +/- 0.017467   4.026520 +/- 0.168988   0.0527 
-H2O_AE_DFT  series 8  -76.345056 +/- 0.014600   4.080318 +/- 0.060097   0.0534 
-H2O_AE_DFT  series 7  -76.346992 +/- 0.011128   4.299614 +/- 0.080107   0.0563 
-H2O_AE_DFT  series 11  -76.349011 +/- 0.012945   4.487658 +/- 0.088711   0.0588 
-H2O_AE_DFT  series 12  -76.368072 +/- 0.014845   4.313579 +/- 0.090184   0.0565 
-H2O_AE_DFT  series 27  -76.373757 +/- 0.008148   2.203106 +/- 0.080330   0.0288 
-H2O_AE_DFT  series 22  -76.373883 +/- 0.010398   2.347633 +/- 0.071127   0.0307 
-H2O_AE_DFT  series 23  -76.375095 +/- 0.013046   2.261811 +/- 0.120170   0.0296 
-H2O_AE_DFT  series 29  -76.377463 +/- 0.008902   2.459788 +/- 0.149225   0.0322 
-H2O_AE_DFT  series 20  -76.378593 +/- 0.010231   4.479266 +/- 1.922687   0.0586 
-H2O_AE_DFT  series 19  -76.382036 +/- 0.018650   2.661659 +/- 0.280192   0.0348 
-H2O_AE_DFT  series 28  -76.388138 +/- 0.008604   2.296048 +/- 0.109135   0.0301 
-H2O_AE_DFT  series 25  -76.392127 +/- 0.007138   2.556821 +/- 0.334158   0.0335 
-H2O_AE_DFT  series 21  -76.392933 +/- 0.007818   2.380255 +/- 0.082507   0.0312 
-H2O_AE_DFT  series 24  -76.394555 +/- 0.010593   2.089199 +/- 0.078011   0.0273 
-H2O_AE_DFT  series 26  -76.395727 +/- 0.013572   2.171732 +/- 0.092267   0.0284 
-
 You will notice that the Variance improved significantly from not using a Jastrow to using a well converged Jastrow. 
 
 While the Jastrow do not change the ndal surface for All electron calculations, They reduce significantly the variance, leading to a faster cnvergence at the DMC level
@@ -247,8 +246,9 @@ In this case and for the AWS, This will lead to the followin answers:
     mpirun -n 1 qmcpack DMC.xml | tee DMC.out 
     qmca -q ev *.scalar.out
 
-H2O_AE_DFT  series 0  -76.380929 +/- 0.051560   2.107357 +/- 0.329374   0.0276 
-H2O_AE_DFT  series 1  -76.417832 +/- 0.002178   2.314365 +/- 0.040821   0.0303 
+                             LocalEnergy               Variance           ratio 
+    H2O_AE_DFT  series 0  -76.380929 +/- 0.051560   2.107357 +/- 0.329374   0.0276 
+    H2O_AE_DFT  series 1  -76.417832 +/- 0.002178   2.314365 +/- 0.040821   0.0303 
 
 
 
