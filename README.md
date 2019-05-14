@@ -15,7 +15,7 @@ Links to presentations will be added as the files become available
 * [PySCF for Molecules and Solids](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_Pyscf.pdf)
 * [Auxiliary Field Quantum Monte Carlo (AFQMC)](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_afqmc.pdf)
 * [Engaging with the QMCPACK project](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_QMCPACK_Project.pdf)
-* Development of forces in QMCPACK
+* [Development of forces in QMCPACK](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_force_update.pdf)
 * [QMC from Benchmarking to Understanding Nanoscale Materials, Kayahan Saritas](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_QMC_Kayahan_Saritas.pdf)
 
 ## Day 2 Presentations
