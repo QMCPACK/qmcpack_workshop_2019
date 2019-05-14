@@ -4,6 +4,8 @@ Files for the QMCPACK Users Workshop 14-15 May 2019
 
 [More information](https://qmc2019.ornl.gov/) and [schedule](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/Workshop_Schedule.pdf)
 
+Copy of [latest QMCPACK manual PDF](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/qmcpack_manual.pdf) (from 2019-05-14)
+
 Links to presentations will be added as the files become available
 
 ## Day 1 Presentations
