@@ -32,7 +32,6 @@ echo "1.0e-0$i" > Truncate$i/H2O.ezfio/qmcpack/ci_threshold
 cd Truncate$i 
 qp_run truncate_wf_spin H2O.ezfio | tee H2O-Tr$i.out
 qp_run pt2 H2O.ezfio | tee H2O-Tr$i.pt2.out
-qp_run print_e_conv H2O.ezfio
 
 
 
