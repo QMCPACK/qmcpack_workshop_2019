@@ -14,6 +14,7 @@ Links to presentations will be added as the files become available
 * [Auxiliary Field Quantum Monte Carlo (AFQMC)](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_afqmc.pdf)
 * [Engaging with the QMCPACK project](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_QMCPACK_Project.pdf)
 * Development of forces in QMCPACK
+* [QMC from Benchmarking to Understanding Nanoscale Materials](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day1_QMC_Kayahan_Saritas.pdf)
 
 ## Day 2 Presentations
 
