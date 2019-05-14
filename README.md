@@ -23,5 +23,8 @@ Links to presentations will be added as the files become available
 * Selected CI Trial Wavefunction with Quantum Package and QMCPACK
 * [Wavefunction Optimization algorithms in QMCPACK](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day2_opt/Wfn_Opt_LuningZhao.pdf)
 * [NEXUS workflow system](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day2_nexus/Nexus_Slides.pdf)
+* Future workshop and QMCPACK Development Plans
 * Running Solids Efficiently at Scale
 * [Lithium Compton Profile from QMC, Paul Yang](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/day2_Li_Compton_Profile.pdf)
+* Status of Spin in QMC, Lubos Mitas
+
