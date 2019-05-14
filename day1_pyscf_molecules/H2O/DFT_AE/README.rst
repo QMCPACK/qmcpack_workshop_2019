@@ -192,9 +192,9 @@ At this point, one needs to uncomment the 3J in the wavefunction file and change
 
 
 .. code-block:: bash 
-     mpirun -n 1 qmcpack Opt.xml | tee Opt.out
+     mpirun -n 1 qmcpack Opt.xml > Opt.out
      qmca -q ev *.scalar.dat | sort -k4
-
+.. code-block
                              LocalEnergy               Variance           ratio 
      H2O_AE_DFT  series 0  -75.374060 +/- 0.371321   6.717349 +/- 2.587564   0.0891 
      H2O_AE_DFT  series 1  -76.128852 +/- 0.038761   5.963490 +/- 0.174963   0.0783 
