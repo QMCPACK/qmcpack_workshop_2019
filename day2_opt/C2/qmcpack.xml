@@ -25,7 +25,7 @@
     <cost name="energy">                   1.00 </cost>
     <cost name="unreweightedvariance">     0.00 </cost>
     <cost name="reweightedvariance">       0.00 </cost>
-<parameter name="useDrift">  yes </parameter>
+<parameter name="useDrift">  no </parameter>
 <parameter name="GEVMethod">mixed</parameter>
 <parameter name="beta">  0.0 </parameter>
 <parameter name="bigchange">15.0</parameter>

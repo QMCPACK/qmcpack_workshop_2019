@@ -2198,7 +2198,7 @@
 </coefficient>
       </sposet>
       <multideterminant optimize="yes" spo_up="spo-up" spo_dn="spo-dn">
-        <detlist size="1081" type="CSF" nca="0" ncb="0" nea="6" neb="6" nstates="20" cutoff="0.0015">
+        <detlist size="6" type="CSF" nca="0" ncb="0" nea="6" neb="6" nstates="20" cutoff="0.0015">
           <csf id="CSFcoeff_0" exctLvl="0" coeff="0.848114" qchem_coeff="0.848114" occ="22222200000000000000">
             <det id="csf_0-0" coeff="1" alpha="11111100000000000000" beta="11111100000000000000"/>
           </csf>
@@ -2229,7 +2229,7 @@
             <det id="csf_5-2" coeff="0.5" alpha="11101100100000000000" beta="11110110000000000000"/>
             <det id="csf_5-3" coeff="0.5" alpha="11101110000000000000" beta="11110100100000000000"/>
           </csf>
-          <csf id="CSFcoeff_6" exctLvl="2" coeff="-7.3926054588384679e-02" qchem_coeff="-0.080351" occ="22202210000001000000">
+          <!--csf id="CSFcoeff_6" exctLvl="2" coeff="-7.3926054588384679e-02" qchem_coeff="-0.080351" occ="22202210000001000000">
             <det id="csf_6-0" coeff="0.707107" alpha="11101100000001000000" beta="11101110000000000000"/>
             <det id="csf_6-1" coeff="0.707107" alpha="11101110000000000000" beta="11101100000001000000"/>
           </csf>
@@ -11160,7 +11160,7 @@
             <det id="csf_1080-1" coeff="0.5" alpha="11110100000010000000" beta="11101100000000000010"/>
             <det id="csf_1080-2" coeff="0.5" alpha="11101100000000000010" beta="11110100000010000000"/>
             <det id="csf_1080-3" coeff="0.5" alpha="11101100000010000000" beta="11110100000000000010"/>
-          </csf>
+          </csf-->
         </detlist>
       </multideterminant>
     </determinantset>
