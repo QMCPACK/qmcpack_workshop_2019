@@ -15,3 +15,7 @@ The qmcpack input file is qmcpack.xml, in which the following block turns on BLM
 Normally for such a small system, you should use standard LM, therefore this is just a fast example for you to play around with BLM. 
 
 To run it, use qmcpack qmcpack.xml > output
+
+After the run is finished, you can grab the energy for each iteration by:
+
+grep -B20 "Solving the linear method" output | grep "le_mean" > eng_iter.txt
