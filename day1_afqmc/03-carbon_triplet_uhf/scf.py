@@ -2,9 +2,6 @@
 # Triplet UHF ground state of carbon atom.
 
 from pyscf import gto, scf
-from pauxy.utils.linalg import get_orthoAO
-from pauxy.utils.from_pyscf import dump_pauxy
-from pauxy.estimators.greens_function import gab
 import numpy
 
 import h5py
