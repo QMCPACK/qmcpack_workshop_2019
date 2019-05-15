@@ -122,7 +122,7 @@ You can plot this file using gnuplot using:
    gnuplot
    gnuplot> set logscale x
    gnuplot> plot "H2O.ezfio.1.conv" u 1:2 w l t 'E_{var}'
-   gnuplot> replot "H2O.ezfio.1.conv" u 1:3 w l 'E+PT_2'
+   gnuplot> replot "H2O.ezfio.1.conv" u 1:3 w l t 'E+PT_2'
 
 
 
@@ -245,13 +245,13 @@ This operation will generate 3 files:
   1- H2O-Tr4.structure.xml (present in the directory)
 	This file contains the system geometry, the number of atoms and the number of electrons.
  
-  2- H2O_Tr4.wfj.xml (present in the directory)
+  2- H2O-Tr4.wfj.xml (present in the directory)
 	This file contains the trial wavefunction. The basis set, MO coefficients and all non mutable 
         data are stored in the HDF5 file referenced in the trial wavefunction. Only Jastrow data and 
         important information is kept in the HDF5. This allows a lighter IO and more user friendly inputs.
         More importantly this file contains also the Multideterminant coefficients and excitations. 
 
-  3- H2O_AE_HF.qmc.in.xml (present in the directory)
+  3- H2O-Tr4.qmc.in.xml (present in the directory)
         This file contains what is considered a "standard production" QMC block, from the Jastrow Optimmization 
         blocks, to VMC and DMC blocks. 
         IMPORTANT NOTE: THIS BLOCKS ARE NOT TAILORED FOR THE PROBLEM, MACHINE OR ACCURACY YOU MAY WANT TO REACH
@@ -460,12 +460,12 @@ You can plot the DMC data with the amount of truncation in the X axis and extrap
 
 Or Better, you can plot the DMC data in function of the PT2 energy. This will allow you to extrapolate to a 0 error in the PT2. 
 
- #PT2                          #DMC
- -0.160300423166565         -76.423088 +/- 0.000857  
- -6.866748295432973E-002    -76.425353 +/- 0.001063 
- -2.732998375235876E-002    -76.426460 +/- 0.000743 
- -1.302276339321704E-002    -76.428732 +/- 0.001153 
- -0.228036342295070E-002    -76.430150 +/- 0.000752
+#Nb_Det           #PT2                          #DMC
+2602     -0.160300423166565         -76.423088 +/- 0.000857
+18863    -6.866748295432973E-002    -76.425353 +/- 0.001063
+44694    -2.732998375235876E-002    -76.426460 +/- 0.000743
+98113    -1.302276339321704E-002    -76.428732 +/- 0.001153
+2000000  -0.228036342295070E-002    -76.430150 +/- 0.000752
 
 The last value added comes from a large run using 2M determinants 
 
