@@ -6,7 +6,7 @@ Files for the QMCPACK Users Workshop 14-15 May 2019
 
 Copy of [latest QMCPACK manual PDF](https://github.com/QMCPACK/qmcpack_workshop_2019/blob/master/qmcpack_manual.pdf) (from 2019-05-14)
 
-Links to presentations will be added as the files become available
+Many of the presentations are available [on YouTube](https://www.youtube.com/playlist?list=PLZ3WPqWe6k8sjpdmwYyPdyEkKUN9pKGex)
 
 ## Day 1 Presentations
 
